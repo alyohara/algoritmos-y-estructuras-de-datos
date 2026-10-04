@@ -120,6 +120,8 @@ pre { max-height: 205px; margin: 0 0 10px; padding: 12px; overflow: auto; border
 .lesson-theory { padding-right: 24px; border-right: 1px dashed var(--border); }
 .lesson-panel h2 { color: var(--primary); }
 .theory-text, .exercise-prompt { margin: 0; color: var(--text); }
+.theory-text p { margin: 0 0 11px; color: var(--text); line-height: 1.6; }
+.theory-text p:last-child { margin-bottom: 0; }
 .concept-list { display: grid; gap: 5px; margin: 13px 0 0; padding: 0; list-style: none; color: var(--dim); }
 .concept-list li::before { margin-right: 7px; color: var(--secondary); content: "::"; }
 details { margin-top: 13px; padding: 8px; border: 1px solid var(--border); background: var(--bg); }

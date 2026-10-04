@@ -11,15 +11,23 @@ const units = [
       "Algoritmos: entrada, proceso y salida",
       "Propiedades: finitud, precision y verificabilidad",
       "Pseudocodigo: secuencias, decisiones y repeticiones",
-      "Diagramas de flujo y acciones primitivas"
+      "Diagramas de flujo y acciones primitivas",
+      "Analisis del problema: entrada esperada y casos de prueba",
+      "Metodologia: analizar, disenar, implementar y probar"
     ],
     tip: "Antes de escribir una sola linea de Python, anota los casos de entrada y la salida esperada de tu algoritmo.",
-    theory: "Un algoritmo es una secuencia finita y ordenada de pasos que transforma una entrada en una salida. Se define primero en lenguaje natural o pseudocodigo para concentrarse en la logica: que datos recibe, que operaciones realiza y que resultado devuelve, sin preocuparse todavia por la sintaxis de un lenguaje.",
+    theory: [
+      "Un algoritmo es una secuencia finita y ordenada de pasos que transforma una entrada en una salida. Se define primero en lenguaje natural o pseudocodigo para concentrarse en la logica: que datos recibe, que operaciones realiza y que resultado devuelve, sin preocuparse todavia por la sintaxis de un lenguaje.",
+      "Todo algoritmo debe cumplir propiedades basicas: finitud (terminar en un numero finito de pasos), precision (cada paso definido sin ambiguedad), entrada y salida claras, y efectividad (cada accion ser executable). En pseudocodigo las estructuras son las mismas que despues se traducen a Python: SECUENCIA para ordenar pasos, SI...ENTONCES...SINO para decisiones y MIENTRAS o PARA para repeticiones.",
+      "Resolver un problema sigue cuatro pasos: analizar (entender que entra y que debe salir), disenar (elegir la estrategia y escribirla en pseudocodigo), implementar (pasarla a lenguaje) y probar con casos normales, borde y error. El diagrama de flujo lo representa con simbolos: elipse para inicio y fin, rectangulo para una accion primitiva, rombo para una decision y flechas para el flujo. Correr el algoritmo en mesa con valores a mano anticipa errores antes de ejecutar el programa."
+    ],
     concepts: [
       "Entrada: datos que el algoritmo recibe del exterior.",
       "Proceso: operaciones, calculos y decisiones sobre esos datos.",
       "Salida: resultado observable y verificable.",
-      "Una decision elige entre caminos segun una condicion; una repeticion ejecuta pasos mientras se cumpla una condicion."
+      "Una decision elige entre caminos segun una condicion; una repeticion ejecuta pasos mientras se cumpla una condicion.",
+      "Finitud: el algoritmo siempre termina; precision: cada paso esta definido sin ambiguedad.",
+      "Caso borde: situacion limite (lista vacia, valor negativo) que conviene probar siempre."
     ],
     caption: "Ejemplo: clasificar una temperatura sin pedir datos por teclado.",
     code: "temperatura = -3\n\nif temperatura < 0:\n    print('Bajo cero')\nelif temperatura <= 25:\n    print('Templado')\nelse:\n    print('Caluroso')",
@@ -55,15 +63,23 @@ const units = [
       "Identificadores, variables y asignacion",
       "Tipos: int, float, str y bool",
       "Operadores aritmeticos, de comparacion y logicos",
-      "Indentacion, comentarios, input() y print()"
+      "Indentacion, comentarios, input() y print()",
+      "Cadenas: longitud, indexacion y f-strings",
+      "De texto a numero: int(), float() y str()"
     ],
     tip: "Python no usa punto y coma ni llaves: la indentacion (espacios al inicio) define los bloques de codigo.",
-    theory: "Una variable es un nombre que referencia un objeto en memoria; el tipo lo determina el objeto, no la declaracion. Los operadores de comparacion (==, <, !=) devuelven bool, mientras que el operador = solo asigna valores. La funcion print() muestra resultados e input() lee texto desde el teclado, que casi siempre hay que convertir con int() o float().",
+    theory: [
+      "Una variable es un nombre que referencia un objeto en memoria; el tipo lo determina el objeto, no la declaracion. Los operadores de comparacion (==, <, !=) devuelven bool, mientras que el operador = solo asigna valores. La funcion print() muestra resultados e input() lee texto desde el teclado, que casi siempre hay que convertir con int() o float().",
+      "Python delimita los bloques con indentacion (4 espacios por convencion): lo que queda dentro de un if, for, while o def se anida un nivel mas y una indentacion incorrecta levanta IndentationError. Los identificadores comienzan con letra o guion bajo, nunca con un numero, y no pueden ser palabras reservadas como if, for o def. Los comentarios con # se ignoran al ejecutar.",
+      "Los tipos basicos son int, float, str y bool. Los operadores aritmeticos (+, -, *, /, //, %, **) respetan la precedencia matematica, la division / siempre devuelve flotante y // trunca hacia abajo. Las comparaciones devuelven bool, no numeros. Ojo con input(): siempre devuelve cadena, hay que convertir con int() o float() antes de operar, y con str() para concatenar."
+    ],
     concepts: [
       "= asigna; == compara valores.",
       "La division / siempre devuelve flotante; // devuelve la division entera.",
       "Los comentarios comienzan con # y el interprete los ignora.",
-      "Los bloques se delimitan por indentacion, no por caracteres especiales."
+      "Los bloques se delimitan por indentacion, no por caracteres especiales.",
+      "input() siempre entrega str: convertir con int() o float() antes de calcular.",
+      "f'Texto {variable}' (f-string) incrusta valores dentro de una cadena."
     ],
     caption: "Ejemplo: variables, tipos y operaciones basicas.",
     code: "nombre = 'UNaB'\nanio = 2022\nmaterias = ['Algoritmos', 'Estructuras']\n\nprint(nombre, type(nombre))\nprint('Anio que viene:', anio + 1)\nprint('Primera materia:', materias[0])\nprint('Cantidad:', len(materias))\nprint('7 // 2 =', 7 // 2, '| 7 / 2 =', 7 / 2)",
@@ -97,15 +113,23 @@ const units = [
       "Mutabilidad e inmutabilidad",
       "Listas y tuplas: indices, slicing y metodos",
       "Conjuntos: sin repetidos, operaciones de pertenencia",
-      "Diccionarios: clave/valor y comprension de listas"
+      "Diccionarios: clave/valor y comprension de listas",
+      "Indexacion desde 0 y slicing lista[a:b]",
+      "Referencias vs copias y comprensiones"
     ],
     tip: "Elegir el contenedor correcto simplifica el algoritmo: lista para orden, conjunto para pertenencia, diccionario para clave/valor.",
-    theory: "Los contenedores agrupan valores y se eligen segun que importa: si el orden (lista, tupla), si hay repetidos (conjunto) o si se accede por una clave (diccionario). Las listas son mutables, las tuplas y las cadenas no; los conjuntos y diccionarios asocian elementos unicos, los primeros sin posicion y los segundos con clave propia.",
+    theory: [
+      "Los contenedores agrupan valores y se eligen segun que importa: si el orden (lista, tupla), si hay repetidos (conjunto) o si se accede por una clave (diccionario). Las listas son mutables, las tuplas y las cadenas no; los conjuntos y diccionarios asocian elementos unicos, los primeros sin posicion y los segundos con clave propia.",
+      "Las posiciones arrancan en 0 y el indice -1 refiere al ultimo elemento. El slicing lista[a:b] toma desde a hasta b sin incluir b, y un tercer termino lista[a:b:c] fija el paso. Como cadenas y tuplas son inmutables, operar sobre ellas devuelve una copia nueva; en cambio los metodos de la lista (append, insert, pop, sort) modifican el original.",
+      "En un diccionario se itera con items() para recorrer clave y valor, y las claves deben ser unicas e inmutables (str, int o tupla). Los conjuntos responden rapido la pregunta 'esta elemento?' y ofrecen union |, interseccion & y diferencia -. Ojo con las referencias: b = a no copia la lista sino que apunta a la misma; para una copia independiente hay que usar b = a.copy()."
+    ],
     concepts: [
       "Lista: ordenada, mutable, admite repetidos.",
       "Tupla: ordenada e inmutable; ideal para datos fijos como coordenadas.",
       "Conjunto: elementos unicos sin posicion; consulta de pertenencia en O(1).",
-      "Diccionario: asocia claves unicas con valores; se accede por clave."
+      "Diccionario: asocia claves unicas con valores; se accede por clave.",
+      "lista[a:b] devuelve un fragmento; el limite b no se incluye.",
+      "b = a crea un alias; b = a.copy() crea una copia independiente."
     ],
     caption: "Ejemplo: contenedores y operaciones de pertenencia.",
     code: "productos = ['lapiz', 'regla', 'lapiz', 'cuaderno']\ndistintos = set(productos)\n\nprint('Todos:', productos)\nprint('Sin repetidos:', distintos)\nprint('Cantidad:', len(distintos))\n\nprecios = {'lapiz': 150, 'cuaderno': 900}\nprint('Precio lapiz:', precios['lapiz'])\nprint('Tupla inmutable:', (1, 2, 3))",
@@ -140,15 +164,23 @@ const units = [
       "Errores sintacticos vs errores de ejecucion",
       "Excepciones: try, except, raise",
       "Funciones: parametros, retorno y documentacion",
-      "Alcance de variables: local, global y nonlocal"
+      "Alcance de variables: local, global y nonlocal",
+      "Bloques else y finally",
+      "Funciones con argumentos por defecto y pruebas"
     ],
     tip: "Una funcion debe tener una responsabilidad clara, entradas predecibles y un resultado verificable.",
-    theory: "Los errores de sintaxis los detecta el interprete antes de ejecutar; los errores de ejecucion (excepciones) aparecen durante la corrida y pueden atraparse con try/except. Las funciones encapsulan una tarea para reutilizarla y probarla de forma aislada, y raise permite comunicar condiciones invalidas al llamador en lugar de devolver resultados raros.",
+    theory: [
+      "Los errores de sintaxis los detecta el interprete antes de ejecutar; los errores de ejecucion (excepciones) aparecen durante la corrida y pueden atraparse con try/except. Las funciones encapsulan una tarea para reutilizarla y probarla de forma aislada, y raise permite comunicar condiciones invalidas al llamador en lugar de devolver resultados raros.",
+      "El bloque try contiene el codigo que puede fallar, except captura la excepcion esperada (por ejemplo except ValueError), else se ejecuta solo si no hubo error y finally se ejecuta siempre, haya error o no. Atrapar solo lo esperado: un except demasiado general esconde errores nuevos. raise ValueError('mensaje') comunica una condicion invalida al que llama la funcion.",
+      "Una funcion se define con def, recibe parametros, devuelve valores con return y puede tener argumentos por defecto. return entrega un resultado y corta la ejecucion; print solo muestra por pantalla y devuelve None. Las variables creadas dentro de la funcion son locales y desaparecen al salir: probar cada funcion por separado con casos simples la vuelve confiable."
+    ],
     concepts: [
       "ZeroDivisionError, NameError, TypeError son excepciones comunes.",
       "try protege un bloque; except maneja la situacion esperada.",
       "return entrega el resultado y finaliza la funcion; sin return devuelve None.",
-      "Las variables definidas dentro de una funcion tienen alcance local."
+      "Las variables definidas dentro de una funcion tienen alcance local.",
+      "else se ejecuta si no hubo excepcion; finally corre siempre.",
+      "Argumento por defecto: parametro opcional declarado en la firma de la funcion."
     ],
     caption: "Ejemplo: funcion con validacion y manejo de excepciones.",
     code: "def dividir(a, b):\n    if b == 0:\n        raise ValueError('No se puede dividir por cero')\n    return a / b\n\ntry:\n    print(dividir(10, 0))\nexcept ValueError as error:\n    print('Error controlado:', error)\n\nprint('10 / 4 =', dividir(10, 4))",
@@ -183,15 +215,23 @@ const units = [
       "Casos base y llamada recursiva",
       "Factorial y Fibonacci",
       "Pila de llamadas y costo en memoria",
-      "Recursion vs iteracion"
+      "Recursion vs iteracion",
+      "Profundidad de recursion y RecursionError",
+      "Cuando conviene la recursion: jerarquias"
     ],
     tip: "Toda funcion recursiva necesita un caso base que devuelva un resultado sin volver a llamarse; si no, nunca termina.",
-    theory: "Una funcion recursiva resuelve un problema llamandose a si misma con una entrada mas pequena, hasta alcanzar un caso base. Facilita la escritura de algoritmos sobre estructuras jerarquicas, pero consume memoria porque cada llamada pendiente se guarda en la pila de ejecucion; Python corta la recursion con RecursionError si hay demasiadas llamadas.",
+    theory: [
+      "Una funcion recursiva resuelve un problema llamandose a si misma con una entrada mas pequena, hasta alcanzar un caso base. Facilita la escritura de algoritmos sobre estructuras jerarquicas, pero consume memoria porque cada llamada pendiente se guarda en la pila de ejecucion; Python corta la recursion con RecursionError si hay demasiadas llamadas.",
+      "Toda recursion tiene dos partes: el caso base, que responde sin volver a llamarse, y el caso recursivo, que reduce el problema hasta alcanzar ese base. Cada llamada pendiente se guarda en la pila de ejecucion con sus parametros y variables locales; Python corta la recursion con RecursionError cuando se supera el limite de profundidad (unas 1000 llamadas por defecto).",
+      "factorial(n) = n * factorial(n-1) con factorial(0) = 1 es el ejemplo tipico, y Fibonacci muestra la trampa: fib(n) = fib(n-1) + fib(n-2) vuelve a calcular los mismos valores muchas veces y crece exponencial. La recursion brilla sobre estructuras jerarquicas (arboles, directorios, combinaciones), pero para problemas lineales un while suele ser mas economico en memoria."
+    ],
     concepts: [
       "Caso base: condicion que responde sin recursarse.",
       "Llamada recursiva: el problema se reduce hasta llegar al caso base.",
       "Cada llamada ocupa un lugar en la pila (stack) de ejecucion.",
-      "La recursion exponencial (Fibonacci sin memoizacion) repite trabajo."
+      "La recursion exponencial (Fibonacci sin memoizacion) repite trabajo.",
+      "Sin caso base la recursion infinita termina en RecursionError.",
+      "Cada llamada pendiente consume memoria: la recursion profunda agota la pila."
     ],
     caption: "Ejemplo: factorial recursivo.",
     code: "def factorial(n):\n    if n <= 1:\n        return 1\n    return factorial(n - 1) * n\n\nfor i in range(6):\n    print(i, '->', factorial(i))",
@@ -226,15 +266,23 @@ const units = [
       "Modulos: import y espacios de nombres",
       "Clases: atributos, metodos y constructor __init__",
       "self y las instancias",
-      "Encapsulamiento y validacion de invariantes"
+      "Encapsulamiento y validacion de invariantes",
+      "from ... import y el bloque main",
+      "Metodos especiales __init__ y __str__"
     ],
     tip: "Antes de escribir metodos, defini que representa el objeto y que operaciones debe permitir.",
-    theory: "Un modulo agrupa funciones y datos reutilizables que se traen con import. Una clase combina estado (atributos) y comportamiento (metodos) para crear muchas instancias iguales: __init__ fija el estado inicial, self identifica a la instancia que recibe el metodo, y validar en el constructor evita objetos inconsistentes.",
+    theory: [
+      "Un modulo agrupa funciones y datos reutilizables que se traen con import. Una clase combina estado (atributos) y comportamiento (metodos) para crear muchas instancias iguales: __init__ fija el estado inicial, self identifica a la instancia que recibe el metodo, y validar en el constructor evita objetos inconsistentes.",
+      "import trae el modulo completo (import math) y from math import sqrt trae solo lo que se usa; el codigo que debe ejecutarse unicamente al correr el archivo se protege con if __name__ == '__main__':. La libreria estandor ya trae herramientas: math para funciones matematicas, random para valores aleatorios y os/pathlib para trabajar con archivos y rutas.",
+      "La clase es el plano y cada objeto una instancia concreta: los atributos guardan estado y los metodos definen comportamiento. __init__ se ejecuta al crear el objeto y valida el estado inicial, self identifica a la instancia que recibe cada metodo, y __str__ define como se la muestra con print(). Validar en el constructor evita objetos en estados invalidos y agrupar datos con su comportamiento reduce codigo repetido."
+    ],
     concepts: [
       "import math trae el modulo; from math import sqrt trae solo una parte.",
       "__init__ se ejecuta al crear la instancia.",
       "self referencia el objeto sobre el que se llama el metodo.",
-      "Encapsular la logica dentro de la clase facilita probar y reutilizar."
+      "Encapsular la logica dentro de la clase facilita probar y reutilizar.",
+      "if __name__ == '__main__': separa el codigo ejecutable del reutilizable.",
+      "__str__ define la representacion en texto del objeto al hacer print(objeto)."
     ],
     caption: "Ejemplo: clase Rectangulo con validacion.",
     code: "class Rectangulo:\n    def __init__(self, ancho, alto):\n        if ancho <= 0 or alto <= 0:\n            raise ValueError('Medidas positivas')\n        self.ancho = ancho\n        self.alto = alto\n\n    def area(self):\n        return self.ancho * self.alto\n\nr = Rectangulo(4, 3)\nprint('Area:', r.area())",
@@ -270,15 +318,23 @@ const units = [
       "Tipos de datos abstractos (TAD)",
       "Pila: push, pop, is_empty y top",
       "Cola: enqueue y dequeue",
-      "Listas enlazadas: nodos, iteradores e indices"
+      "Listas enlazadas: nodos, iteradores e indices",
+      "Operaciones basicas y su costo",
+      "Elegir estructura segun el acceso necesario"
     ],
     tip: "Si el ultimo en entrar es el primero en salir, es pila; si el primero en entrar es el primero en salir, es cola.",
-    theory: "Un TAD define que operaciones ofrece una estructura sin importar como se implemente. La pila restringe el acceso al ultimo elemento agregado (LIFO) y la cola atiende al mas antiguo (FIFO). Las listas enlazadas guardan nodos que apuntan al siguiente, permitiendo inserciones sin desplazar todos los elementos como hace la lista de Python.",
+    theory: [
+      "Un TAD define que operaciones ofrece una estructura sin importar como se implemente. La pila restringe el acceso al ultimo elemento agregado (LIFO) y la cola atiende al mas antiguo (FIFO). Las listas enlazadas guardan nodos que apuntan al siguiente, permitiendo inserciones sin desplazar todos los elementos como hace la lista de Python.",
+      "La pila trabaja en un solo extremo: push apila, pop desapila y top (peek) mira el tope, siempre el ultimo en llegar (LIFO). La cola entra por un extremo y sale por el otro (FIFO): enqueue agrega al final y dequeue atiende desde el inicio. En Python se logran con listas, aunque collections.deque es mejor para colas porque quitar desde el inicio de una lista cuesta O(n).",
+      "La lista enlazada guarda nodos con dato y referencia al siguiente: insertar al frente es O(1) porque no desplaza nada, pero llegar al i-esimo elemento exige recorrer i nodos. La lista de Python es un arreglo dinamico: append es O(1) amortizado, mientras que insert(0, x) es O(n). Si se accede por posicion conviene la lista; si se entra y sale frecuentemente por los extremos, deque o lista enlazada."
+    ],
     concepts: [
       "Pila: append agrega al tope, pop extrae del tope.",
       "Cola: enqueue agrega al final, dequeue extrae del inicio.",
       "Nodo: guarda un elemento y una referencia al siguiente.",
-      "Toda operacion debe contemplar el caso de la estructura vacia."
+      "Toda operacion debe contemplar el caso de la estructura vacia.",
+      "LIFO: lo ultimo en entrar es lo primero en salir (como platos apilados).",
+      "deque: doblemente enlazada; agrega y quita en O(1) en ambos extremos."
     ],
     caption: "Ejemplo: pila y cola con listas de Python.",
     code: "# Pila (LIFO)\npila = []\npila.append('primer elemento')\npila.append('segundo elemento')\nprint('Tope:', pila[-1])\nprint('Extraido:', pila.pop())\n\n# Cola (FIFO): entra al final, sale del inicio\ncola = []\ncola.append('paciente 1')\ncola.append('paciente 2')\nprint('Atiende:', cola.pop(0))\nprint('Quedan:', cola)",
@@ -314,15 +370,23 @@ const units = [
       "Problema de busqueda: devolver indice o -1",
       "Busqueda lineal: O(n)",
       "Busqueda binaria sobre listas ordenadas: O(log n)",
-      "Ordenamiento por seleccion y por insercion"
+      "Ordenamiento por seleccion y por insercion",
+      "Ordenamiento por burbuja y estabilidad",
+      "Costo combinado de ordenar y buscar"
     ],
     tip: "La busqueda binaria descarta la mitad del espacio en cada paso, pero solo sirve si la lista esta ordenada.",
-    theory: "Buscar consiste en encontrar un valor x en una lista L y devolver su indice o -1. La busqueda lineal recorre elemento por elemento y en el peor caso hace una comparacion por dato. Si la lista esta ordenada, la binaria divide el segmento de busqueda por la mitad en cada paso, logrando O(log n). Ordenar primero suele valer la pena cuando se busca muchas veces.",
+    theory: [
+      "Buscar consiste en encontrar un valor x en una lista L y devolver su indice o -1. La busqueda lineal recorre elemento por elemento y en el peor caso hace una comparacion por dato. Si la lista esta ordenada, la binaria divide el segmento de busqueda por la mitad en cada paso, logrando O(log n). Ordenar primero suele valer la pena cuando se busca muchas veces.",
+      "Los ordenamientos por comparacion de orden cuadratico son burbuja (intercambia adyacentes hasta que no hay cambios), seleccion (lleva el minimo de la parte sin ordenar a su posicion) e insercion (acomoda cada elemento dentro del prefijo ya ordenado, el mas rapido cuando la lista esta casi ordenada). Todos hacen en el peor caso un orden de n^2 comparaciones, por lo que se vuelven lentos con listas grandes.",
+      "La binaria sostiene un invariante: si el objetivo existe, esta siempre entre bajo y alto; en cada paso calcula el medio y descarta media lista, por eso pide orden previo. Ordenar una vez (O(n log n)) y buscar muchas veces (O(log n) cada una) suele ganarle a la lineal (O(n) por busqueda). Ademas, un orden estable conserva el orden relativo de los elementos con igual clave, algo importante cuando se ordena por mas de un campo."
+    ],
     concepts: [
       "Busqueda lineal: recorre todo, no requiere orden, O(n).",
       "Busqueda binaria: requiere orden previo, descarta mitades, O(log n).",
       "Ordenamiento por seleccion: lleva el minimo a su posicion en cada pasada.",
-      "Ordenamiento por insercion: coloca cada elemento en su lugar dentro del prefijo ordenado."
+      "Ordenamiento por insercion: coloca cada elemento en su lugar dentro del prefijo ordenado.",
+      "Orden estable: los elementos con igual clave conservan su orden original.",
+      "Casi ordenada: insercion se acerca a O(n); burbuja sigue siendo O(n^2)."
     ],
     caption: "Ejemplo: busqueda lineal y binaria.",
     code: "def busqueda_lineal(datos, objetivo):\n    for i in range(len(datos)):\n        if datos[i] == objetivo:\n            return i\n    return -1\n\ndef busqueda_binaria(datos, objetivo):\n    izq, der = 0, len(datos) - 1\n    while izq <= der:\n        medio = (izq + der) // 2\n        if datos[medio] == objetivo:\n            return medio\n        if datos[medio] < objetivo:\n            izq = medio + 1\n        else:\n            der = medio - 1\n    return -1\n\nlista = [2, 5, 8, 12, 16, 23, 38, 56, 72, 91]\nprint('Lineal 23 ->', busqueda_lineal(lista, 23))\nprint('Binaria 23 ->', busqueda_binaria(lista, 23))\nprint('Binaria 7 ->', busqueda_binaria(lista, 7))",
@@ -354,15 +418,23 @@ const units = [
       "Analisis experimental y sus limitaciones",
       "Operaciones primitivas",
       "Funciones: constante, logaritmica, lineal, cuadratica",
-      "Notacion Big-O y analisis comparativo"
+      "Notacion Big-O y analisis comparativo",
+      "Clases de crecimiento: O(1), O(n), O(n log n), O(n^2)",
+      "Problemas decidibles e indecidibles"
     ],
     tip: "Para comparar algoritmos siempre pensa en el peor caso y en como crece el costo cuando crece la entrada.",
-    theory: "El analisis experimental mide tiempos reales pero depende del hardware y de los datos de prueba. El analisis asintotico estudia la descripcion del algoritmo contando operaciones primitivas (asignaciones, comparaciones, aritmetica) y expresa el crecimiento con notacion Big-O, lo que permite comparar soluciones sin ejecutarlas.",
+    theory: [
+      "El analisis experimental mide tiempos reales pero depende del hardware y de los datos de prueba. El analisis asintotico estudia la descripcion del algoritmo contando operaciones primitivas (asignaciones, comparaciones, aritmetica) y expresa el crecimiento con notacion Big-O, lo que permite comparar soluciones sin ejecutarlas.",
+      "La notacion Big-O describe como crece el costo en el peor caso: O(1) acceso por indice, O(log n) division por la mitad, O(n) un recorrido, O(n log n) ordenar, O(n^2) dos ciclos anidados y O(2^n) decisiones dobles sin control. Se ignoran el factor constante y la maquina: importa el crecimiento, no los milisegundos actuales. Se estima contando operaciones primitivas y multiplicando dentro de los ciclos anidados.",
+      "La computabilidad estudia que problemas son resolubles en principio. El problema de la parada (termina un programa con una entrada dada?) no tiene solucion general: no existe algoritmo que lo decida en todos los casos. Eso separa los decidibles de los indecidibles, y dentro de los decidibles distingue los polinomicos (practicables) de los exponenciales (intratables) que, con datos grandes, no se pueden resolver."
+    ],
     concepts: [
       "O(1): costo constante, no crece con n.",
       "O(log n): crece muy lento; ej. busqueda binaria.",
       "O(n): crece linealmente; ej. recorrer una lista.",
-      "O(n^2): crece rapido; ej. dos ciclos anidados."
+      "O(n^2): crece rapido; ej. dos ciclos anidados.",
+      "O(n log n): el costo de ordenar con metodos eficientes.",
+      "Problema de la parada: no hay algoritmo que diga siempre si un programa termina."
     ],
     caption: "Ejemplo: comparar un enfoque lineal con uno constante.",
     code: "import time\n\ndef suma_lineal(n):\n    total = 0\n    for i in range(n):\n        total += i\n    return total\n\ndef suma_constante(n):\n    return (n - 1) * n // 2\n\nfor n in (100000, 1000000, 5000000):\n    t0 = time.time()\n    suma_lineal(n)\n    t1 = time.time()\n    t2 = time.time()\n    suma_constante(n)\n    t3 = time.time()\n    print(f'n={n:>8} lineal={t1-t0:.5f}s formula={t3-t2:.6f}s')",
@@ -396,15 +468,23 @@ const units = [
       "Abrir, leer y cerrar archivos",
       "Modos: r, w, a y b",
       "Lectura por lineas y con context manager",
-      "Procesamiento de datos persistentes"
+      "Procesamiento de datos persistentes",
+      "Lectura completa, por lineas e iteracion",
+      "CSV y rutas con pathlib"
     ],
     tip: "Usa siempre with open(...) as archivo: asi el archivo se cierra solo aunque haya una excepcion.",
-    theory: "Los archivos permiten guardar datos despues de que el programa termina. Se abren con open(ruta, modo): 'r' para leer, 'w' para crear o sobreescribir, 'a' para agregar al final. El context manager with cierra el recurso automaticamente y conviene pasar encoding='utf-8' para trabajar bien con acentos y caracteres especiales.",
+    theory: [
+      "Los archivos permiten guardar datos despues de que el programa termina. Se abren con open(ruta, modo): 'r' para leer, 'w' para crear o sobreescribir, 'a' para agregar al final. El context manager with cierra el recurso automaticamente y conviene pasar encoding='utf-8' para trabajar bien con acentos y caracteres especiales.",
+      "Abrir con 'w' crea o sobreescribe (borra lo anterior); para agregar sin perder lo existente se usa 'a'. En lectura, read() devuelve todo el texto, readlines() una lista de lineas e iterar con for linea in archivo es lo mas economico en memoria. Si la ruta no existe se levanta FileNotFoundError, y una escritura sin cerrar puede perder datos: por eso se usa with, que cierra el recurso siempre.",
+      "Para tablas de datos conviene el modulo csv (reader y writer) en lugar de partir las lineas a mano. Las rutas se arman con os.path.join o con pathlib.Path, que evitan problemas entre Windows y Linux. Buena practica: pasar encoding='utf-8' para soportar acentos, trabajar con rutas relativas al proyecto y no dejar archivos abiertos fuera del bloque with."
+    ],
     concepts: [
       "read() devuelve todo el contenido; readlines() una lista de lineas.",
-      "Iteration sobre el archivo linea por linea es la forma mas eficiente.",
+      "Iterar sobre el archivo linea por linea es la forma mas eficiente.",
       "Modo 'w' borra el contenido anterior del archivo.",
-      "Los datos binarios se manejan con 'rb' / 'wb'."
+      "Los datos binarios se manejan con 'rb' / 'wb'.",
+      "'w' sobreescribe; 'a' agrega al final sin borrar lo existente.",
+      "FileNotFoundError: la ruta o el archivo pedido no existe."
     ],
     caption: "Ejemplo: escribir y leer un archivo de texto.",
     code: "with open('datos.txt', 'w', encoding='utf-8') as archivo:\n    archivo.write('python\\n')\n    archivo.write('algoritmos\\n')\n    archivo.write('estructuras\\n')\n\nwith open('datos.txt', encoding='utf-8') as archivo:\n    lineas = archivo.readlines()\n\nprint('Cantidad de lineas:', len(lineas))\nfor i, linea in enumerate(lineas, start=1):\n    print(i, linea.strip())",
@@ -438,15 +518,23 @@ const units = [
       "Partes: raiz, hijos, hojas, altura y nivel",
       "Arboles binarios y arboles de busqueda (BST)",
       "Recorridos: inorden, preorden y postorden",
-      "Grafos: nodos, aristas, BFS y DFS"
+      "Grafos: nodos, aristas, BFS y DFS",
+      "Recorridos por niveles y por profundidad",
+      "Grafos: matriz y lista de adyacencia"
     ],
     tip: "En un BST el recorrido inorden devuelve siempre los valores ordenados de menor a mayor.",
-    theory: "Las estructuras no lineales no siguen una secuencia: en un arbol cada nodo tiene un padre y cero o mas hijos, y en un grafo los nodos se conectan por aristas sin una jerarquia fija. Los arboles modelan organizaciones (archivos, categorias) y los grafos redes (rutas, conexiones), y ambos se recorren de forma recursiva.",
+    theory: [
+      "Las estructuras no lineales no siguen una secuencia: en un arbol cada nodo tiene un padre y cero o mas hijos, y en un grafo los nodos se conectan por aristas sin una jerarquia fija. Los arboles modelan organizaciones (archivos, categorias) y los grafos redes (rutas, conexiones), y ambos se recorren de forma recursiva.",
+      "El arbol tiene vocabulario propio: raiz (nodo sin padre), hoja (sin hijos), altura (camino mas largo hasta una hoja) y nivel. En un arbol binario de busqueda (BST) cada nodo tiene hasta dos hijos y cumple izquierda < nodo < derecha, de modo que el recorrido inorden devuelve los valores ordenados. Los recorridos se escriben de forma recursiva: preorden (nodo, izquierda, derecha) para replicar la estructura, inorden para listar ordenado y postorden (los hijos primero) para eliminar.",
+      "En un grafo no hay jerarquia: vertices conectados por aristas, que pueden ser dirigidas o tener peso. Se representa con matriz de adyacencia (consultar si hay arista en O(1), pero ocupa n^2 lugares) o con lista de adyacencia (mas economica cuando las conexiones son pocas). BFS recorre por niveles con una cola y DFS profundiza con pila o recursion; ambos sirven para buscar caminos, conectar nodos o detectar ciclos. A diferencia del arbol, el grafo puede tener ciclos."
+    ],
     concepts: [
       "Raiz: nodo inicial sin padre; hojas: sin hijos.",
       "Altura: camino mas largo desde la raiz hasta una hoja.",
       "BST: izquierda < raiz < derecha; inorden ordena ascendente.",
-      "Grafo: nodos + aristas; BFS usa cola, DFS usa pila o recursion."
+      "Grafo: nodos + aristas; BFS usa cola, DFS usa pila o recursion.",
+      "inorden sobre un BST imprime los valores de menor a mayor.",
+      "BFS: cola, por niveles. DFS: pila o recursion, en profundidad."
     ],
     caption: "Ejemplo: arbol binario de busqueda e inorden.",
     code: "class Nodo:\n    def __init__(self, valor):\n        self.valor = valor\n        self.izq = None\n        self.der = None\n\ndef insertar(raiz, valor):\n    if raiz is None:\n        return Nodo(valor)\n    if valor < raiz.valor:\n        raiz.izq = insertar(raiz.izq, valor)\n    else:\n        raiz.der = insertar(raiz.der, valor)\n    return raiz\n\ndef inorden(nodo):\n    if nodo is None:\n        return []\n    return inorden(nodo.izq) + [nodo.valor] + inorden(nodo.der)\n\nraiz = None\nfor v in (50, 30, 70, 20, 40, 60, 80):\n    raiz = insertar(raiz, v)\n\nprint('Inorden:', inorden(raiz))",

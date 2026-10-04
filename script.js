@@ -114,7 +114,9 @@ function renderModule() {
   elements.editor.value = codeDrafts[unit.id] != null ? codeDrafts[unit.id] : unit.code;
   elements.output.textContent = "Salida del interprete aparecera aqui.";
   elements.output.className = "code-output";
-  elements.theory.textContent = unit.theory;
+  elements.theory.innerHTML = (Array.isArray(unit.theory) ? unit.theory : [unit.theory])
+    .map((paragraph) => `<p>${paragraph}</p>`)
+    .join("");
   elements.concepts.innerHTML = unit.concepts.map((concept) => `<li>${concept}</li>`).join("");
   elements.exerciseTitle.textContent = unit.exercise.title;
   elements.exercisePrompt.textContent = unit.exercise.prompt;
