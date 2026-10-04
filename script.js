@@ -38,6 +38,8 @@ const elements = {
   pyodideStatus: document.querySelector("#pyodide-status"),
   theory: document.querySelector("#theory-text"),
   concepts: document.querySelector("#concept-list"),
+  notes: document.querySelector("#notes-list"),
+  extras: document.querySelector("#extra-exercises"),
   exerciseTitle: document.querySelector("#exercise-title"),
   exercisePrompt: document.querySelector("#exercise-prompt"),
   exerciseSolution: document.querySelector("#exercise-solution"),
@@ -81,6 +83,10 @@ function markReviewed(id) {
   store.save();
 }
 
+function escapeHtml(text) {
+  return String(text).replace(/[&<>]/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[char]));
+}
+
 function resourceMarkup(resource) {
   const [type, name, category, path] = resource;
   const href = encodeURI(path);
@@ -118,6 +124,13 @@ function renderModule() {
     .map((paragraph) => `<p>${paragraph}</p>`)
     .join("");
   elements.concepts.innerHTML = unit.concepts.map((concept) => `<li>${concept}</li>`).join("");
+  elements.notes.innerHTML = (unit.notes || []).map((note) => `<li>${escapeHtml(note)}</li>`).join("");
+  elements.extras.innerHTML = (unit.extraExercises || []).map((item) => `
+    <details class="extra-exercise">
+      <summary>${escapeHtml(item.title)}</summary>
+      <p class="exercise-prompt">${escapeHtml(item.prompt)}</p>
+      <pre><code>${escapeHtml(item.solution)}</code></pre>
+    </details>`).join("");
   elements.exerciseTitle.textContent = unit.exercise.title;
   elements.exercisePrompt.textContent = unit.exercise.prompt;
   elements.exerciseSolution.textContent = unit.exercise.solution;
@@ -434,7 +447,7 @@ function runCommand(raw) {
   if (!command) return;
   log(`student@unab:~/ayed$ ${raw}`, "prompt");
   if (command === "help") {
-    log("Comandos: help, unidades, unidad [1-11], temas, recursos, quiz, examen, progreso, clear");
+    log("Comandos: help, unidades, unidad [1-12], temas, recursos, quiz, examen, progreso, clear");
   } else if (command === "unidades") {
     log(units.map((unit) => `${String(unit.id).padStart(2, "0")}: ${unit.title} [${unitState(unit.id).label}]`).join("\n"));
   } else if (command === "unidad" && argument && /^\d{1,2}$/.test(argument) && Number(argument) >= 1 && Number(argument) <= units.length) {
@@ -515,9 +528,10 @@ window.addEventListener("keydown", (event) => {
   if (/^[1-9]$/.test(event.key)) { goToUnit(Number(event.key)); return; }
   if (event.key === "0") { goToUnit(10); return; }
   if (event.key === "-") { goToUnit(11); return; }
+  if (event.key === "=" || event.key === "+") { goToUnit(12); return; }
   if (event.key.toLowerCase() === "q") { document.querySelector("#seccion-quiz").scrollIntoView({ behavior: "smooth", block: "center" }); return; }
   if (event.key.toLowerCase() === "e") { document.querySelector(".exam-panel").scrollIntoView({ behavior: "smooth", block: "center" }); return; }
-  if (event.key === "?") log("Atajos: 1-9/0/- carga unidades, / busca recursos, q abre el quiz, e el examen.");
+  if (event.key === "?") log("Atajos: 1-9/0/-/= carga unidades, / busca recursos, q abre el quiz, e el examen.");
 });
 
 setInterval(() => {

@@ -23,10 +23,10 @@
   <main class="dashboard">
     <aside class="panel navigation">
       <div class="box-title">[ COURSE MAP ]</div>
-      <p class="muted">Recorrido sugerido: unidad 01 a la 11. Navegacion libre.</p>
+      <p class="muted">Recorrido sugerido: unidad 01 a la 12. Navegacion libre.</p>
       <nav id="module-nav" aria-label="Unidades de la materia"></nav>
       <div class="key-help">
-        <p><kbd>1</kbd>-<kbd>9</kbd> <kbd>0</kbd> <kbd>-</kbd> unidades</p>
+        <p><kbd>1</kbd>-<kbd>9</kbd> <kbd>0</kbd> <kbd>-</kbd> <kbd>=</kbd> unidades</p>
         <p><kbd>/</kbd> buscar recursos</p>
         <p><kbd>q</kbd> quiz &middot; <kbd>e</kbd> examen</p>
         <p><kbd>?</kbd> ayuda</p>
@@ -65,6 +65,8 @@
           <p class="label">MARCO TEORICO</p>
           <div id="theory-text" class="theory-text"></div>
           <ul id="concept-list" class="concept-list"></ul>
+          <p class="label notes-label">NOTAS DE CLASE</p>
+          <ul id="notes-list" class="notes-list"></ul>
         </article>
         <article class="lesson-topics">
           <p class="label">TOPICS.LOG</p>
@@ -95,6 +97,8 @@
           <summary>VER UNA POSIBLE SOLUCION</summary>
           <pre><code id="exercise-solution"></code></pre>
         </details>
+        <p class="label extras-label">EJERCICIOS EXTRA</p>
+        <div id="extra-exercises" class="extra-exercises"></div>
       </section>
 
       <section class="panel resources-panel" id="seccion-recursos">
@@ -115,7 +119,7 @@
         <div class="box-title">[ PROGRESS ]</div>
         <p class="muted">Avance por unidad. Se guarda en este navegador.</p>
         <div id="progress-bars"></div>
-        <p id="progress-text" class="progress-text">0 / 11 unidades</p>
+        <p id="progress-text" class="progress-text">0 / 12 unidades</p>
         <div class="progress-actions">
           <button id="mark-reviewed" class="quiet-action" type="button">MARCAR UNIDAD COMO REVISADA</button>
           <button id="reset-progress" class="quiet-action danger-action" type="button">RESET PROGRESO</button>

@@ -4,14 +4,15 @@ Sitio estático interactivo con el material de la cátedra: teoría, prácticas,
 
 ## Qué incluye
 
-- **11 unidades** del trayecto (de *Introducción, algoritmos y pseudocódigo* a *Estructuras no lineales*), con teoría, temas, código de ejemplo y ejercicios de práctica.
+- **12 unidades** del trayecto (de *Introducción a los algoritmos* y *Pseudocódigo y diagramas de flujo* a *Estructuras no lineales: árboles y grafos*), con teoría, temas, código de ejemplo y ejercicios de práctica.
+- **Notas de clase** por unidad (extractos de los notebooks y PDFs de la cátedra) y **ejercicios extra** con enunciado y solución.
 - **Recursos** de la cátedra (PDF, notebooks, prácticas con solución) con filtro de búsqueda, todos enlazados desde cada unidad.
 - **Quiz por unidad**: 6 preguntas, se aprueba con 70 % o más.
 - **Examen integrador**: 20 preguntas con mejor puntaje y cantidad de intentos.
 - **Editor Python con Pyodide**: se ejecuta el código de cada unidad sin instalar nada (requiere conexión la primera vez para cargar Pyodide).
-- **Terminal de comandos**: `help`, `unidades`, `unidad [1-11]`, `temas`, `recursos`, `quiz`, `examen`, `progreso`, `clear`.
+- **Terminal de comandos**: `help`, `unidades`, `unidad [1-12]`, `temas`, `recursos`, `quiz`, `examen`, `progreso`, `clear`.
 - **Progreso en el navegador**: revisadas, puntajes y examen se guardan en `localStorage` (clave `ayed-progress-v2`).
-- **Atajos de teclado**: `1-9` → unidades 1-9, `0` → unidad 10, `-` → unidad 11, `/` buscar, `q` quiz, `e` examen.
+- **Atajos de teclado**: `1-9` → unidades 1-9, `0` → unidad 10, `-` → unidad 11, `=` → unidad 12, `/` buscar, `q` quiz, `e` examen.
 
 ## Archivos
 
