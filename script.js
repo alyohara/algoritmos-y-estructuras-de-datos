@@ -2,9 +2,14 @@ const PYODIDE_INDEX = "https://cdn.jsdelivr.net/pyodide/v0.26.4/full/";
 const PASS_MARK = 70;
 
 let activeUnit = 1;
+let activeTp = 0;
 let pyodidePromise = null;
+let pyStdout = null;
+let pyStderr = null;
 const quizStates = {};
 const codeDrafts = {};
+const labDrafts = {};
+const tpDrafts = {};
 
 const store = {
   load() {
@@ -39,10 +44,23 @@ const elements = {
   theory: document.querySelector("#theory-text"),
   concepts: document.querySelector("#concept-list"),
   notes: document.querySelector("#notes-list"),
+  notesLabel: document.querySelector("#notes-label"),
   extras: document.querySelector("#extra-exercises"),
+  objetivos: document.querySelector("#objetivos-list"),
+  objetivosLabel: document.querySelector("#objetivos-label"),
+  sections: document.querySelector("#theory-sections"),
+  sectionsLabel: document.querySelector("#secciones-label"),
   exerciseTitle: document.querySelector("#exercise-title"),
   exercisePrompt: document.querySelector("#exercise-prompt"),
   exerciseSolution: document.querySelector("#exercise-solution"),
+  labArea: document.querySelector("#lab-area"),
+  labEditor: document.querySelector("#lab-editor"),
+  labStatus: document.querySelector("#lab-status"),
+  testResults: document.querySelector("#test-results"),
+  tpTabs: document.querySelector("#tp-tabs"),
+  tpBody: document.querySelector("#tp-body"),
+  vizTabs: document.querySelector("#viz-tabs"),
+  vizMount: document.querySelector("#viz-mount"),
   resources: document.querySelector("#resource-list"),
   empty: document.querySelector("#empty-resources"),
   search: document.querySelector("#resource-search"),
@@ -124,7 +142,24 @@ function renderModule() {
     .map((paragraph) => `<p>${paragraph}</p>`)
     .join("");
   elements.concepts.innerHTML = unit.concepts.map((concept) => `<li>${concept}</li>`).join("");
-  elements.notes.innerHTML = (unit.notes || []).map((note) => `<li>${escapeHtml(note)}</li>`).join("");
+  const deep = (typeof teoria !== "undefined" && teoria[String(unit.id)]) || null;
+  const objetivos = (deep && deep.objetivos) || [];
+  elements.objetivos.innerHTML = objetivos.map((objetivo) => `<li>${escapeHtml(objetivo)}</li>`).join("");
+  elements.objetivosLabel.hidden = !objetivos.length;
+  elements.objetivos.hidden = !objetivos.length;
+  const secciones = (deep && deep.secciones) || [];
+  elements.sections.innerHTML = secciones.map((section, index) => `
+    <details class="theory-section"${index === 0 ? " open" : ""}>
+      <summary>${escapeHtml(section.h)}</summary>
+      <div class="section-body">${section.html}</div>
+      <pre><code>${escapeHtml(section.code)}</code></pre>
+    </details>`).join("");
+  elements.sectionsLabel.hidden = !secciones.length;
+  elements.sections.hidden = !secciones.length;
+  const notas = unit.notes || [];
+  elements.notes.innerHTML = notas.map((note) => `<li>${escapeHtml(note)}</li>`).join("");
+  elements.notesLabel.hidden = !notas.length;
+  elements.notes.hidden = !notas.length;
   elements.extras.innerHTML = (unit.extraExercises || []).map((item) => `
     <details class="extra-exercise">
       <summary>${escapeHtml(item.title)}</summary>
@@ -133,7 +168,7 @@ function renderModule() {
     </details>`).join("");
   elements.exerciseTitle.textContent = unit.exercise.title;
   elements.exercisePrompt.textContent = unit.exercise.prompt;
-  elements.exerciseSolution.textContent = unit.exercise.solution;
+  renderLab();
   elements.resources.innerHTML = unit.resources.map(resourceMarkup).join("");
   elements.search.value = "";
   filterResources();
@@ -147,6 +182,122 @@ function goToUnit(id) {
   activeUnit = id;
   renderModule();
   window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function labStatusText(lab) {
+  return `${lab.tests.length} tests con Pyodide (namespace limpio por test).`;
+}
+
+function renderLab() {
+  const lab = (typeof labs !== "undefined" && labs[String(activeUnit)]) || null;
+  elements.labArea.hidden = !lab;
+  elements.testResults.hidden = true;
+  elements.testResults.innerHTML = "";
+  elements.exerciseSolution.textContent = lab && lab.solution ? lab.solution : currentUnit().exercise.solution;
+  if (!lab) return;
+  elements.labEditor.value = labDrafts[activeUnit] != null ? labDrafts[activeUnit] : lab.starter;
+  elements.labStatus.textContent = labStatusText(lab);
+}
+
+function shortTestError(error) {
+  const raw = String((error && error.message) || error);
+  const lines = raw.split("\n").filter((line) => line.trim() && !line.includes("File \"<exec>\""));
+  return (lines[lines.length - 1] || "error").slice(0, 140);
+}
+
+async function runTestSuite(suite, resultsEl, statusEl, runningText) {
+  resultsEl.hidden = false;
+  resultsEl.innerHTML = `<li class="test-running">${escapeHtml(runningText)}</li>`;
+  statusEl.textContent = runningText;
+  try {
+    const py = await getPyodide();
+    py.setStdout({ batched: () => {} });
+    py.setStderr({ batched: () => {} });
+    try {
+      const results = [];
+      for (const test of suite.tests) {
+        const program = [suite.prelude, suite.code, test.code].filter(Boolean).join("\n\n");
+        try {
+          const namespace = py.toPy({});
+          await py.runPythonAsync(program, { globals: namespace });
+          results.push({ name: test.name, ok: true });
+        } catch (error) {
+          results.push({ name: test.name, ok: false, detail: shortTestError(error) });
+        }
+      }
+      resultsEl.innerHTML = results.map((result) => `
+        <li class="${result.ok ? "test-pass" : "test-fail"}">${result.ok ? "PASS" : "FAIL"} &middot; ${escapeHtml(result.name)}${result.detail ? `<span class="test-detail">${escapeHtml(result.detail)}</span>` : ""}</li>`).join("");
+      const passed = results.filter((result) => result.ok).length;
+      statusEl.textContent = passed === results.length
+        ? `${passed}/${results.length} tests OK`
+        : `${passed}/${results.length} tests OK - revisa los FALLIDOS`;
+      return passed === results.length;
+    } finally {
+      if (pyStdout) py.setStdout({ batched: pyStdout });
+      if (pyStderr) py.setStderr({ batched: pyStderr });
+    }
+  } catch (error) {
+    resultsEl.hidden = true;
+    resultsEl.innerHTML = "";
+    statusEl.textContent = error.message && error.message.includes("Pyodide")
+      ? "No se pudo cargar Python. Revisa tu conexion y vuelve a intentar."
+      : `Error al correr los tests: ${shortTestError(error)}`;
+    return false;
+  }
+}
+
+function renderTps() {
+  if (typeof tps === "undefined" || !tps.length) return;
+  elements.tpTabs.innerHTML = tps.map((tp, index) =>
+    `<button class="tp-tab${index === activeTp ? " active" : ""}" data-tp="${index}" type="button">TP ${escapeHtml(String(tp.num))}</button>`).join("");
+  const tp = tps[activeTp];
+  const fileName = tp.archivo.split("/").pop();
+  elements.tpBody.innerHTML = `
+    <p class="label">TRABAJO PRACTICO ${escapeHtml(String(tp.num))}</p>
+    <h2>${escapeHtml(tp.titulo)}</h2>
+    <p class="tp-file"><a href="${encodeURI(tp.archivo)}" target="_blank" rel="noopener">ENUNCIADO: ${escapeHtml(fileName)} &#8599;</a></p>
+    <p class="exercise-prompt">${escapeHtml(tp.resumen)}</p>
+    <ul class="tp-temas">${tp.temas.map((tema) => `<li>${escapeHtml(tema)}</li>`).join("")}</ul>
+    <p class="label tp-label">CONSIGNAS</p>
+    <ol class="tp-consignas">${tp.consignas.map((consigna) => `<li>${escapeHtml(consigna)}</li>`).join("")}</ol>
+    <p class="label tp-label">PLANTILLA (EDITA Y CORRE LOS TESTS)</p>
+    <textarea id="tp-editor" class="code-editor" spellcheck="false" rows="12" aria-label="Editor del TP"></textarea>
+    <div class="editor-toolbar">
+      <button id="tp-run" class="action" type="button">RUN TESTS &gt;</button>
+      <button id="tp-solution" class="quiet-action" type="button">VER SOLUCION</button>
+      <button id="tp-reset" class="quiet-action" type="button">RESET</button>
+      <span id="tp-status" class="muted">${tp.tests.length} tests con Pyodide (namespace limpio por test).</span>
+    </div>
+    <ul id="tp-results" class="test-results" hidden aria-live="polite"></ul>
+    <details>
+      <summary>VER UNA POSIBLE SOLUCION</summary>
+      <pre><code>${escapeHtml(tp.solution)}</code></pre>
+    </details>`;
+  const editor = document.querySelector("#tp-editor");
+  editor.value = tpDrafts[tp.id] != null ? tpDrafts[tp.id] : tp.plantilla;
+  editor.addEventListener("input", () => { tpDrafts[tp.id] = editor.value; });
+  document.querySelector("#tp-run").addEventListener("click", async () => {
+    const button = document.querySelector("#tp-run");
+    button.disabled = true;
+    try {
+      await runTestSuite({ code: editor.value, tests: tp.tests },
+        document.querySelector("#tp-results"), document.querySelector("#tp-status"), "Ejecutando tests...");
+    } finally {
+      button.disabled = false;
+    }
+  });
+  document.querySelector("#tp-solution").addEventListener("click", () => {
+    tpDrafts[tp.id] = tp.solution;
+    editor.value = tp.solution;
+  });
+  document.querySelector("#tp-reset").addEventListener("click", () => {
+    delete tpDrafts[tp.id];
+    editor.value = tp.plantilla;
+    const results = document.querySelector("#tp-results");
+    results.innerHTML = "";
+    results.hidden = true;
+    document.querySelector("#tp-status").textContent = `${tp.tests.length} tests con Pyodide (namespace limpio por test).`;
+  });
 }
 
 function filterResources() {
@@ -178,13 +329,158 @@ function renderProgress() {
   elements.progressText.textContent = `${reviewed} / ${units.length} unidades revisadas · ${approved} aprobadas`;
 }
 
+function quizFor(id) { return quizzes[String(id)] || []; }
+
+function qtype(item) { return item.type || "mcq"; }
+
+function normText(value) { return String(value == null ? "" : value).trim().toLowerCase(); }
+
+function shuffle(list) {
+  const arr = list.slice();
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    const tmp = arr[i]; arr[i] = arr[j]; arr[j] = tmp;
+  }
+  return arr;
+}
+
+function sameIntSet(a, b) {
+  if (!a || !b || a.length !== b.length) return false;
+  const sa = a.slice().sort((x, y) => x - y).join(",");
+  const sb = b.slice().sort((x, y) => x - y).join(",");
+  return sa === sb;
+}
+
+function checkAnswer(item, state) {
+  const type = qtype(item);
+  if (type === "fill") {
+    const text = normText(state.text);
+    return text !== "" && (item.a || []).some((option) => normText(option) === text);
+  }
+  if (type === "multi") return sameIntSet(state.selected, item.correct);
+  if (type === "order") {
+    return state.seq.length === item.a.length && state.seq.every((value, i) => value === item.a[i]);
+  }
+  return state.sel === item.correct;
+}
+
+function resetQuestionState(state) {
+  state.answered = false;
+  state.sel = null;
+  state.selected = [];
+  state.seq = [];
+  state.text = "";
+  state.pool = null;
+  state.feedback = "";
+  state.feedbackClass = "";
+}
+
+function feedbackFor(item, state, ok) {
+  let extra = "";
+  if (!ok) {
+    const type = qtype(item);
+    if (type === "fill") extra = ` Respuesta: ${item.a[0]}.`;
+    else if (type === "order") extra = ` Orden correcto: ${item.a.join(" -> ")}.`;
+    else if (type === "multi") extra = ` Correctas: ${item.correct.map((i) => String.fromCharCode(65 + i)).join(", ")}.`;
+  }
+  return `${ok ? "CORRECTO" : "REVISAR"} > ${item.note}${extra}`;
+}
+
+function questionBody(item, state) {
+  const type = qtype(item);
+  const answered = state.answered;
+  const codeHtml = item.code ? `<pre class="q-code">${escapeHtml(item.code)}</pre>` : "";
+
+  if (type === "fill") {
+    return `${codeHtml}
+      <div class="fill-row">
+        <input class="fill-input" type="text" data-qact="text" placeholder="escribi tu respuesta..." value="${escapeHtml(state.text || "")}" ${answered ? "disabled" : ""} autocomplete="off">
+        <button class="action" data-qact="submit" type="button" ${answered ? "disabled" : ""}>RESPONDER</button>
+      </div>`;
+  }
+
+  if (type === "order") {
+    if (!state.pool) state.pool = shuffle(item.a.map((_, i) => i));
+    const pool = state.pool.filter((ai) => !state.seq.includes(item.a[ai])).map((ai) =>
+      `<button class="quiz-option" data-qact="order-add" data-i="${ai}" type="button" ${answered ? "disabled" : ""}>${escapeHtml(item.a[ai])}</button>`
+    ).join("");
+    const seq = state.seq.map((value, i) => {
+      const cl = answered ? (item.a[i] === value ? " correct" : " incorrect") : "";
+      return `<button class="seq-slot${cl}" data-qact="order-del" data-i="${i}" type="button" ${answered ? "disabled" : ""}>${i + 1}. ${escapeHtml(value)}</button>`;
+    }).join("");
+    return `${codeHtml}
+      <div class="order-pool">${pool}</div>
+      <div class="order-seq">${seq || '<span class="muted">Hace clic en los items para armar el orden...</span>'}</div>
+      <div class="quiz-controls">
+        <button class="action" data-qact="submit" type="button" ${answered || !state.seq.length ? "disabled" : ""}>RESPONDER</button>
+        <button class="quiet-action" data-qact="clear" type="button" ${answered ? "disabled" : ""}>LIMPIAR</button>
+      </div>`;
+  }
+
+  const multi = type === "multi";
+  const options = item.a.map((answer, index) => {
+    let extra = "";
+    if (multi) {
+      if (state.selected.includes(index)) extra = " selected";
+      if (answered) extra = item.correct.includes(index) ? " correct" : (state.selected.includes(index) ? " incorrect" : "");
+    } else if (answered) {
+      if (index === item.correct) extra = " correct";
+      else if (index === state.sel) extra = " incorrect";
+    }
+    const action = multi ? "toggle" : "pick";
+    return `<button class="quiz-option${extra}" data-qact="${action}" data-i="${index}" type="button" ${answered ? "disabled" : ""}>${String.fromCharCode(65 + index)}. ${escapeHtml(answer)}</button>`;
+  }).join("");
+  const submit = multi && !answered
+    ? `<div class="quiz-controls"><button class="action" data-qact="submit" type="button" ${state.selected.length ? "" : "disabled"}>RESPONDER</button></div>`
+    : "";
+  return `${codeHtml}<div class="quiz-options">${options}</div>${submit}`;
+}
+
+function applyQuestionAction(item, state, element) {
+  const action = element.dataset.qact;
+  if (action === "text") return;
+  if (state.answered) return;
+  if (action === "pick") {
+    state.sel = Number(element.dataset.i);
+    finalizeQuestion(item, state);
+  } else if (action === "toggle") {
+    const index = Number(element.dataset.i);
+    const at = state.selected.indexOf(index);
+    if (at >= 0) state.selected.splice(at, 1);
+    else state.selected.push(index);
+  } else if (action === "submit") {
+    finalizeQuestion(item, state);
+  } else if (action === "order-add") {
+    state.seq.push(item.a[Number(element.dataset.i)]);
+  } else if (action === "order-del") {
+    state.seq.splice(Number(element.dataset.i), 1);
+  } else if (action === "clear") {
+    state.seq = [];
+  }
+}
+
+function finalizeQuestion(item, state) {
+  if (state.answered) return;
+  const type = qtype(item);
+  if (type === "multi" && !state.selected.length) return;
+  if (type === "fill" && !normText(state.text)) return;
+  if (type === "order" && !state.seq.length) return;
+  state.answered = true;
+  const ok = checkAnswer(item, state);
+  if (ok) state.correct += 1;
+  state.feedback = feedbackFor(item, state, ok);
+  state.feedbackClass = ok ? "success" : "error";
+}
+
 function quizStateFor(id) {
-  if (!quizStates[id]) quizStates[id] = { index: 0, correct: 0, answered: false, finished: false };
+  if (!quizStates[id]) {
+    quizStates[id] = { index: 0, correct: 0, answered: false, finished: false, sel: null, selected: [], seq: [], text: "", pool: null, feedback: "", feedbackClass: "" };
+  }
   return quizStates[id];
 }
 
 function renderQuiz() {
-  const quiz = currentUnit().quiz;
+  const quiz = quizFor(activeUnit);
   const state = quizStateFor(activeUnit);
   if (state.finished) {
     const total = quiz.length;
@@ -201,36 +497,19 @@ function renderQuiz() {
     return;
   }
   const item = quiz[state.index];
-  elements.quizProgress.textContent = `PREGUNTA ${state.index + 1} / ${quiz.length}`;
+  const typeLabel = { tf: "V/F", multi: "MULTIPLE", fill: "COMPLETAR", order: "ORDENAR" }[qtype(item)] || "OPCION";
+  elements.quizProgress.textContent = `PREGUNTA ${state.index + 1} / ${quiz.length} · ${typeLabel}`;
   elements.question.textContent = item.q;
   elements.feedback.textContent = state.feedback || "";
   elements.feedback.className = `feedback ${state.feedbackClass || ""}`;
   elements.nextQuestion.hidden = false;
   elements.quizScore.textContent = `Correctas hasta ahora: ${state.correct}`;
-  elements.options.innerHTML = item.a.map((answer, index) => {
-    let extra = "";
-    if (state.answered && index === item.correct) extra = " correct";
-    if (state.answered && index === state.answeredIndex && index !== item.correct) extra = " incorrect";
-    return `<button class="quiz-option${extra}" type="button" data-answer="${index}" ${state.answered ? "disabled" : ""}>${String.fromCharCode(65 + index)}. ${answer}</button>`;
-  }).join("");
-}
-
-function answerQuestion(index) {
-  const state = quizStateFor(activeUnit);
-  if (state.answered) return;
-  const quiz = currentUnit().quiz;
-  const item = quiz[state.index];
-  state.answered = true;
-  state.answeredIndex = index;
-  if (index === item.correct) state.correct += 1;
-  state.feedback = `${index === item.correct ? "CORRECTO" : "REVISAR"} > ${item.note}`;
-  state.feedbackClass = index === item.correct ? "success" : "error";
-  renderQuiz();
+  elements.options.innerHTML = questionBody(item, state);
 }
 
 function nextQuestion() {
   const state = quizStateFor(activeUnit);
-  const quiz = currentUnit().quiz;
+  const quiz = quizFor(activeUnit);
   if (state.finished) return;
   if (state.index + 1 >= quiz.length) {
     state.finished = true;
@@ -238,10 +517,7 @@ function nextQuestion() {
     saveUnitScore(activeUnit, pct);
   } else {
     state.index += 1;
-    state.answered = false;
-    state.answeredIndex = null;
-    state.feedback = "";
-    state.feedbackClass = "";
+    resetQuestionState(state);
   }
   renderQuiz();
   renderNavigation();
@@ -252,7 +528,7 @@ function nextQuestion() {
 }
 
 function resetQuiz() {
-  quizStates[activeUnit] = { index: 0, correct: 0, answered: false, finished: false };
+  quizStates[activeUnit] = { index: 0, correct: 0, answered: false, finished: false, sel: null, selected: [], seq: [], text: "", pool: null, feedback: "", feedbackClass: "" };
   renderQuiz();
 }
 
@@ -291,8 +567,10 @@ async function getPyodide() {
         });
       }
       const py = await window.loadPyodide({ indexURL: PYODIDE_INDEX });
-      py.setStdout({ batched: (text) => appendOutput(`${text}\n`) });
-      py.setStderr({ batched: (text) => appendOutput(`${text}\n`, "error-line") });
+      pyStdout = (text) => appendOutput(`${text}\n`);
+      pyStderr = (text) => appendOutput(`${text}\n`, "error-line");
+      py.setStdout({ batched: pyStdout });
+      py.setStderr({ batched: pyStderr });
       return py;
     })().catch((error) => {
       pyodidePromise = null;
@@ -346,25 +624,50 @@ async function copyCode() {
   }
 }
 
-function examMarkup(question, index, total, correct, answered, answeredIndex) {
-  const options = question.a.map((answer, i) => {
-    let extra = "";
-    if (answered && i === question.correct) extra = " correct";
-    if (answered && i === answeredIndex && i !== question.correct) extra = " incorrect";
-    return `<button class="quiz-option${extra}" type="button" data-exam-answer="${i}" ${answered ? "disabled" : ""}>${String.fromCharCode(65 + i)}. ${answer}</button>`;
-  }).join("");
+const examState = { active: false, index: 0, correct: 0, answered: false, sel: null, selected: [], seq: [], text: "", pool: null, feedback: "", feedbackClass: "" };
+
+const VIZS = [
+  { key: "recursividad", unit: 6, label: "Recursion paso a paso" },
+  { key: "linkedList", unit: 8, label: "Lista enlazada" },
+  { key: "pila", unit: 8, label: "Pila" },
+  { key: "cola", unit: 8, label: "Cola" },
+  { key: "ordenamiento", unit: 9, label: "Ordenamientos paso a paso" },
+  { key: "arbolBinario", unit: 12, label: "Arbol binario de busqueda" },
+  { key: "avl", unit: 12, label: "AVL y rotaciones" },
+  { key: "arbolGeneral", unit: 12, label: "Arbol general" },
+  { key: "heap", unit: 12, label: "Monticulo / cola de prioridad" },
+  { key: "grafo", unit: 12, label: "Grafos: DFS, BFS y Dijkstra" },
+  { key: "adyacencia", unit: 12, label: "Matriz vs lista de adyacencia" }
+];
+let activeViz = 0;
+
+function renderViz() {
+  elements.vizTabs.innerHTML = VIZS.map((viz, index) =>
+    `<button class="tp-tab${index === activeViz ? " active" : ""}" data-viz="${index}" type="button">U${viz.unit} &middot; ${escapeHtml(viz.label)}</button>`).join("");
+  const viz = VIZS[activeViz];
+  elements.vizMount.innerHTML = "";
+  if (typeof EDD === "undefined" || !EDD.viz[viz.key]) {
+    elements.vizMount.innerHTML = '<p class="muted">Visualizador no disponible.</p>';
+    return;
+  }
+  try {
+    EDD.viz[viz.key](elements.vizMount, { unit: `u${viz.unit}` });
+  } catch (error) {
+    elements.vizMount.innerHTML = `<p class="muted">No se pudo montar el visualizador: ${escapeHtml(String(error))}</p>`;
+  }
+}
+
+function examMarkup(question, state, index, total, correct) {
   return `
     <p class="label">PREGUNTA ${index + 1} / ${total} &middot; CORRECTAS: ${correct}</p>
-    <h2>${question.q}</h2>
-    <div class="quiz-options">${options}</div>
-    <p id="exam-feedback" class="feedback" aria-live="polite"></p>
+    <h2>${escapeHtml(question.q)}</h2>
+    ${questionBody(question, state)}
+    <p id="exam-feedback" class="feedback ${state.feedbackClass || ""}">${escapeHtml(state.feedback || "")}</p>
     <div class="quiz-controls">
-      <button id="exam-next" class="action" type="button" ${answered ? "" : "disabled"}>NEXT &gt;</button>
+      <button id="exam-next" class="action" type="button" ${state.answered ? "" : "disabled"}>NEXT &gt;</button>
       <button id="exam-abort" class="quiet-action" type="button">SALIR</button>
     </div>`;
 }
-
-const examState = { active: false, index: 0, correct: 0, answered: false, answeredIndex: null };
 
 function renderExam() {
   if (!examState.active) {
@@ -395,10 +698,7 @@ function renderExam() {
     return;
   }
   const question = finalExam[examState.index];
-  elements.examBody.innerHTML = examMarkup(question, examState.index, finalExam.length, examState.correct, examState.answered, examState.answeredIndex);
-  elements.examBody.querySelectorAll("[data-exam-answer]").forEach((button) => {
-    button.addEventListener("click", () => answerExam(Number(button.dataset.examAnswer)));
-  });
+  elements.examBody.innerHTML = examMarkup(question, examState, examState.index, finalExam.length, examState.correct);
   document.querySelector("#exam-next").addEventListener("click", nextExam);
   document.querySelector("#exam-abort").addEventListener("click", () => { examState.active = false; renderExam(); });
 }
@@ -407,30 +707,15 @@ function startExam() {
   examState.active = true;
   examState.index = 0;
   examState.correct = 0;
-  examState.answered = false;
-  examState.answeredIndex = null;
+  resetQuestionState(examState);
   renderExam();
   elements.examBody.scrollIntoView({ behavior: "smooth", block: "center" });
 }
 
-function answerExam(index) {
-  if (examState.answered) return;
-  const question = finalExam[examState.index];
-  examState.answered = true;
-  examState.answeredIndex = index;
-  if (index === question.correct) examState.correct += 1;
-  renderExam();
-  const feedback = document.querySelector("#exam-feedback");
-  if (feedback) {
-    feedback.textContent = `${index === question.correct ? "CORRECTO" : "REVISAR"} > ${question.note}`;
-    feedback.className = `feedback ${index === question.correct ? "success" : "error"}`;
-  }
-}
-
 function nextExam() {
+  if (!examState.answered) return;
   examState.index += 1;
-  examState.answered = false;
-  examState.answeredIndex = null;
+  resetQuestionState(examState);
   renderExam();
 }
 
@@ -491,8 +776,32 @@ elements.progress.addEventListener("click", (event) => {
 
 elements.search.addEventListener("input", filterResources);
 elements.options.addEventListener("click", (event) => {
-  const button = event.target.closest("[data-answer]");
-  if (button) answerQuestion(Number(button.dataset.answer));
+  const target = event.target.closest("[data-qact]");
+  if (!target) return;
+  const state = quizStateFor(activeUnit);
+  const item = quizFor(activeUnit)[state.index];
+  if (!item) return;
+  applyQuestionAction(item, state, target);
+  renderQuiz();
+});
+elements.options.addEventListener("input", (event) => {
+  const target = event.target.closest("[data-qact='text']");
+  if (!target) return;
+  const state = quizStateFor(activeUnit);
+  state.text = target.value;
+});
+elements.examBody.addEventListener("click", (event) => {
+  const target = event.target.closest("[data-qact]");
+  if (!target) return;
+  const item = finalExam[examState.index];
+  if (!item) return;
+  applyQuestionAction(item, examState, target);
+  renderExam();
+});
+elements.examBody.addEventListener("input", (event) => {
+  const target = event.target.closest("[data-qact='text']");
+  if (!target) return;
+  examState.text = target.value;
 });
 elements.nextQuestion.addEventListener("click", nextQuestion);
 document.querySelector("#reset-quiz").addEventListener("click", resetQuiz);
@@ -504,6 +813,49 @@ document.querySelector("#run-code").addEventListener("click", runCode);
 document.querySelector("#reset-code").addEventListener("click", resetCode);
 document.querySelector("#copy-code").addEventListener("click", copyCode);
 elements.editor.addEventListener("input", () => { codeDrafts[activeUnit] = elements.editor.value; });
+
+elements.labEditor.addEventListener("input", () => { labDrafts[activeUnit] = elements.labEditor.value; });
+document.querySelector("#run-tests").addEventListener("click", async () => {
+  const lab = (typeof labs !== "undefined" && labs[String(activeUnit)]) || null;
+  if (!lab) return;
+  const button = document.querySelector("#run-tests");
+  button.disabled = true;
+  try {
+    await runTestSuite({ prelude: lab.prelude, code: elements.labEditor.value, tests: lab.tests },
+      elements.testResults, elements.labStatus, "Ejecutando tests...");
+  } finally {
+    button.disabled = false;
+  }
+});
+document.querySelector("#lab-solution").addEventListener("click", () => {
+  const lab = (typeof labs !== "undefined" && labs[String(activeUnit)]) || null;
+  if (!lab || !lab.solution) return;
+  labDrafts[activeUnit] = lab.solution;
+  elements.labEditor.value = lab.solution;
+});
+document.querySelector("#lab-reset").addEventListener("click", () => {
+  const lab = (typeof labs !== "undefined" && labs[String(activeUnit)]) || null;
+  if (!lab) return;
+  delete labDrafts[activeUnit];
+  elements.labEditor.value = lab.starter;
+  elements.testResults.innerHTML = "";
+  elements.testResults.hidden = true;
+  elements.labStatus.textContent = labStatusText(lab);
+});
+
+elements.tpTabs.addEventListener("click", (event) => {
+  const button = event.target.closest("[data-tp]");
+  if (!button) return;
+  activeTp = Number(button.dataset.tp);
+  renderTps();
+});
+
+elements.vizTabs.addEventListener("click", (event) => {
+  const button = event.target.closest("[data-viz]");
+  if (!button) return;
+  activeViz = Number(button.dataset.viz);
+  renderViz();
+});
 
 document.querySelector("#terminal-form").addEventListener("submit", (event) => {
   event.preventDefault();
@@ -539,4 +891,6 @@ setInterval(() => {
 }, 1000);
 
 renderModule();
+renderTps();
+renderViz();
 renderExam();

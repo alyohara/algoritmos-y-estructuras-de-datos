@@ -55,14 +55,6 @@ const units = [
       ["PDF", "Introduccion a la programacion (parte 1)", "Clase 1 / Teoria", `${T}/Clase 1/Teoría/Clase1-Introduccion-parte1.pdf`],
       ["PDF", "Ejercicios en clase", "Clase 1 / Teoria", `${T}/Clase 1/Teoría/Clase1-Ejercicios_en_Clase.pdf`]
     ],
-    quiz: [
-      { q: "Un algoritmo se compone fundamentalmente de:", a: ["Entrada, proceso y salida", "Variables, listas y funciones", "Errores, excepciones y tests", "Teclado, mouse y pantalla"], correct: 0, note: "Toda transformacion recibe datos, los procesa y devuelve un resultado." },
-      { q: "Cual es una propiedad obligatoria de todo algoritmo?", a: ["Que sea rapido", "Que sea corto", "Que termine en tiempo finito", "Que use Python"], correct: 2, note: "La finitud garantiza que el algoritmo no se ejecuta indefinidamente." },
-      { q: "El pseudocodigo sirve para:", a: ["Ejecutar el programa", "Describir la logica antes de programar", "Compilar el codigo", "Reemplazar a Python"], correct: 1, note: "Permite concentrarse en la solucion antes de la sintaxis." },
-      { q: "En un diagrama de flujo, el rombo representa:", a: ["Inicio", "Fin", "Una decision", "Una impresion"], correct: 2, note: "El rombo bifurca el flujo segun una condicion verdadera o falsa." },
-      { q: "Una accion primitiva es aquella que:", a: ["No se puede descomponer en otras mas simples", "Tarda mucho", "Requiere una libreria", "Solo funciona con numeros"], correct: 0, note: "Ejemplos: asignar un valor, comparar dos numeros, imprimir." },
-      { q: "MIENTRAS (condicion) ... FIN MIENTRAS en pseudocodigo equivale en Python a:", a: ["if", "while", "def", "return"], correct: 1, note: "while repite un bloque mientras la condicion sea verdadera." }
-    ]
   },
   {
     id: 2,
@@ -122,14 +114,6 @@ const units = [
       ["PDF", "Practica 2 - resolucion", "Clase 1 / Practica", `${T}/Clase 1/Practica/Prog_I_TP2_RES.pdf`],
       ["PPTX", "Practica 1: diagramas y pseudocodigo", "Slides", `${L}/Lecture-01--03/slides/Clase1-Introduccion-parte1.pptx`]
     ],
-    quiz: [
-      { q: "El diagrama de flujo es:", a: ["La representacion grafica de un algoritmo", "Un lenguaje de programacion", "Una tabla de datos", "Un modulo de Python"], correct: 0, note: "Muestra graficamente los pasos a seguir para resolver el problema." },
-      { q: "En pseudocodigo, X := 10 representa:", a: ["Una comparacion", "Una asignacion", "Una repeticion", "Una entrada"], correct: 1, note: "La asignacion guarda un valor en la variable (X <- 10, X = 10 o X := 10)." },
-      { q: "La instruccion Leer(X) equivale en Python a:", a: ["print(X)", "X = input(...)", "def X():", "return X"], correct: 1, note: "input() lee desde teclado; hay que convertir el texto con int() o float() si se calcula." },
-      { q: "si...entonces...si no...fin si es la estructura de:", a: ["Repeticion", "Asignacion", "Decision", "Seleccion multiple"], correct: 2, note: "La decision ramifica en dos alternativas segun una condicion." },
-      { q: "para I := 0 hasta 10 hacer ... fin para equivale en Python a:", a: ["for I in range(11):", "for I in range(10):", "while I:", "if I == 10:"], correct: 0, note: "El intervalo 0..10 inclusive tiene 11 valores; range(11) va de 0 a 10." },
-      { q: "El metodo axiomatico pide primero:", a: ["Escribir el codigo Python", "Apuntar entradas, salidas y proceso en lenguaje natural", "Instalar un interprete", "Dibujar clases UML"], correct: 1, note: "Recien despues se define el ambito, las acciones primitivas y las condiciones." }
-    ]
   },
   {
     id: 3,
@@ -187,14 +171,6 @@ const units = [
       ["PDF", "Practica 2: expresiones y control", "Clase 2 / Practica", `${T}/Clase 2/Practica/Practica2.pdf`],
       ["TXT", "Ejercicios de parcial con solucion", "Material de parcial", `${L}/MIX/ejercicios python parcial.txt`]
     ],
-    quiz: [
-      { q: "Cual es un identificador valido en Python?", a: ["2do_valor", "mi-variable", "nombre_alumno", "class"], correct: 2, note: "No puede empezar con numero ni contener guiones; 'class' es palabra reservada." },
-      { q: "Que imprime print(7 / 2)?", a: ["3", "3.5", "7/2", "Error"], correct: 1, note: "El operador / siempre produce un numero flotante." },
-      { q: "El operador == se usa para:", a: ["Asignar un valor", "Comparar valores", "Comentar codigo", "Dividir"], correct: 1, note: "= asigna; == evalua si dos valores son iguales." },
-      { q: "Que resultado produce '5' + '3'?", a: ["8", "'53'", "Error de tipo", "53"], correct: 1, note: "Entre strings + concatena; para sumar hay que convertir a numero." },
-      { q: "Que determina la indentacion en Python?", a: ["El color del editor", "Los bloques de codigo", "El tipo de variable", "La velocidad"], correct: 1, note: "Los espacios al inicio definen que instrucciones pertenecen a un if, for, def, etc." },
-      { q: "type(3 == 3) devuelve:", a: ["int", "str", "bool", "None"], correct: 2, note: "Toda comparacion devuelve un valor booleano." }
-    ]
   },
   {
     id: 4,
@@ -253,14 +229,6 @@ const units = [
       ["PDF", "Practica 2: expresiones y tipos", "Clase 2 / Practica", `${T}/Clase 2/Practica/Practica2.pdf`],
       ["PNG", "Mutabilidad en Python", "Clase 2 / Practica", `${T}/Clase 2/Practica/python_mutable.png`]
     ],
-    quiz: [
-      { q: "Cual contenedor es inmutable?", a: ["Lista", "Diccionario", "Tupla", "Conjunto"], correct: 2, note: "Las tuplas no permiten modificar sus elementos una vez creadas." },
-      { q: "Que representa un diccionario?", a: ["Una lista ordenada", "Pares clave-valor con claves unicas", "Valores sin repetir", "Un conjunto ordenado"], correct: 1, note: "Cada clave es unica y apunta a un valor." },
-      { q: "set([1, 1, 2, 3, 3]) devuelve:", a: ["[1, 2, 3]", "{1, 2, 3}", "(1, 2, 3)", "{1: 1, 2: 3}"], correct: 1, note: "Los conjuntos eliminan duplicados y se notan con llaves." },
-      { q: "Que imprime [10, 20, 30][1]?", a: ["10", "20", "30", "Error"], correct: 1, note: "Los indices comienzan en 0: posicion 1 es el segundo elemento." },
-      { q: "range(3) genera los valores:", a: ["1, 2, 3", "0, 1, 2", "0, 1, 2, 3", "3"], correct: 1, note: "range(n) va de 0 hasta n-1." },
-      { q: "La principal diferencia entre lista y tupla es:", a: ["El tipo de datos que guardan", "Que la tupla es inmutable", "Que la lista no tiene indices", "Que la tupla admite duplicados"], correct: 1, note: "Ambas son ordenadas; cambia la mutabilidad." }
-    ]
   },
   {
     id: 5,
@@ -319,14 +287,6 @@ const units = [
       ["PDF", "Funciones y modularizacion", "Clase 4 / Teoria", `${T}/Clase 4/Teoria/Clase6-Funciones_Modularizacion.pdf`],
       ["IPYNB", "Ejercicios en clase: funciones", "Clase 3 / Teoria", `${T}/Clase 3/Teoria/Ejercicios_en_Clase-Funciones.ipynb`]
     ],
-    quiz: [
-      { q: "Que hace la sentencia raise?", a: ["Atrapa un error", "Lanza una excepcion", "Detiene el programa siempre", "Comenta una linea"], correct: 1, note: "raise comunica una condicion de error que el llamador puede manejar con try/except." },
-      { q: "Un error IndentationError es:", a: ["De sintaxis", "De ejecucion", "De logica", "De compilacion"], correct: 0, note: "La indentacion incorrecta se detecta antes de ejecutar." },
-      { q: "Que devuelve una funcion que no usa return?", a: ["0", "False", "None", "Una excepcion"], correct: 2, note: "Python devuelve None de forma implicita." },
-      { q: "try / except se utiliza para:", a: ["Evitar errores de sintaxis", "Manejar excepciones en tiempo de ejecucion", "Comentar codigo", "Ordenar listas"], correct: 1, note: "Permite que el programa continue de forma controlada ante un error esperado." },
-      { q: "Una variable definida dentro de una funcion tiene alcance:", a: ["Global", "Local a la funcion", "Modular", "Estatico"], correct: 1, note: "Se crea al entrar y desaparece al salir; protege al codigo exterior." },
-      { q: "Dividir un numero entero por cero en Python levanta:", a: ["ZeroDivisionError", "ValueError", "TypeError", "IndexError"], correct: 0, note: "Es la excepcion nativa para esa situacion." }
-    ]
   },
   {
     id: 6,
@@ -384,14 +344,6 @@ const units = [
       ["TXT", "Mas ejercicios con solucion", "Ejercicios", `mas ejercicios con solución.txt`],
       ["TXT", "Ejercicios de parcial", "Material de parcial", `${L}/MIX/ejercicios python parcial.txt`]
     ],
-    quiz: [
-      { q: "Que evita el caso base en una funcion recursiva?", a: ["Las variables globales", "La recursion infinita", "Los errores de sintaxis", "Los bucles"], correct: 1, note: "Sin caso base la funcion se llama a si misma para siempre." },
-      { q: "Cual es el valor de factorial(5)?", a: ["24", "120", "60", "25"], correct: 1, note: "5! = 5 x 4 x 3 x 2 x 1 = 120." },
-      { q: "El principal costo de la recursion respecto de la iteracion es:", a: ["Usa mas memoria (pila de llamadas)", "Es siempre mas lenta", "No puede devolver valores", "Necesita listas"], correct: 0, note: "Cada llamada pendiente se conserva en el stack hasta que retorna." },
-      { q: "Si una recursion no tiene caso base, Python lanza:", a: ["ZeroDivisionError", "RecursionError", "ValueError", "StopIteration"], correct: 1, note: "Se supera el limite de profundidad de la pila." },
-      { q: "En Fibo(n) = Fibo(n-1) + Fibo(n-2) con F(0)=F(1)=1, cuanto vale F(4)?", a: ["3", "4", "5", "8"], correct: 2, note: "F(2)=2, F(3)=3, F(4)=5." },
-      { q: "La recursion es natural para resolver problemas:", a: ["De texto largo", "Con estructuras jerarquicas", "De numeros grandes", "De archivos"], correct: 1, note: "Arboles, directories y combinaciones se expresan bien de forma recursiva." }
-    ]
   },
   {
     id: 7,
@@ -451,14 +403,6 @@ const units = [
       ["PDF", "Lectura adicional: clases y objetos", "Complementario", `Clases y Objetos - Lectura Adicional.pdf`],
       ["TXT", "Ejercicios de clases con solucion", "Ejercicios", `ejercicios clases.txt`]
     ],
-    quiz: [
-      { q: "Que instruccion trae un modulo completo?", a: ["import", "include", "using", "require"], correct: 0, note: "import math; from math import sqrt es la variante selectiva." },
-      { q: "El metodo __init__ se ejecuta:", a: ["Al importar la clase", "Al crear una instancia", "Al borrar la instancia", "Solo una vez por programa"], correct: 1, note: "Es el constructor: inicializa los atributos de cada objeto nuevo." },
-      { q: "Que representa self dentro de un metodo?", a: ["La clase padre", "La instancia que llama al metodo", "Un modulo", "Una variable global"], correct: 1, note: "Python pasa automaticamente la instancia como primer argumento." },
-      { q: "Cual de estos es un error de logica valido levantar con raise?", a: ["ValueError('monto negativo')", "IndentationError", "SyntaxError", "TabError"], correct: 0, note: "raise se usa con excepciones; las otras las genera el interprete." },
-      { q: "Una clase es basicamente:", a: ["Una lista con metodos", "Un plano que combina atributos y metodos", "Un archivo .txt", "Un bucle"], correct: 1, note: "La clase define el modelo; cada instancia es un objeto concreto." },
-      { q: "Que pasa si se llama un metodo sin la instancia?", a: ["Funciona igual", "Falta el argumento self", "Se crea otra clase", "Se borra el modulo"], correct: 1, note: "Los metodos de instancia reciben self como primer parametro." }
-    ]
   },
   {
     id: 8,
@@ -518,14 +462,6 @@ const units = [
       ["PY", "Ejercicio: operar con una lista", "Practica adicional", `${T}/PracticaAdicional/ejercicioLista.py`],
       ["PY", "Ejercicio: palindromo con pila", "Practica adicional", `${T}/PracticaAdicional/ejercicioPalindromo.py`]
     ],
-    quiz: [
-      { q: "Que regla de acceso sigue una pila?", a: ["FIFO", "LIFO", "Orden alfabetico", "Acceso aleatorio"], correct: 1, note: "Last In First Out: lo ultimo que entra es lo primero que sale." },
-      { q: "En una cola, dequeue extrae:", a: ["El ultimo elemento", "El primer elemento", "El elemento del medio", "Ninguno"], correct: 1, note: "FIFO: se atiende primero al que llego primero." },
-      { q: "Que operaciones basicas tiene una pila?", a: ["enqueue y dequeue", "push y pop", "insert y remove", "add y delete"], correct: 1, note: "push apila y pop desapila desde el tope." },
-      { q: "Una lista enlazada se compone de:", a: ["Solo valores", "Nodos con valor y referencia al siguiente", "Pares clave-valor", "Arreglos fijos"], correct: 1, note: "La referencia al siguiente nodo es lo que 'enlaza' la secuencia." },
-      { q: "Intentar pop() en una pila vacia en Python produce:", a: ["None automaticamente", "Un IndexError", "Un ValueError", "Un SyntaxError"], correct: 1, note: "La lista vacia no tiene ultimo elemento: hay que validar antes con is_empty." },
-      { q: "Un TAD se define por:", a: ["Su implementacion en C", "Las operaciones que ofrece, sin importar la implementacion", "El hardware", "Su nombre"], correct: 1, note: "La abstraccion separa que hace de como esta hecha." }
-    ]
   },
   {
     id: 9,
@@ -580,14 +516,6 @@ const units = [
       ["IPYNB", "Busqueda y ordenamiento", "Clase 6 / Teoria", `${L}/Lecture-10/old/Clase_6_Alg_de_Busqueda_y_Ordenamiento.ipynb`],
       ["PDF", "Parcialito: arreglos y matrices", "Material de parcial", `${L}/00-Programacion_2012-FACEI/Parcialito/parcialito.pdf`]
     ],
-    quiz: [
-      { q: "La busqueda lineal en el peor caso hace:", a: ["1 comparacion", "log n comparaciones", "n comparaciones", "n^2 comparaciones"], correct: 2, note: "Recorre la lista completa si el valor no esta." },
-      { q: "Que requisito tiene la busqueda binaria?", a: ["Lista ordenada", "Lista de pares", "Lista enlazada", "Sin duplicados"], correct: 0, note: "Sin orden no se puede descartar la mitad del segmento." },
-      { q: "Cual es el costo de la busqueda binaria?", a: ["O(1)", "O(log n)", "O(n)", "O(n^2)"], correct: 1, note: "Cada paso divide el segmento de busqueda por dos." },
-      { q: "El ordenamiento por seleccion funciona:", a: ["Insertando cada elemento en su lugar", "Llevando el minimo de la parte sin ordenar a su posicion", "Mezclando dos listas ordenadas", "Intercambiando solo pares adyacentes"], correct: 1, note: "En cada pasada fija la posicion i con el minimo del resto." },
-      { q: "Ordenamiento por insercion:", a: ["Es siempre mas rapido que seleccion", "Construye un prefijo ordenado insertando cada elemento", "No funciona con numeros negativos", "Usa recursion obligatoria"], correct: 1, note: "Es muy eficiente cuando la lista ya esta casi ordenada." },
-      { q: "Si buscas repetidamente en la misma lista, conviene:", a: ["Ordenar una vez y usar binaria", "Repetir busqueda lineal", "Borrar la lista", "Usar un diccionario de listas"], correct: 0, note: "El costo de ordenar se amortiza con las busquedas siguientes." }
-    ]
   },
   {
     id: 10,
@@ -646,14 +574,6 @@ const units = [
       ["PDF", "Tema 5: complejidad", "Complementario", `${L}/MIX/tema5-complejidad.pdf`],
       ["IPYNB", "Complejidad (clase 8)", "Material historico", `${L}/Lecture8/Clase_8_Computabilidad_y_Complejidad.ipynb`]
     ],
-    quiz: [
-      { q: "La notacion Big-O describe:", a: ["El tiempo exacto en segundos", "El crecimiento del costo en el peor caso", "La cantidad de RAM", "El numero de lineas de codigo"], correct: 1, note: "Interesa como crece el costo cuando n crece, no un tiempo absoluto." },
-      { q: "Acceder a lista[i] tiene costo:", a: ["O(1)", "O(log n)", "O(n)", "O(n^2)"], correct: 0, note: "El indice permite llegar directo al elemento." },
-      { q: "Dos ciclos anidados sobre la misma lista tienen costo:", a: ["O(n)", "O(log n)", "O(n^2)", "O(1)"], correct: 2, note: "Por cada uno de los n elementos se recorre la lista completa." },
-      { q: "Cual funcion crece mas lento?", a: ["n", "log n", "n^2", "2^n"], correct: 1, note: "El logaritmo se acerca a crecer muy despacio incluso para n grandes." },
-      { q: "Principal limitacion del analisis experimental:", a: ["Requiere Python", "Depende del hardware y de los datos probados", "No sirve para ciclos", "No contempla la recursion"], correct: 1, note: "No se puede comparar tiempos de maquinas distintas ni todos los casos posibles." },
-      { q: "Cual NO es una operacion primitiva?", a: ["Una asignacion", "Comparar dos valores", "Un bucle for completo con su logica", "Acceder a lista[indice]"], correct: 2, note: "El bucle es una estructura compuesta; sus partes si se descomponen en primitivas." }
-    ]
   },
   {
     id: 11,
@@ -711,14 +631,6 @@ const units = [
       ["PY", "Ejercicios practice: archivos", "Ejercicios", `${T}/ejercicios.py`],
       ["IPYNB", "Ejercicios de la clase", "Clase 3 / Practica", `${T}/Clase 3/Practica/Clase1_Exercises.ipynb`]
     ],
-    quiz: [
-      { q: "Que modo crea el archivo o lo sobreescribe?", a: ["r", "w", "a", "x+"], correct: 1, note: "w es de write: crea si no existe y borra el contenido previo." },
-      { q: "with open(...) as archivo garantiza:", a: ["Que el archivo sea texto", "Que se cierra automaticamente", "Que se copie", "Que este en la nube"], correct: 1, note: "El context manager libera el recurso al salir del bloque, incluso con errores." },
-      { q: "readlines() devuelve:", a: ["Un string con todo", "Una lista de lineas", "Un numero", "Un diccionario"], correct: 1, note: "Cada elemento es una linea terminada en \\n." },
-      { q: "El modo 'a' sirve para:", a: ["Borrar el archivo", "Agregar al final sin borrar", "Leer en binario", "Renombrar"], correct: 1, note: "Append conserva lo existente y escribe al final." },
-      { q: "Por que conviene pasar encoding='utf-8'?", a: ["Para leer mas rapido", "Para manejar bien acentos y caracteres especiales", "Para comprimir", "Para cifrar"], correct: 1, note: "Evita errores al leer textos con tildes o enies." },
-      { q: "La persistencia de datos en archivos significa que:", a: ["Los datos viven solo en memoria", "Los datos sobreviven al terminar el programa", "Los datos se borran solos", "Los datos solo sirven para graficos"], correct: 1, note: "El contenido queda en disco hasta que se modifique o elimine." }
-    ]
   },
   {
     id: 12,
@@ -782,39 +694,10 @@ const units = [
       ["PY", "Arbol AVL", "Codigo de arboles", `clase/Código Arboles --20230213/avl_tree.py`],
       ["TXT", "Notas de clase sobre no lineales", "Notas", `clase/noytas.txt`]
     ],
-    quiz: [
-      { q: "El nodo raiz de un arbol:", a: ["Tiene dos padres", "No tiene padre", "Tiene siempre dos hijos", "Es una hoja"], correct: 1, note: "Es el unico nodo sin padre; el resto desciende de ella." },
-      { q: "Una hoja es un nodo:", a: ["Sin padre", "Sin hijos", "Con tres hijos", "De nivel 0"], correct: 1, note: "Los nodos terminales de cada rama." },
-      { q: "Un arbol binario permite como maximo:", a: ["1 hijo", "2 hijos", "3 hijos", "Hijos ilimitados"], correct: 1, note: "Cada nodo tiene al menos izquierdo y derecho como tope." },
-      { q: "El recorrido inorden de un BST devuelve los valores:", a: ["Ordenados de menor a mayor", "De mayor a menor", "Al azar", "Por niveles"], correct: 0, note: "Izquierda - raiz - derecha aprovecha el orden del BST." },
-      { q: "BFS (amplitud primaria) se implementa con:", a: ["Una pila", "Una cola", "Un diccionario", "Un conjunto"], correct: 1, note: "BFS explora por niveles; DFS usa pila o recursion." },
-      { q: "Diferencia clave entre arbol y grafo:", a: ["El grafo puede tener ciclos y aristas entre cualesquiera nodos", "El arbol tiene mas nodos", "El grafo no tiene nodos", "Son lo mismo"], correct: 0, note: "Un arbol es un grafo conexo y aciclico con raiz definida." }
-    ]
   }
 ];
 
-const finalExam = [
-  { q: "Un algoritmo debe ser ademas de preciso y ordenado:", a: ["Finito y verificable", "Escrito en Python", "Corto", "Sin variables"], correct: 0, note: "Toda solucion debe terminar y poder comprobarse con casos de prueba." },
-  { q: "Que resultado da print(10 // 3)?", a: ["3.33", "3", "3.0", "Error"], correct: 1, note: "El operador // realiza division entera." },
-  { q: "Cual estructura es inmutable?", a: ["Lista", "Diccionario", "Tupla", "Conjunto"], correct: 2, note: "Las tuplas no se pueden modificar tras crearse." },
-  { q: "El bloque try/except se usa para:", a: ["Comentar codigo", "Manejar excepciones", "Ordenar listas", "Definir modulos"], correct: 1, note: "Permite controlar errores esperados en tiempo de ejecucion." },
-  { q: "Que termina primero una funcion recursiva?", a: ["El caso base", "El modulo", "La lista", "El archivo"], correct: 0, note: "El caso base detiene las llamadas encadenadas." },
-  { q: "En Python self dentro de un metodo refiere a:", a: ["La clase", "La instancia que llama", "El modulo", "El archivo"], correct: 1, note: "Es la referencia al objeto sobre el que se ejecuta el metodo." },
-  { q: "La estructura LIFO corresponde a:", a: ["La cola", "La pila", "El diccionario", "La lista enlazada"], correct: 1, note: "Last In First Out: lo ultimo en entrar sale primero." },
-  { q: "Para usar busqueda binaria la lista debe estar:", a: ["Vacia", "Ordenada", "Enlazada", "Con duplicados"], correct: 1, note: "Sin orden no se puede descartar la mitad del segmento." },
-  { q: "Dos ciclos anidados sobre n elementos tienen costo:", a: ["O(n)", "O(log n)", "O(n^2)", "O(1)"], correct: 2, note: "Por cada elemento se vuelve a recorrer toda la lista." },
-  { q: "El modo 'w' de open():", a: ["Solo lee", "Crea o sobreescribe", "Agrega al final", "Borra la carpeta"], correct: 1, note: "Write elimina el contenido anterior del archivo." },
-  { q: "En un arbol binario de busqueda, inorden produce:", a: ["Valores ordenados", "Orden inverso", "Solo la raiz", "Orden por niveles"], correct: 0, note: "Izquierda - raiz - derecha recorre el BST en orden ascendente." },
-  { q: "BFS recorre un grafo usando:", a: ["Una pila", "Una cola", "Recursion obligatoria", "Un conjunto"], correct: 1, note: "La cola garantiza explorar por niveles." },
-  { q: "Cual contenedor asocia claves unicas con valores?", a: ["Lista", "Tupla", "Diccionario", "Conjunto"], correct: 2, note: "Cada clave aparece una sola vez y apunta a un valor." },
-  { q: "raise ValueError('...') hace:", a: ["Atrapa el error", "Lanza una excepcion", "Imprime un aviso", "Detiene Python sin mas"], correct: 1, note: "Quien llama puede capturarla con try/except." },
-  { q: "El costo de una busqueda binaria es:", a: ["O(1)", "O(log n)", "O(n)", "O(n^2)"], correct: 1, note: "Cada paso descarta la mitad de los candidatos." },
-  { q: "while en Python equivale en pseudocodigo a:", a: ["SI ... ENTONCES", "MIENTRAS ... FIN MIENTRAS", "PARA CADA ... FIN", "FUNCION"], correct: 1, note: "Repite un bloque mientras la condicion sea verdadera." },
-  { q: "set([1, 2, 2, 3]) devuelve:", a: ["[1, 2, 3]", "{1, 2, 3}", "(1, 2, 3)", "{2: 1, 3: 1}"], correct: 1, note: "El conjunto elimina duplicados y se delimita con llaves." },
-  { q: "El metodo __init__ de una clase:", a: ["Destruye la instancia", "Inicializa la instancia", "Importa un modulo", "Abre un archivo"], correct: 1, note: "Es el constructor que fija los atributos iniciales." },
-  { q: "En una cola, enqueue agrega el elemento:", a: ["Al frente", "Al final", "Al medio", "En posicion aleatoria"], correct: 1, note: "Se suma al final y dequeue atiende desde el inicio (FIFO)." },
-  { q: "La notacion O(log n) describe un crecimiento:", a: ["Lineal", "Cuadratico", "Muy lento", "Constante siempre"], correct: 2, note: "El logaritmo crece lentisimo: dobla su valor solo al cuadruplicar n." }
-];
+
 
 const assessments = [
   ["XLSX", "Cuestionario: introduccion a Python", "Preguntas de la clase 1", "2022-04-05 22_19 UNaB - Alg. y Estruc. de Datos - Clase 1 - Introducción a Python - Questions.xlsx"],

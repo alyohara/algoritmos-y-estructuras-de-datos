@@ -135,6 +135,40 @@ details pre { margin: 10px 0 0; }
 .extra-exercises details { margin-top: 0; }
 .extra-exercises .exercise-prompt { font-size: 12px; }
 
+.objetivos-list { display: grid; gap: 5px; margin: 0 0 4px; padding: 0; list-style: none; color: var(--dim); font-size: 12px; }
+.objetivos-list li::before { margin-right: 8px; color: var(--primary); content: "[ ]"; }
+.theory-sections { display: grid; gap: 8px; }
+.theory-sections details { margin-top: 0; }
+.section-body { color: var(--text); font-size: 12px; }
+.section-body p { margin: 0 0 9px; line-height: 1.6; }
+.section-body p:last-child { margin-bottom: 0; }
+.section-body ul { margin: 0 0 9px; padding-left: 18px; }
+.section-body li { margin: 3px 0; }
+.section-body b { color: var(--primary); }
+.section-body code { color: var(--secondary); }
+.theory-sections pre { margin-top: 10px; }
+
+.lab-label, .tp-label { margin-top: 14px; }
+.test-results { display: grid; gap: 6px; margin: 10px 0 4px; padding: 0; list-style: none; font: 12px/1.5 "Cascadia Code", "JetBrains Mono", Consolas, monospace; }
+.test-results li { padding: 6px 9px; border: 1px solid var(--border); background: var(--surface); word-break: break-word; }
+.test-pass { color: var(--success); border-left: 3px solid var(--success); }
+.test-fail { color: var(--danger); border-left: 3px solid var(--danger); }
+.test-running { color: var(--dim); border-left: 3px solid var(--warning); }
+.test-detail { display: block; margin-top: 3px; color: var(--dim); font-size: 11px; }
+
+.tp-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; }
+.tp-tab { padding: 5px 13px; border: 1px solid var(--border); background: transparent; color: var(--dim); font: 700 12px/1 "Cascadia Code", "JetBrains Mono", Consolas, monospace; letter-spacing: 1px; cursor: pointer; }
+.tp-tab:hover { color: var(--primary); border-color: var(--primary); }
+.tp-tab.active { color: var(--bg); background: var(--primary); border-color: var(--primary); }
+.tp-body h2 { margin: 4px 0 8px; font-size: 17px; }
+.tp-file { margin: 0 0 8px; }
+.tp-file a { color: var(--secondary); font-size: 12px; text-decoration: none; }
+.tp-file a:hover { text-decoration: underline; }
+.tp-temas { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0; padding: 0; list-style: none; }
+.tp-temas li { padding: 2px 8px; border: 1px solid var(--border); color: var(--dim); font-size: 11px; }
+.tp-consignas { display: grid; gap: 7px; margin: 0; padding-left: 22px; color: var(--text); font-size: 13px; }
+.tp-consignas li::marker { color: var(--primary); font-weight: 700; }
+
 .resources-panel { padding: 23px 14px 14px; }
 .resource-heading { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 12px; }
 .search-field { display: flex; align-items: center; width: 220px; padding: 4px 7px; border: 1px solid var(--border); background: var(--bg); color: var(--success); }
@@ -169,6 +203,19 @@ details pre { margin: 10px 0 0; }
 .quiz-option.incorrect { border-color: var(--danger); color: var(--danger); }
 .feedback { min-height: 18px; margin: 10px 0 4px; color: var(--dim); font-size: 11px; }
 .quiz-controls { display: flex; justify-content: space-between; align-items: center; }
+
+.q-code { max-height: 170px; margin: 0 0 9px; }
+.quiz-option.selected { border-color: var(--primary); color: var(--primary); background: color-mix(in srgb, var(--primary) 14%, var(--surface-2)); }
+.fill-row { display: flex; gap: 8px; margin-top: 4px; }
+.fill-input { flex: 1; min-width: 0; padding: 7px; border: 1px solid var(--border); color: var(--text); background: var(--surface-2); font: inherit; }
+.fill-input:focus { outline: 0; border-color: var(--primary); }
+.fill-input:disabled { opacity: .7; }
+.order-pool { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 9px; }
+.order-seq { display: flex; flex-wrap: wrap; gap: 6px; min-height: 34px; margin-bottom: 9px; padding: 8px; border: 1px dashed var(--border); background: var(--bg); }
+.seq-slot { padding: 6px 9px; border: 1px solid var(--primary); color: var(--primary); background: var(--surface-2); }
+.seq-slot:hover { filter: brightness(1.2); }
+.seq-slot.correct { border-color: var(--success); color: var(--success); }
+.seq-slot.incorrect { border-color: var(--danger); color: var(--danger); }
 .assessment-link { display: block; margin: 8px 0; padding-bottom: 8px; border-bottom: 1px dashed var(--border); color: var(--text); text-decoration: none; }
 .assessment-link:hover { color: var(--primary); }
 .assessment-link small { display: block; margin-top: 2px; color: var(--dim); }

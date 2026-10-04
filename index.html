@@ -6,6 +6,7 @@
   <meta name="description" content="Trayecto interactivo de Algoritmos y Estructuras de Datos: unidades, teoria, ejemplos ejecutables, cuestionarios y examen integrador.">
   <title>AYED // Study Console</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="viz.css">
 </head>
 <body class="scanlines">
   <header class="panel topbar">
@@ -55,17 +56,23 @@
         <a href="#seccion-teoria">TEORIA</a>
         <a href="#seccion-codigo">CODIGO</a>
         <a href="#seccion-practica">PRACTICA</a>
+        <a href="#seccion-tps">TPS</a>
         <a href="#seccion-recursos">RECURSOS</a>
+        <a href="#seccion-viz">VIZ</a>
         <a href="#seccion-quiz">QUIZ</a>
       </nav>
 
       <section class="panel lesson-panel" id="seccion-teoria">
         <div class="box-title">[ 01.TEORIA ]</div>
         <article class="lesson-theory">
+          <p class="label" id="objetivos-label">OBJETIVOS DE LA UNIDAD</p>
+          <ul id="objetivos-list" class="objetivos-list"></ul>
           <p class="label">MARCO TEORICO</p>
           <div id="theory-text" class="theory-text"></div>
           <ul id="concept-list" class="concept-list"></ul>
-          <p class="label notes-label">NOTAS DE CLASE</p>
+          <p class="label" id="secciones-label">TEORIA PROFUNDA</p>
+          <div id="theory-sections" class="theory-sections"></div>
+          <p class="label notes-label" id="notes-label">NOTAS DE CLASE</p>
           <ul id="notes-list" class="notes-list"></ul>
         </article>
         <article class="lesson-topics">
@@ -89,10 +96,21 @@
       </section>
 
       <section class="panel practice-panel" id="seccion-practica">
-        <div class="box-title">[ 03.PRACTICA GUIADA ]</div>
-        <p class="label">EJERCICIO</p>
+        <div class="box-title">[ 03.PRACTICA + LAB ]</div>
+        <p class="label">EJERCICIO GUIADO</p>
         <h2 id="exercise-title"></h2>
         <p id="exercise-prompt" class="exercise-prompt"></p>
+        <div id="lab-area" hidden>
+          <p class="label lab-label">LABORATORIO (EDITA Y CORRE LOS TESTS)</p>
+          <textarea id="lab-editor" class="code-editor" spellcheck="false" rows="12" aria-label="Editor del laboratorio"></textarea>
+          <div class="editor-toolbar">
+            <button id="run-tests" class="action" type="button">RUN TESTS &gt;</button>
+            <button id="lab-solution" class="quiet-action" type="button">VER SOLUCION</button>
+            <button id="lab-reset" class="quiet-action" type="button">RESET</button>
+            <span id="lab-status" class="muted"></span>
+          </div>
+          <ul id="test-results" class="test-results" hidden aria-live="polite"></ul>
+        </div>
         <details>
           <summary>VER UNA POSIBLE SOLUCION</summary>
           <pre><code id="exercise-solution"></code></pre>
@@ -101,9 +119,16 @@
         <div id="extra-exercises" class="extra-exercises"></div>
       </section>
 
+      <section class="panel tps-panel" id="seccion-tps">
+        <div class="box-title">[ 04.TPS ]</div>
+        <p class="muted">Trabajos practicos de la materia: consigna, plantilla editable y tests automaticos.</p>
+        <div id="tp-tabs" class="tp-tabs" role="tablist" aria-label="Trabajos practicos"></div>
+        <div id="tp-body" class="tp-body"></div>
+      </section>
+
       <section class="panel resources-panel" id="seccion-recursos">
         <div class="resource-heading">
-          <div class="box-title">[ 04.MATERIAL.INDEX ]</div>
+          <div class="box-title">[ 05.MATERIAL.INDEX ]</div>
           <label class="search-field">
             <span>/</span>
             <input id="resource-search" type="search" placeholder="filtrar recursos..." autocomplete="off">
@@ -111,6 +136,13 @@
         </div>
         <div id="resource-list" class="resource-list"></div>
         <p id="empty-resources" class="empty" hidden>No hay recursos que coincidan con la busqueda.</p>
+      </section>
+
+      <section class="panel viz-panel" id="seccion-viz">
+        <div class="box-title">[ 06.VISUALIZADORES ]</div>
+        <p class="muted">Simulaciones interactivas: operaciones paso a paso de listas, pilas, colas, ordenamientos, arboles y grafos.</p>
+        <div id="viz-tabs" class="tp-tabs" role="tablist" aria-label="Visualizadores"></div>
+        <div id="viz-mount" class="viz-mount"></div>
       </section>
     </section>
 
@@ -127,8 +159,8 @@
       </section>
 
       <section class="panel assessment-panel" id="seccion-quiz">
-        <div class="box-title">[ 05.QUIZ DE LA UNIDAD ]</div>
-        <p id="quiz-progress" class="label">PREGUNTA 1 / 6</p>
+        <div class="box-title">[ 07.QUIZ DE LA UNIDAD ]</div>
+        <p id="quiz-progress" class="label">PREGUNTA 1 / 15</p>
         <h2 id="quiz-question"></h2>
         <div id="quiz-options" class="quiz-options"></div>
         <p id="quiz-feedback" class="feedback" aria-live="polite"></p>
@@ -140,8 +172,8 @@
       </section>
 
       <section class="panel exam-panel">
-        <div class="box-title">[ EXAMEN.INTEGRADOR ]</div>
-        <p class="muted">20 preguntas de todas las unidades. Se aprueba con 14 correctas (70%).</p>
+        <div class="box-title">[ 08.EXAMEN.INTEGRADOR ]</div>
+        <p class="muted">40 preguntas de todas las unidades. Se aprueba con 28 correctas (70%).</p>
         <div id="exam-body">
           <button id="start-exam" class="action" type="button">INICIAR EXAMEN</button>
           <p id="exam-history" class="score-line"></p>
@@ -172,6 +204,17 @@
     <span>Usa los PDF e IPYNB originales para profundizar cada unidad.</span>
   </footer>
   <script src="data.js"></script>
+  <script src="teoria.js"></script>
+  <script src="quizzes.js"></script>
+  <script src="labs.js"></script>
+  <script src="tps.js"></script>
+  <script src="viz-core.js"></script>
+  <script src="viz-linear.js"></script>
+  <script src="viz-recursion.js"></script>
+  <script src="viz-tree.js"></script>
+  <script src="viz-heap.js"></script>
+  <script src="viz-sorting.js"></script>
+  <script src="viz-graph.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
