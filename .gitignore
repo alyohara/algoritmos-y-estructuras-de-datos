@@ -1,0 +1,7 @@
+.idea/
+__pycache__/
+Calificaciones/
+bibliografía Algoritmos y Estructuras/
+**/.ipynb_checkpoints/
+*.pyc
+*[[]1[]]*

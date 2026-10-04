@@ -1,0 +1,72 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[spanish]{babel}
+\usepackage{
+			ucs
+			,amsfonts
+			,amssymb
+			,acronym
+			,verbatim
+			,rotating
+			,graphicx
+			,enumerate
+			,fancyhdr
+            ,mathrsfs
+            ,array
+			}
+
+\usepackage{tikz}
+\usetikzlibrary{svg.path}
+
+\pagestyle{fancy}
+\addtolength{\textheight}{1.0in}
+\addtolength{\textwidth}{0.5in}
+\addtolength{\voffset}{-1.0in}
+
+\fancyhf{}
+\fancyhead[L]{{\bfseries Programaci\'on I Curso 2012. Pr\'actica 5 \hfill Funciones y Procedimientos}}
+\fancyfoot[LE,RO]{\thepage}
+
+\fancypagestyle{firstpage}{
+\fancyhf{}
+
+\fancyhead[L]{\includegraphics[width=1.75cm]{ucalp.jpg}  \\
+\small{UCALP. Facultad de Ciencias Exactas e Ingenier\'ia} \\
+{\bfseries Programaci\'on I Curso 2012. Pr\'actica 5 \hfill Funciones y Procedimientos}}
+\fancyfoot[LE,RO]{\thepage}
+}
+
+\thispagestyle{firstpage}
+
+\begin{document}
+
+~\\ \\ \\ \\
+
+\begin{enumerate}
+
+\item (Pr\'actica 3) Desarrollar un programa para, dado un conjunto de n\'umeros enteros, escribir aquellos que sean divisibles por $I$. Crear una funci\'on que verifique si un n\'umero es divisible por $I$.   
+    
+\item (Pr\'actica 3) Desarrolle una funci\'on/procedimiento que permita saber si un n\'umero ingresado por teclado es par (positivo y negativo) o impar (positivo y negativo).
+
+\item (Pr\'actica 4) Realizar un programa que permita almacenar un listado de palabras en un vector y luego imprimirlas en pantalla. El programa debe contener al menos 2 funciones/procedimientos: uno para cargar los datos y otra para mostrarlos.
+
+\item (Pr\'actica 4) Se desea realizar una funci\'on/procedimiento que nos permita buscar una palabra dentro de una frase y cuantas veces se repite.
+
+\item (Pr\'actica 4) Escriba un par de funciones que codifique una contrase\~na de 8 d\'igitos. El algoritmo deber\'a sustituir cada vocal por un n\'umero. $(A=1, E=2, O=3, I=4, U=5)$. Se desea realizar el codificador y decodificador.
+
+
+\item (Pr\'actica 4) Dados un vector , una matriz y un valor, escribir funciones/procedimientos que puedan:
+    \begin{itemize}
+        \item[a-] Devolver la cantidad de ocurrencias de dicho valor en el vector.
+        \item[b-] Devolver la cantidad de ocurrencias de dicho valor en la matriz.
+        \item[c-] Devolver el mismo vector donde todas las ocurrencias de dicho valor han sido suprimidas.
+        \item[c-] Devolver todas las ocurrencias del vector dentro de la matriz.
+    \end{itemize}
+
+\item (Pr\'actica Integradora) Realizar una funci\'on que devuelva el resultado de la interseccio\'n de dos conjuntos.
+
+\item (Pr\'actica Integradora) Realizar una funci\'on/procediemnto que multiplique una matriz por un escalar.
+
+\item (Pr\'actica Integradora) Realizar una funci\'on/procedimiento que retorne el promedio de un vector de n\'umeros.
+
+\end{enumerate}
+\end{document}

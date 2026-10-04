@@ -1,0 +1,273 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[spanish]{babel}
+\usepackage{
+			ucs
+			,amsfonts
+			,amssymb
+			,acronym
+			,verbatim
+			,rotating
+			,graphicx
+			,enumerate
+			,fancyhdr
+            ,mathrsfs
+            ,array
+			}
+
+\usepackage{tikz}
+\usetikzlibrary{svg.path}
+
+\pagestyle{fancy}
+\addtolength{\textheight}{1.0in}
+\addtolength{\textwidth}{0.5in}
+\addtolength{\voffset}{-1.0in}
+
+\newcommand{\cat}[1][]{%
+    \tikz \fill [scale=1ex/30,yscale=-1,#1] svg "M495.959,867.638c-3.318-4-1.121-7.686,7.098-11.904c7.322-3.76,8.223-4.871,11.365-14.049
+		c5.646-16.496,9.951-21.084,24.289-25.893c4.883-1.637,7.111-3.217,6.732-4.771c-3.148-12.889-1.992-16.166,4.48-12.701
+		c2.174,1.162,3.924,0.754,6.943-1.619c4.547-3.576,5.105-3.137,6.68,5.264c0.725,3.859,0.445,6.785-0.791,8.273
+		c-1.186,1.43-1.496,4.199-0.816,7.295c0.895,4.07,0.186,6.26-3.836,11.861c-6.01,8.367-6.746,18.059-1.752,23.053
+		c3.975,3.973,4.066,6.363,0.248,6.363c-3.869,0-8.201-4.926-8.201-9.322c0-4.723-4.635-6.33-7.391-2.564
+		c-2.844,3.889-2.738,7.115,0.23,7.115c1.312,0,2.387,1.074,2.387,2.387c0,1.92-2.465,2.385-12.635,2.385
+		c-6.947,0-13.047-0.668-13.551-1.484c-0.541-0.875-3.803-0.502-7.951,0.912c-7.744,2.639-11.631,5.996-8.896,7.686
+		c0.916,0.566,1.668,1.703,1.668,2.527C502.26,870.757,498.104,870.222,495.959,867.638z";~%
+}
+\renewcommand{\cat}{\maltese}
+
+
+
+
+\fancyhf{}
+\fancyhead[L]{{\bfseries Programaci\'on I Curso 2012. Pr\'actica 2 \hfill Pseudo-C\'odigo - Resoluci\'on}}
+\fancyfoot[LE,RO]{\thepage}
+
+\fancypagestyle{firstpage}{
+\fancyhf{}
+
+\fancyhead[L]{\includegraphics[width=1.75cm]{ucalp.jpg}  \\
+\small{UCALP. Facultad de Ciencias Exactas e Ingenier\'ia} \\
+{\bfseries Programaci\'on I Curso 2012. Pr\'actica 2 \hfill Pseudo-C\'odigo - Resoluci\'on}}
+\fancyfoot[LE,RO]{\thepage}
+}
+
+\thispagestyle{firstpage}
+
+\begin{document}
+
+~\\ \\ \\ \\
+\begin{enumerate}
+
+\item[2]
+    \begin{itemize}
+        \item[3-b]
+            \begin{small}
+\begin{verbatim}
+actual := 0;
+mayor :=0;
+tarjetas;
+cant_tarjetas := N;
+
+mientras (cant_tarjetas = 0)
+    actual := leer(tarjetas);
+    si (actual > mayor) entonces
+        mayor := actual;
+    fin_si
+    cant_tarjetas := cant_tarjetas - 1;
+fin_mientras;
+
+escribir(mayor);                
+\end{verbatim}
+            \end{small}
+        \item[4-b]
+            \begin{small}
+\begin{verbatim}
+actual := 0;
+suma := 0;
+cant_naipes := 0;
+naipes;
+
+mientras (cant_naipes > 0) 
+    actual := leer(naipes);
+    suma := suma + actual;
+fin_mientras;
+
+escribir(suma);
+\end{verbatim}
+            \end{small}        
+        \item[6]
+            \begin{small}
+\begin{verbatim}
+cant := 0;
+suma := 0;
+actual := 0;
+
+leer(actual);
+mientras (actual <> 0)
+    cant := cant + 1;
+    suma := suma + actual;
+    leer(actual);
+fin_mientras;
+
+actual := suma / cant;
+escribir(actual);
+\end{verbatim}
+            \end{small}        
+        \item[9]
+            \begin{small}
+\begin{verbatim}
+a,b,c := 0
+
+leer(a);
+leer(b);
+leer(c);
+si (a + b = c) entonces
+    escribir("Iguales");
+sino
+    si (b + c = a) entonces
+        escribir("Iguales");
+    sino
+        si (a + c = b) entonces
+            escribir("Iguales");
+        sino
+            escribir("Distintos");
+        fin_si;
+    fin_si;
+fin_si;
+\end{verbatim}
+            \end{small}        
+    \end{itemize}
+    
+\item[5]
+    \begin{itemize}
+        \item[a-]
+            \begin{small}
+\begin{verbatim}
+si (a > b) entonces
+    x := x - 5;
+fin_si;
+\end{verbatim}
+            \end{small}        
+        \item[b-]
+            \begin{small}
+\begin{verbatim}
+si (a > b) entonces
+    x := -8;
+sino
+    x := 1;
+fin_si;
+\end{verbatim}
+            \end{small}        
+        \item[c-]
+            \begin{small}
+\begin{verbatim}
+si (n > 5) entonces
+    x := 1;
+sino 
+    si (n = 5) entonces
+        x := 0;
+    sino
+        x := -1;
+    fin_si;
+fin_si;
+\end{verbatim}
+            \end{small}        
+        \item[d-]
+            \begin{small}
+\begin{verbatim}
+si (x < a) entonces
+    t := 1;
+sino 
+    si (x <= b) entonces
+        t:= 3;
+    sino
+        si (x <= c) entonces
+            t := 5;
+        sino 
+            t := -4;
+        fin_si;
+    fin_si;
+fin_si;
+\end{verbatim}
+            \end{small}    
+    \end{itemize}
+
+\item[7]
+            \begin{small}
+\begin{verbatim}
+entrada := 0;
+
+leer(entrada);
+si (entrada = 0) entonces
+    entrada := -1;
+fin_si;
+
+mientras (entrada > 2)
+    entrada := entrada - 2;
+fin_mientras;
+
+seleccionar (entrada)
+    caso (entrada = 1) : escribir("Sala 2");
+    caso (entrada = 0) : escribir("Sala 1");
+    caso (entrada = -1) : escribir("Dirigirse a Administraci\'on");
+    otro caso : escribir("Entrada Inv\'alida");
+fin_seleccionar;
+\end{verbatim}
+            \end{small}
+\item[9]
+            \begin{small}
+\begin{verbatim}
+cant := 0.0;
+arroz := 0;         precio_arroz := 0.0;
+langostinos := 0;   precio_langostinos := 0.0
+
+escribir("Ingrese la Cantidad de Comensales");
+leer(cant);
+escribir("Ingrese el precio de arroz (por kilo)");
+leer(precio_arroz);
+escribir("Ingrese el precio de los langostinos (por kilo)");
+leer(precio_langostinos);
+
+cant := cant / 4;
+arroz := cant * 0.5 * precio_arroz;
+langostinos := cant * 0.25 * precio_langostinos;
+
+escribir("Cantidad necesaria de arroz");
+escribir(cant * 0.5);
+escribir("Cantidad necesaria de langostinos");
+escribir(cant * 0.25);
+escribir("Costo del arroz");
+escribir(arroz);
+escribir("Costo de los langostinos");
+escribir(langostinos);
+\end{verbatim}
+            \end{small}
+\item[12]
+    \begin{itemize}
+        \item[a-]
+            No es un algoritmo, es v\'alido (el resultado es correcto) y es el m\'as eficiente ya que resuelve el problema en un s\'olo paso.
+        \item[b-]
+            Es un algoritmo. El resultado es correcto (es v\'alido) y realiza: 
+            \[ 2 ~\texttt{asignaciones} + 10 ~\texttt{suma/asignaci\'on} + 10 ~\texttt{resta/asignaci\'on} + 10 ~\texttt{comparaciones}\]
+        \item[c-]
+            Es un algoritmo. El resultado es incorrecto (es inv\'alido). No importa la eficiencia ya que no es v\'alido.
+        \item[d-]
+            Es un algoritmo. El resultado es incorrecto (es inv\'alido) y realiza:
+            \[ 2 ~\texttt{asignaciones} + 20 ~\texttt{suma/asignaci\'on} + 10 ~\texttt{comparaciones}\]
+    \end{itemize}
+    
+            \begin{small}
+\begin{verbatim}
+suma := 0;
+N := 10;
+medio_N := N / 2;
+
+para i := 0 hasta medio_N hacer
+    suma := (N - i) + i + suma;
+fin_para;
+
+\end{verbatim}
+            \end{small}
+        Es un algoritmo. El resultado es correcto (es v\'alido) y realiza:
+            \[ 3 ~\texttt{asignaciones} + 15 ~\texttt{resta/suma/asignaci\'on} ~\textrm{y adem\'as de} ~10 ~\texttt{comparaciones}\]
+\end{enumerate}
+\end{document}

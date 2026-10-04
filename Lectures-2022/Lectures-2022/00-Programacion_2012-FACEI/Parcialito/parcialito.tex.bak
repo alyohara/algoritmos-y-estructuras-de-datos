@@ -1,0 +1,95 @@
+\documentclass[landscape,a5paper,10pt]{article}
+\usepackage[spanish]{babel}
+\usepackage{ucs
+			,amsfonts
+			,amssymb
+			,acronym
+			,verbatim
+			,rotating
+			,graphicx
+			,enumerate
+			,fancyhdr
+            ,mathrsfs
+            ,array
+			}
+
+\usepackage{tikz}
+\usetikzlibrary{svg.path}
+
+\pagestyle{fancy}
+\addtolength{\textheight}{1.0in}
+\addtolength{\textwidth}{1.5in}
+\addtolength{\voffset}{-1.0in}
+\addtolength{\hoffset}{-1.0in}
+
+\fancyhf{}
+\fancyhead[L]{{\bfseries Programaci\'on I Curso 2012. Pr\'actica 3 \hfill Tipos de Datos - Pascal}}
+\fancyfoot[LE,RO]{\thepage}
+
+\fancypagestyle{firstpage}{
+\fancyhf{}
+
+\fancyhead[L]{\includegraphics[width=1.75cm]{ucalp.jpg}  \\
+\small{UCALP. Facultad de Ciencias Exactas e Ingenier\'ia} \\
+{\bfseries Programaci\'on I Curso 2012. Pr\'actica 3 \hfill Tipos de Datos - Pascal}}
+\fancyfoot[LE,RO]{\thepage}
+}
+
+\thispagestyle{firstpage}
+
+\begin{document}
+
+~\\ \\ \\ \\
+
+\begin{enumerate}
+
+%\item Calcular el termino en\'esimo de la serie de Fibonacci con la ayuda de un arreglo de enteros.\\
+%Serie de Fibonacci: ($f[0] = 1, \, f[1] = 1, \, f[n] = f[n-1] + f[n-2]$).
+
+\item Dados dos arreglos de n\'umeros enteros previamente ordenado de longitud \verb=N= (constante), cree un nuevo arreglo con los datos de los dos arreglos mezclados de manera que queden igualmente ordenados. Luego imprima por pantalla el arreglo resultante.
+
+\item Dadas dos matrices \verb=A= y \verb=B= de \verb=N x N= elementos:
+\begin{itemize}
+  \item[a-] Calcular la suma de \verb=A= y \verb=B=. ($C_{ij} = A_{ij} + B_{ij}$)
+  \item[b-] Calcular el producto de \verb=A= por \verb=B=. ($C_{ij} = \sum A_{ij} * B_{ji} $)
+\end{itemize}
+
+\item Hacer un programa que lea de teclado dos fechas (representar el tipo de dato Fecha como un registro (d\'ia, mes, a\~no)) e imprima por pantalla la distancia entre dos fechas (en d\'ias, en meses, y en fechas).
+    
+%\item Representar el tipo de dato \emph{Fecha} como un registro (\emph{d\'ia, mes, a\~no}) y escribir un programa que:
+%\begin{itemize}
+%  \item[a-] Ordene un conjunto de fechas.
+%  \item[b-] Permita calcular la distancia entre dos fechas (en d\'ias, en meses, y en fechas).
+%\end{itemize}
+
+\item Crear un tipo de dato \emph{conjunto extendido} que permita permita guardar (de alg\'un modo) m\'as de un elemento del mismo tipo y escribir un programa que permita la carga de datos y los muestre.
+
+\item Desarrollar un programa que convierta una cantidad entera de d\'ias al formato a\~no, mes y d\'ia.
+
+\item
+    \begin{itemize}
+        \item [a-] De ejemplos de alguna estructura de datos homog\'enea y otro de una heterog\'enea.
+        \item [b-] Defina el \verb=type= de un conjunto de reales.
+        \item [c-] De un ejemplo de un tipo definido por el usuario.
+    \end{itemize}
+%\begin{tabular}{p{0.4\textwidth} p{0.4\textwidth}}
+%    \begin{itemize}
+%        \item[a-] \begin{verbatim} mx7 := 924;\end{verbatim}
+%        \item[c-] \begin{verbatim} rango := Gamma;\end{verbatim}
+%        \item[e-] \begin{verbatim} rango := respuesta;\end{verbatim}
+%         \item[g-] \begin{verbatim} tar := mx9;\end{verbatim}
+%         \item[i-] \begin{verbatim} mx9 := Z;\end{verbatim}
+%    \end{itemize}
+%&
+%    \begin{itemize}
+%       \item[b-] \begin{verbatim} mx9 := Pagina;\end{verbatim}
+%       \item[d-] \begin{verbatim} Gamma := tar;\end{verbatim}
+%        \item[f-] \begin{verbatim} mx7 := Gamma;\end{verbatim}
+%         \item[h-] \begin{verbatim} simbolo := `t`;\end{verbatim}
+%          \item[j-] \begin{verbatim} respuesta := VERDADERO;\end{verbatim}
+%    \end{itemize}
+%\\
+%\end{tabular}
+
+\end{enumerate}
+\end{document}

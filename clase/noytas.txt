@@ -1,0 +1,647 @@
+-> estructuras lineales (arreglos, etc)
+->ahora estructuras de datos no lineales (àrboles )
+
+Las estructuras de datos no lineales son aquellas que no siguen un orden lineal o secuencial. Algunos ejemplos de estructuras de datos no lineales incluyen:
+
+Árboles: Una estructura de datos en forma de árbol, donde cada nodo tiene un padre y uno o más hijos.
+
+Grafos: Una estructura de datos en forma de grafo, donde los nodos son conectados entre sí mediante aristas.
+
+Mapas (o diccionarios): Una estructura de datos que asocia claves con valores.
+
+Conjuntos: Una estructura de datos que representa una colección de elementos únicos.
+
+Colas y pilas: Estructuras de datos que siguen un orden de llegada y salida de elementos, respectivamente.
+
+Estas estructuras de datos no lineales son muy útiles en la resolución de problemas complejos en áreas como la inteligencia artificial, la ciencia de datos y la programación.
+
+
+
+Los àrboles:
+Un árbol es una estructura de datos en forma de jerarquía que se utiliza para representar relaciones de contenido y organización en un sistema. En un árbol, cada elemento se conoce como un nodo y está relacionado con otros nodos de forma que uno es el padre y los otros son los hijos.
+
+Un árbol puede tener un nodo raíz, que es el nodo principal y el nodo de partida para navegar por la estructura. Los nodos que no tienen hijos se conocen como hojas o nodos terminales. La distancia entre un nodo y su padre se conoce como la profundidad del nodo.
+
+Hay varios tipos de árboles, como los árboles binarios, los árboles AVL, los árboles B, los árboles rojinegros, entre otros. Cada tipo de árbol se utiliza en diferentes situaciones según las necesidades de la aplicación, como para realizar búsquedas, inserciones y eliminaciones de forma eficiente.
+
+Los árboles son ampliamente utilizados en la informática y se pueden encontrar en muchos algoritmos y estructuras de datos, como árboles de búsqueda, árboles de decisión, sistemas de archivos, entre otros.
+
+Los árboles se usan en informática para resolver una amplia variedad de problemas. Algunos de los usos más comunes incluyen:
+
+Almacenamiento y acceso a datos: Los árboles se usan para almacenar y acceder a datos de forma eficiente. Por ejemplo, los árboles de búsqueda binarios permiten realizar búsquedas en tiempo logarítmico.
+
+Representación de estructuras jerárquicas: Los árboles se usan para representar estructuras de datos jerárquicas, como el sistema de archivos en un ordenador.
+
+Ordenamiento de datos: Los árboles se usan en algoritmos de ordenamiento, como el sort merge y el heapsort.
+
+Modelado de decisiones: Los árboles de decisión se usan en inteligencia artificial y aprendizaje automático para tomar decisiones basadas en una serie de reglas y criterios.
+
+Compresión de datos: Los árboles de codificación se usan en la compresión de datos para representar de manera eficiente secuencias de datos.
+
+Representación de grafos: Los árboles se usan para representar grafos no dirigidos y grafos acíclicos dirigidos.
+
+Estos son solo algunos de los usos más comunes de los árboles en informática. En general, los árboles son una estructura de datos versátil y eficiente que se utiliza en una amplia variedad de aplicaciones.
+
+
+partes:
+Las partes principales de un árbol (estructura de datos) incluyen:
+
+Nodos: Los nodos son los elementos básicos que componen el árbol. Cada nodo puede tener un valor o una clave y puede tener uno o varios hijos.
+
+Raíz: La raíz es el nodo principal que se encuentra en la parte superior del árbol. Todos los demás nodos están conectados a la raíz y forman los subárboles.
+
+Hijos: Los hijos son los nodos que se encuentran debajo de otro nodo. En algunos árboles, un nodo puede tener un número limitado de hijos, mientras que en otros puede tener cualquier número de hijos.
+
+Padre: El padre es el nodo que se encuentra por encima de un nodo hijo. Cada nodo, excepto la raíz, tiene un padre.
+
+Hojas: Las hojas son los nodos que no tienen hijos. Estos nodos representan el final de una rama y pueden contener valores o claves.
+
+Ramas: Las ramas son los enlaces entre los nodos que conectan a los padres con sus hijos.
+
+Altura: La altura de un árbol es la distancia más larga desde la raíz hasta una hoja.
+
+Nivel: El nivel de un nodo es la distancia desde la raíz hasta ese nodo. La raíz se encuentra en el nivel 0, los hijos de la raíz se encuentran en el nivel 1, y así sucesivamente.
+
+Estos son los componentes básicos de un árbol. La estructura de un árbol puede variar según el tipo de árbol y la aplicación para la que se utilice. Sin embargo, los componentes básicos descritos aquí son comunes a la mayoría de los árboles utilizados en informática.
+
+
+
+
+
+
+----------------------------------------
+
+
+
+Hay varios tipos de árboles utilizados en informática, aquí hay algunos de los más comunes:
+
+Árbol Binario: Es un árbol en el que cada nodo puede tener como máximo dos hijos. Es una estructura de datos muy eficiente para almacenar y acceder a datos ordenados.
+
+Árbol AVL: Es un árbol binario balanceado, lo que significa que la diferencia de altura entre los subárboles hijos de cualquier nodo no supera un valor determinado. Este tipo de árbol se utiliza en aplicaciones que requieren un acceso rápido a los datos y un equilibrio adecuado de la estructura.
+
+Árbol B: Es un árbol que se utiliza para almacenar grandes cantidades de información en una sola estructura. Permite un acceso rápido a los datos y una eficiente gestión de espacio.
+
+Árbol Rojinegro: Es un tipo de árbol binario balanceado que se utiliza para mantener la integridad de la estructura de datos y garantizar una búsqueda eficiente.
+
+Árbol Trie: También conocido como un "árbol de prefijos", se utiliza para almacenar palabras o secuencias de caracteres. Cada nodo representa un carácter y se utiliza en aplicaciones como correctores ortográficos y buscadores de texto.
+
+Árbol de Búsqueda: Es un árbol binario en el que los nodos de la izquierda tienen un valor menor que el nodo padre y los nodos de la derecha tienen un valor mayor. Se utiliza para implementar algoritmos de búsqueda y para almacenar y acceder a datos de forma ordenada.
+
+Estos son solo algunos ejemplos de los diferentes tipos de árboles utilizados en informática. La elección de un tipo de árbol depende de las necesidades específicas de cada aplicación y de las operaciones que se desean realizar con los datos.
+
+Arbol ordenado
+Un árbol ordenado es una estructura de datos de tipo árbol que se utiliza para almacenar y acceder a datos de forma ordenada. En un árbol ordenado, cada nodo tiene un valor y los nodos hijos se organizan de manera que los nodos a la izquierda tienen un valor menor que el nodo padre, y los nodos a la derecha tienen un valor mayor.
+
+Esta organización permite un acceso rápido a los datos y una eficiente búsqueda de valores específicos. Además, los árboles ordenados son adecuados para aplicaciones que requieren una inserción y eliminación frecuente de elementos, ya que estas operaciones pueden realizarse de manera eficiente.
+
+Un ejemplo de un árbol ordenado es el árbol de búsqueda binario, donde cada nodo puede tener como máximo dos hijos y se asegura que los valores en el subárbol izquierdo sean menores que el nodo padre y los valores en el subárbol derecho sean mayores.
+
+
+
+
+OPERACIONES:
+Las operaciones generales que se pueden realizar con árboles incluyen:
+
+Búsqueda: buscar un nodo específico en el árbol.
+
+Inserción: agregar un nodo nuevo al árbol.
+
+Eliminación: eliminar un nodo del árbol.
+
+Recorrido: visitar todos los nodos del árbol en un orden específico, como preorden, inorden o postorden.
+
+
+/////////////////////////////////////nota sobre recorrido ////////////////////////////////
+Recorrido en árboles se refiere a la forma en que se visitan los nodos de un árbol. Hay tres tipos principales de recorrido en árboles: preorden, inorden y postorden.
+
+Preorden: En un recorrido en preorden, se visita primero el nodo raíz, luego los hijos de la izquierda y finalmente los hijos de la derecha.
+Ejemplo:
+Para el siguiente árbol:
+A
+/
+B C
+/ \
+D E F
+
+El recorrido en preorden sería: A, B, D, E, C, F
+
+Inorden: En un recorrido en inorden, se visita primero el hijo izquierdo, luego el nodo raíz y finalmente el hijo derecho.
+Ejemplo:
+Para el siguiente árbol:
+A
+/
+B C
+/ \
+D E F
+
+El recorrido en inorden sería: D, B, E, A, C, F
+
+Postorden: En un recorrido en postorden, se visita primero el hijo izquierdo, luego el hijo derecho y finalmente el nodo raíz.
+Ejemplo:
+Para el siguiente árbol:
+A
+/
+B C
+/ \
+D E F
+
+El recorrido en postorden sería: D, E, B, F, C, A
+
+Cada uno de estos recorridos se utiliza en diferentes aplicaciones, dependiendo de la necesidad de procesamiento de datos. Por ejemplo, el recorrido en preorden se utiliza a menudo para copiar un árbol, mientras que el recorrido en inorden se utiliza para imprimir los elementos de un árbol en orden.
+
+Puedes implementar el recorrido en árboles en Python usando una función recursiva. Aquí hay un ejemplo para cada uno de los tres tipos de recorrido en árboles:
+
+Preorden:
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.left = None
+        self.right = None
+
+def preOrderTraversal(root):
+    if root is not None:
+        print(root.data, end=" ")
+        preOrderTraversal(root.left)
+        preOrderTraversal(root.right)
+
+root = Node("A")
+root.left = Node("B")
+root.right = Node("C")
+root.left.left = Node("D")
+root.left.right = Node("E")
+root.right.right = Node("F")
+
+preOrderTraversal(root)
+
+
+Salida:
+A B D E C F
+
+
+Inorden:
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.left = None
+        self.right = None
+
+def inOrderTraversal(root):
+    if root is not None:
+        inOrderTraversal(root.left)
+        print(root.data, end=" ")
+        inOrderTraversal(root.right)
+
+root = Node("A")
+root.left = Node("B")
+root.right = Node("C")
+root.left.left = Node("D")
+root.left.right = Node("E")
+root.right.right = Node("F")
+
+inOrderTraversal(root)
+
+Salida
+D B E A C F
+
+
+}Postorden
+
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.left = None
+        self.right = None
+
+def postOrderTraversal(root):
+    if root is not None:
+        postOrderTraversal(root.left)
+        postOrderTraversal(root.right)
+        print(root.data, end=" ")
+
+root = Node("A")
+root.left = Node("B")
+root.right = Node("C")
+root.left.left = Node("D")
+root.left.right = Node("E")
+root.right.right = Node("F")
+
+postOrderTraversal(root)
+
+Salida
+D E B F C A
+
+
+/////////////////////////////////////nota sobre recorrido ////////////////////////////////
+
+
+
+Altura: determinar la altura del árbol, que es la distancia más larga desde la raíz hasta una hoja.
+
+Balanceo: mantener el árbol equilibrado para garantizar un rendimiento óptimo en operaciones como la búsqueda.
+
+
+
+///////////////////////////////////////////7nota sobre altura y balanceo ////////////////////////////////
+
+
+La altura de un árbol se define como la longitud máxima desde la raíz hasta una hoja. Se puede calcular recursivamente como la máxima altura de sus hijos más uno.
+
+El balanceo de un árbol se refiere a la diferencia en la altura entre los hijos izquierdo y derecho de un nodo. En un árbol balanceado, la diferencia de altura entre los hijos izquierdo y derecho de cualquier nodo debe ser como máximo 1. En un árbol desbalanceado, la diferencia de altura puede ser mayor.
+
+Aquí está un ejemplo en Python para calcular la altura y el balance de un árbol:
+
+
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.left = None
+        self.right = None
+
+def height(node):
+    if node is None:
+        return 0
+    return max(height(node.left), height(node.right)) + 1
+
+def isBalanced(node):
+    if node is None:
+        return True
+    lheight = height(node.left)
+    rheight = height(node.right)
+    if abs(lheight - rheight) <= 1 and isBalanced(node.left) is True and isBalanced(node.right) is True:
+        return True
+    return False
+
+root = Node("A")
+root.left = Node("B")
+root.right = Node("C")
+root.left.left = Node("D")
+root.left.right = Node("E")
+root.right.right = Node("F")
+
+print("Altura del árbol: ", height(root))
+
+if isBalanced(root):
+    print("El árbol está balanceado")
+else:
+    print("El árbol no está balanceado")
+
+
+Salida
+Altura del árbol:  3
+El árbol no está balanceado
+
+
+///////////////////////////////////////////fi nsobre altura y balanceo ////////////////////////////////
+
+
+
+Estas son solo algunas de las operaciones más comunes que se pueden realizar con árboles, y la implementación concreta depende del tipo de árbol y de las necesidades específicas de la aplicación.
+
+
+
+
+
+
+
+
+
+
+
+
+ARBOL EN PYTHON
+
+
+
+Aquí hay una implementación de una clase abstracta de árboles en Python:
+from abc import ABC, abstractmethod
+
+class Tree(ABC):
+    def __init__(self, data, left=None, right=None):
+        self.data = data
+        self.left = left
+        self.right = right
+
+    @abstractmethod
+    def insert(self, data):
+        pass
+
+    @abstractmethod
+    def search(self, data):
+        pass
+
+    @abstractmethod
+    def delete(self, data):
+        pass
+
+    @abstractmethod
+    def in_order_traversal(self):
+        pass
+
+Esta clase define una estructura básica para un árbol, con un nodo que contiene un valor de datos y puede tener dos hijos (izquierdo y derecho). La clase es una clase abstracta, lo que significa que no puede ser instanciada directamente, sino que debe ser extendida por otras clases que implementen los métodos abstractos.
+
+Los métodos abstractos son insert, search, delete y in_order_traversal. Estos métodos deben ser implementados por cualquier clase que extienda la clase Tree. Estos métodos definen las operaciones básicas que se deben realizar con el árbol, como la inserción, búsqueda y eliminación de nodos, así como el recorrido en orden.
+
+Para crear una clase concreta de árboles, se puede extender la clase Tree y proporcionar implementaciones para los métodos abstractos. Por ejemplo, se puede crear una clase BinarySearchTree que extienda Tree y proporcione implementaciones para los métodos abstractos.
+
+
+
+
+
+En Python, no existe una implementación estándar de árboles como un tipo de datos incorporado. Sin embargo, es posible crear árboles utilizando clases y estructuras de datos similares. Aquí hay un ejemplo de cómo se puede implementar un árbol binario en Python:
+
+class Nodo:
+    def __init__(self, valor):
+        self.valor = valor
+        self.izquierda = None
+        self.derecha = None
+
+class ArbolBinario:
+    def __init__(self):
+        self.raiz = None
+    
+    def agregarNodo(self, valor):
+        if self.raiz == None:
+            self.raiz = Nodo(valor)
+        else:
+            self._agregarNodo(valor, self.raiz)
+
+    def _agregarNodo(self, valor, nodoActual):
+        if valor < nodoActual.valor:
+            if nodoActual.izquierda != None:
+                self._agregarNodo(valor, nodoActual.izquierda)
+            else:
+                nodoActual.izquierda = Nodo(valor)
+        else:
+            if nodoActual.derecha != None:
+                self._agregarNodo(valor, nodoActual.derecha)
+            else:
+                nodoActual.derecha = Nodo(valor)
+
+
+Con esta implementación, es posible crear un árbol binario y agregar nodos a él. Para hacer búsquedas, inserciones y otras operaciones en el árbol, se pueden agregar métodos adicionales a la clase ArbolBinario.
+
+In a binary tree, you can perform a search operation to find a specific node that contains a certain value. Here's an example of how you could implement a search function in Python:
+
+def search(node, data):
+    if node is None:
+        return None
+    if node.data == data:
+        return node
+    if node.data > data:
+        return search(node.left, data)
+    else:
+        return search(node.right, data)
+
+
+This function takes two arguments: node and data. It first checks if node is None, in which case it returns None since the value is not in the tree. If the value of the current node is equal to data, the function returns the node. If data is less than the current node's value, the function performs a search on the left child. If data is greater than the current node's value, the function performs a search on the right child.
+
+Here's an example of how you could use the search function:
+
+root = Node(1)
+root.left = Node(2)
+root.right = Node(3)
+root.left.left = Node(4)
+
+result = search(root, 4)
+if result:
+    print("Node found: ", result.data)
+else:
+    print("Node not found")
+
+
+This would output Node found: 4.
+
+calculate a T(n) in BigOh notation of the binary search described
+
+The time complexity of the binary search function in Big O notation is O(log n), where n is the number of nodes in the binary tree.
+
+The reason for this is that with each recursive call, the search space is divided in half. If the tree is balanced, the number of nodes to search through will be reduced by half with each recursive call, until either the node is found or it is determined that the node is not in the tree. This means that the maximum number of comparisons required to find the node is logarithmic in the number of nodes in the tree, resulting in a time complexity of O(log n).
+
+If the tree is not balanced, the time complexity could be as high as O(n) in the worst case, since in this case, the tree would essentially be a linked list and all nodes would have to be traversed to find the node or determine that it is not in the tree.
+
+
+
+
+Aquí hay una implementación de los métodos abstractos insert, search, delete y in_order_traversal en una clase concreta de árboles binarios de búsqueda:
+
+class BinarySearchTree(Tree):
+    def insert(self, data):
+        if data < self.data:
+            if self.left:
+                self.left.insert(data)
+            else:
+                self.left = BinarySearchTree(data)
+        else:
+            if self.right:
+                self.right.insert(data)
+            else:
+                self.right = BinarySearchTree(data)
+
+    def search(self, data):
+        if self.data == data:
+            return True
+
+        if data < self.data and self.left:
+            return self.left.search(data)
+        elif data > self.data and self.right:
+            return self.right.search(data)
+
+        return False
+
+    def delete(self, data):
+        if data < self.data and self.left:
+            self.left = self.left.delete(data)
+        elif data > self.data and self.right:
+            self.right = self.right.delete(data)
+        else:
+            if self.left is None:
+                return self.right
+            elif self.right is None:
+                return self.left
+            else:
+                min_larger_node = self.right
+                while min_larger_node.left:
+                    min_larger_node = min_larger_node.left
+
+                self.data = min_larger_node.data
+                self.right = self.right.delete(min_larger_node.data)
+
+        return self
+
+    def in_order_traversal(self):
+        elements = []
+        if self.left:
+            elements += self.left.in_order_traversal()
+        elements.append(self.data)
+        if self.right:
+            elements += self.right.in_order_traversal()
+        return elements
+
+
+
+
+La clase BinarySearchTree extiende la clase abstracta Tree y proporciona implementaciones para los métodos abstractos. El método insert agrega un nodo al árbol binario de búsqueda, manteniendo la propiedad de que los nodos a la izquierda tienen valores más pequeños y los nodos a la derecha tienen valores más grandes.
+
+El método search busca un nodo específico en el árbol binario de búsqueda, devolviendo True si se encuentra y False en caso contrario.
+
+El método delete elimina un nodo específico del árbol binario de búsqueda, manteniendo la propiedad de que los nodos a la izquierda tienen valores más pequeños y los nodos a la derecha tienen valores más grandes.
+
+El método in_order_traversal realiza un recorrido en orden del árbol binario de búsqueda. Primero se recorre el subárbol izquierdo, luego se agrega el valor de self.data a una lista y finalmente se recorre el subárbol derecho. Al final, la lista resultante contiene todos los valores en orden.
+in_order_traversal con un ejemplo:
+
+Imagine que tenemos el siguiente árbol binario de búsqueda:
+        4
+       / \
+      2   5
+     / \
+    1   3
+El resultado de llamar in_order_traversal en el nodo raíz (con valor 4) sería la siguiente secuencia de valores:
+1, 2, 3, 4, 5
+El algoritmo primero se desplaza hacia la izquierda hasta llegar al nodo más a la izquierda (en este caso, con valor 1). Luego agrega ese valor a la lista resultante. Después, regresa al nodo padre (con valor 2) y agrega su valor a la lista resultante. Luego, se desplaza hacia la derecha hasta llegar al nodo más a la izquierda (en este caso, con valor 3). Luego agrega ese valor a la lista resultante. Continúa el proceso hasta recorrer todo el árbol y obtener la secuencia completa.
+
+
+
+
+
+
+----------------------------------------------------------------------------------
+arbol avl
+Un árbol AVL (Adelson-Velsky y Landis) es un tipo de árbol de búsqueda binario que siempre mantiene un equilibrio óptimo para garantizar una alta eficiencia en las operaciones de búsqueda, inserción y eliminación. En un árbol AVL, la diferencia en la altura de los subárboles izquierdo y derecho de cada nodo no debe ser mayor a 1.
+
+Cada vez que se inserta o se elimina un nodo, se realiza una comprobación de equilibrio en el árbol. Si se detecta un desequilibrio, se realiza una rotación para mantener el equilibrio del árbol. Estas rotaciones pueden ser simples o dobles y tienen como objetivo reordenar los nodos para mantener la propiedad de equilibrio en el árbol.
+
+Debido a su equilibrio, los árboles AVL ofrecen una mejor eficiencia que los árboles binarios de búsqueda simples en términos de tiempo de búsqueda y inserción. Sin embargo, las operaciones de inserción y eliminación son más complejas debido a las rotaciones necesarias para mantener el equilibrio del árbol.
+
+-----------------------------------------------------------------------------------
+ARBOL B
+Un árbol B (también conocido como árbol B+) es un tipo de árbol de búsqueda equilibrado que se utiliza en sistemas de bases de datos para mantener la integridad y la organización de la información. Un árbol B es similar a un árbol AVL en términos de equilibrio, pero permite un mayor nivel de tolerancia en la diferencia de altura entre los subárboles izquierdo y derecho de cada nodo.
+
+En un árbol B, cada nodo puede tener varios hijos y no se realizan rotaciones para mantener el equilibrio. En su lugar, se utiliza la técnica de partición de bloques para mantener el equilibrio y la organización de los datos. Cada nodo puede tener hasta un cierto número máximo de hijos, y cuando se alcanza ese límite, el nodo se divide en dos nodos adicionales para mantener la integridad de la estructura del árbol.
+
+Los árboles B ofrecen una mejor eficiencia en términos de tiempo de búsqueda y acceso a los datos que los árboles binarios de búsqueda simples, pero requieren más complejidad en las operaciones de inserción y eliminación. Son ampliamente utilizados en sistemas de bases de datos y se usan en la implementación de diferentes tipos de índices y estructuras de datos.
+
+El armado de un árbol B requiere el seguimiento de ciertas reglas y procedimientos para mantener el equilibrio y la organización de los datos. A continuación, se describen los pasos generales para armar un árbol B:
+
+Especificar el tamaño máximo de los nodos: El primer paso en la construcción de un árbol B es determinar cuántos hijos puede tener cada nodo. Este número se conoce como el tamaño máximo del nodo.
+
+Crear el nodo raíz: Una vez que se ha determinado el tamaño máximo de los nodos, se puede crear el nodo raíz del árbol.
+
+Agregar datos al árbol: A medida que se agrega información al árbol, se debe asegurar de insertar los datos en el lugar correcto en el árbol.
+
+Particionar nodos: Cuando un nodo alcanza su tamaño máximo, se debe particionar en dos nodos adicionales para mantener la integridad de la estructura del árbol.
+
+Reordenar el árbol: Después de agregar o eliminar datos, es posible que sea necesario reordenar el árbol para mantener su equilibrio.
+
+Aquí hay un ejemplo de cómo armar un árbol B:
+
+Crear un nodo raíz con un valor determinado. Este será el primer nodo en el árbol.
+
+Determinar el número máximo de hijos que cada nodo puede tener. Por ejemplo, supongamos que hemos decidido que cada nodo puede tener hasta 3 hijos.
+
+Insertar valores en el árbol. Si un nodo ya tiene 3 hijos, debemos dividir el nodo en dos nodos adicionales antes de insertar el nuevo valor.
+
+Continuar insertando valores hasta que el árbol esté completo.
+
+Aquí hay un ejemplo de cómo armar un árbol B:
+
+Crear un nodo raíz vacío.
+Insertar el primer elemento en el nodo raíz.
+Insertar el siguiente elemento y compararlo con el elemento en el nodo raíz. Si es menor, ir al subárbol izquierdo; si es mayor, ir al subárbol derecho.
+Repetir el proceso de inserción en el subárbol correspondiente hasta llegar a un nodo vacío.
+Una vez que se llega a un nodo vacío, insertar el nuevo elemento en ese nodo.
+Verificar si el número de elementos en el nodo supera el límite. Si es así, dividir el nodo en dos nodos adicionales y redistribuir los elementos entre ellos.
+Repetir los pasos 3 a 6 para cada nuevo elemento que se desea insertar en el árbol.
+El proceso de búsqueda en un árbol B es similar al proceso de búsqueda en un árbol binario de búsqueda, pero con la garantía de que el árbol siempre estará equilibrado y ordenado. La eliminación de elementos en un árbol B también es similar al proceso de eliminación en un árbol binario de búsqueda, pero con la necesidad de reequilibrar y reorganizar el árbol después de cada operación de eliminación.
+
+Aquí hay un ejemplo de código para implementar un árbol B en Python:
+
+class Node:
+    def __init__(self, keys=[], children=[], is_leaf=True, max_num_keys=5):
+        self.keys = keys
+        self.children = children
+        self.is_leaf = is_leaf
+        if max_num_keys < 3:
+            max_num_keys = 3
+        if max_num_keys % 2 == 0:
+            max_num_keys += 1
+        self.max_num_keys = max_num_keys
+    
+    def is_full(self):
+        return len(self.keys) >= self.max_num_keys
+
+class BTree:
+    def __init__(self, max_num_keys=5):
+        self.max_num_keys = max_num_keys
+        self.root = Node(max_num_keys=max_num_keys)
+
+    def insert(self, key):
+        if self.root.is_full():
+            old_root = self.root
+            self.root = Node(is_leaf=False, max_num_keys=self.max_num_keys)
+            self.root.children.append(old_root)
+            self._split_child(self.root, 0, old_root)
+        self._insert_nonfull(self.root, key)
+
+    def _split_child(self, node, index, full_node):
+        new_node = Node(is_leaf=full_node.is_leaf, max_num_keys=self.max_num_keys)
+        node.children.insert(index+1, new_node)
+        node.keys.insert(index, full_node.keys[self.max_num_keys//2])
+        new_node.keys = full_node.keys[(self.max_num_keys//2)+1:]
+        full_node.keys = full_node.keys[:self.max_num_keys//2]
+        if not full_node.is_leaf:
+            new_node.children = full_node.children[(self.max_num_keys//2)+1:]
+            full_node.children = full_node.children[:self.max_num_keys//2+1]
+
+    def _insert_nonfull(self, node, key):
+        if node.is_leaf:
+            node.keys.append(key)
+            node.keys.sort()
+        else:
+            index = bisect.bisect_left(node.keys, key)
+            if node.children[index].is_full():
+                self._split_child(node, index, node.children[index])
+                if node.keys[index] < key:
+                    index += 1
+            self._insert_nonfull(node.children[index], key)
+
+    def delete(self, key):
+        self._delete(self.root, key)
+
+    def _delete(self, node, key):
+        index = bisect.bisect_left(node.keys, key)
+        if index < len(node.keys) and node.keys[index] == key:
+            if node.is_leaf:
+                node.keys.pop(index)
+
+
+
+
+
+---------------------------------------------------------------------------------
+
+Árbol Rojinegro: 
+
+Árbol Trie:
+
+Árbol de Búsqueda:
+
+Arbol 2,4 
+Un árbol 2-3-4 es un árbol que está vacío o satisface las siguientes
+propiedades:
+Los nodos pueden tener 2, 3 ó 4 hijos (2-nodo, 3-nodo ó 4-nodo)
+Cumple las propiedades de árbol multicamino de búsqueda
+Todas las hojas están en el mismo nivel
+
+spaly tree
+Splay tree is another variant of a binary search tree. In a splay tree, recently accessed element is placed at the root of the tree. A splay tree is defined as follows...
+
+Splay Tree is a self - adjusted Binary Search Tree in which every operation on element rearranges the tree so that the element is placed at the root position of the tree.
+
+In a splay tree, every operation is performed at the root of the tree. All the operations in splay tree are involved with a common operation called "Splaying".
+
+Splaying an element, is the process of bringing it to the root position by performing suitable rotation operations.
+
+In a splay tree, splaying an element rearranges all the elements in the tree so that splayed element is placed at the root of the tree.
+
+
+

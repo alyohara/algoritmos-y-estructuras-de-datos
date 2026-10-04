@@ -1,0 +1,217 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[spanish]{babel}
+\usepackage{
+			ucs
+			,amsfonts
+			,amssymb
+			,acronym
+			,verbatim
+			,rotating
+			,graphicx
+			,enumerate
+			,fancyhdr
+            ,mathrsfs
+            ,array
+			}
+
+\usepackage{tikz}
+\usetikzlibrary{svg.path}
+
+\pagestyle{fancy}
+\addtolength{\textheight}{1.0in}
+\addtolength{\textwidth}{0.5in}
+\addtolength{\voffset}{-1.0in}
+
+\newcommand{\cat}[1][]{%
+    \tikz \fill [scale=1ex/30,yscale=-1,#1] svg "M495.959,867.638c-3.318-4-1.121-7.686,7.098-11.904c7.322-3.76,8.223-4.871,11.365-14.049
+		c5.646-16.496,9.951-21.084,24.289-25.893c4.883-1.637,7.111-3.217,6.732-4.771c-3.148-12.889-1.992-16.166,4.48-12.701
+		c2.174,1.162,3.924,0.754,6.943-1.619c4.547-3.576,5.105-3.137,6.68,5.264c0.725,3.859,0.445,6.785-0.791,8.273
+		c-1.186,1.43-1.496,4.199-0.816,7.295c0.895,4.07,0.186,6.26-3.836,11.861c-6.01,8.367-6.746,18.059-1.752,23.053
+		c3.975,3.973,4.066,6.363,0.248,6.363c-3.869,0-8.201-4.926-8.201-9.322c0-4.723-4.635-6.33-7.391-2.564
+		c-2.844,3.889-2.738,7.115,0.23,7.115c1.312,0,2.387,1.074,2.387,2.387c0,1.92-2.465,2.385-12.635,2.385
+		c-6.947,0-13.047-0.668-13.551-1.484c-0.541-0.875-3.803-0.502-7.951,0.912c-7.744,2.639-11.631,5.996-8.896,7.686
+		c0.916,0.566,1.668,1.703,1.668,2.527C502.26,870.757,498.104,870.222,495.959,867.638z";~%
+}
+%\renewcommand{\cat}{\maltese}
+
+
+
+
+\fancyhf{}
+\fancyhead[L]{{\bfseries Programaci\'on I Curso 2012. Pr\'actica 4 \hfill Tipos de datos definidos por el usuario}}
+\fancyfoot[LE,RO]{\thepage}
+
+\fancypagestyle{firstpage}{
+\fancyhf{}
+
+\fancyhead[L]{\includegraphics[width=1.75cm]{ucalp.jpg}  \\
+\small{UCALP. Facultad de Ciencias Exactas e Ingenier\'ia} \\
+{\bfseries Programaci\'on I Curso 2012. Pr\'actica 4 \hfill Tipos de datos definidos por el usuario}}
+\fancyfoot[LE,RO]{\thepage}
+}
+
+\thispagestyle{firstpage}
+
+\begin{document}
+
+~\\ \\ \\ \\
+
+\begin{enumerate}
+
+\item 1. Realizar un programa que dadas dos estructuras de conjuntos permita realizar:
+    \begin{itemize}
+        \item[a-] La intersecci\'on de sus elementos.
+        \item[b-] La uni\'on de sus elementos.
+        \item[c-] La diferencia de sus elementos.
+    \end{itemize}
+
+\item Realizar un programa que permita almacenar un listado de palabras en un vector y luego imprimirlas en pantalla.
+
+\item Realizar un programa que permita cargar la siguiente tabla de votos por distrito de los candidatos.
+    \begin{table}[h]
+      \begin{tabular}{|r|r|r|r|}
+        \hline
+        Distrito & Candidato1 & Candidato2 & Candidato3 \\
+        \hline \hline
+        1 & 343 & 343 & 132 \\
+        \hline
+        2 & 233 & 456 & 111 \\
+        \hline
+        3 & 24 & 454 & 367 \\
+        \hline
+        4 & 232 & 123 & 434 \\
+        \hline
+        5 & 566 & 223 & 332 \\
+        \hline
+      \end{tabular}
+    \end{table}
+
+Devolver:
+    \begin{itemize}
+        \item[a-] Imprimir la tabla en pantalla.
+        \item[b-] El candidato ganador.
+        \item[c-] Los candidatos ganadores por cada distrito.
+        \item[d-] La cantidad de votantes.
+        \item[e-] El promedio de votantes por distrito.
+    \end{itemize}
+\begin{small} \emph{Nota: Se desea realizar un men\'u que contenga las opciones anteriores utilizando la estructura de tipo enumerado.}\end{small}
+
+\item Escribir un programa que dada una frase nos la muestre invertida.
+
+\item Se desea realizar un programa que nos permita ingresar una palabra y una frase por teclado y nos devuelva si la palabra que ingresamos esta en la frase y cuantas veces se repite.
+
+\item Realice un programa que contenga un ejemplo por cada una de las operaciones de la estructura de conjuntos.
+
+\item Escriba un programa que codifique una contrase\~na de 8 d\'igitos. El algoritmo deber\'a sustituir cada vocal por un n\'umero. $(A=1, E=2, O=3, I=4, U=5)$. Se desea realizar el codificador y decodificador.
+
+\item Si $A$ es un arreglo de enteros ordenado en forma ascendente, un \emph{plateau} de $A$ es una secuencia perteneciente a $A$ que contiene valores iguales. Escriba un programa que para encontrar la longitud del \emph{plateau} m\'as largo en $A$ y otro para determinar el n\'umero de \emph{plateaux} en $A$.
+
+\item Escribir un programa que permita:
+    \begin{itemize}
+        \item[a-] La entrada de un grupo de lecturas de temperatura. La entrada consiste en 2 n\'umeros representando una latitud (en el rango \verb=[-90,90]=) y la temperatura observada en dicha latitud (por ejemplo, $25^\circ C$).
+        \item[b-] Luego debe imprimir una tabla que constar\'a de cada latitud y el promedio de temperaturas correspondiente a esa latitud. Si no hay lectura de una determinada latitud, imprimir en su lugar el mensaje: ``no hay dato''.
+        \item[c-] A continuaci\'on imprimir el promedio de temperaturas del Hemisferio Norte y del Hemisferio Sur (Norte: latitudes desde 1 a 90; y Sur: latitudes desde -1 a -90). Este promedio de temperaturas se har\'a como promedio de los promedios ya obtenidos y no como promedio de las lecturas originales.
+        \item[d-] Luego se debe determinar cu\'al de los hemisferios es m\'as c\'alido. Para ello tomar el promedio de temperaturas en todas las latitudes de cada hemisferio cuando hay datos correspondientes a una latitud. Por ejemplo: si hay un dato en la latitud 57 y no hay de la -57 el promedio para determinar qu\'e hemisferio es m\'as c\'alido debe ignorar el dato sobre la latitud 57.
+    \end{itemize}
+
+\item Dado un arreglo $A$ de $m$ filas por $n$ columnas escriba un programa que imprima los valores del arreglo por p\'aginas. Cada p\'agina contendr\'a 50 filas y 20 columnas del arreglo. Al comienzo de la p\'agina debe ir el encabezado: \verb=COL1  COL2  COL3 ...= . A lo largo del margen izquierdo de cada p\'agina se imprimir\'a: \verb=FILA1  FILA2  FILA3 ...= .
+
+\item Dado el siguiente tipo: \verb+Color = (ROJO, BLANCO, AZUL);+ y un arreglo unidimencional de $n$ elementos ($n>1$) de tipo \verb=Color=, escriba un programa que reacomode los valores en el arreglo de manera tal que todos los valores \verb=ROJO= precedan a los valores \verb=BLANCO= y \'estos a los valores \verb=AZUL=. El programa s\'olo debe recorrer el arreglo una sola vez.
+
+\item Se desea programar un juego similar a la batalla naval. En dicho juego participan 2 jugadores, cada uno posee 3 barcos simples (de un casillero) y 2 barcos destructores (de dos casilleros) ubicados en un tablero de 10x10. El juego consiste en tratar de descubrir en que posiciones est\'an los barcos del contrincante. Los jugadores dan alternadamente una posici\'on del adversario y \'este responde agua o hundido. Informar el nombre del ganador.
+
+\item Realizar un programa que dados dos vectores $A$ y $B$ de dimensi\'on 100. Luego:
+    \begin{itemize}
+        \item[a-] Retorne un tercer vector $C$, donde cada elemento se define como $C_i = max { A_i, B_i }$. Imprimir los 3 vectores.
+        \item[b-] Retorne un tercer vector $C$, donde cada $C_i$ es la componente del vector $A$ que se encuentra en la posici\'on que indica $B_i$. Imprimir los 3 vectores. Efectuar la validaci\'on de \'indices correspondiente. Si la posici\'on no es v\'alida agregar -1 como contenido en el vector.
+    \end{itemize}
+    
+\item Dados un vector , una matriz y un valor, se pide:
+    \begin{itemize}
+        \item[a-] Devolver la cantidad de ocurrencias de dicho valor en el vector.
+        \item[b-] Devolver la cantidad de ocurrencias de dicho valor en la matriz.
+        \item[c-] Devolver el mismo vector donde todas las ocurrencias de dicho valor han sido suprimidas.
+        \item[c-] Devolver todas las ocurrencias del vector dentro de la matriz.
+    \end{itemize}
+
+\item Se lee informaci\'on del tipo:
+\begin{table}[h]
+\begin{tabular}{|c|c|c|c|}
+  \hline
+  Cod. Ciudad & Cod. Sucursal (1,2,3) & Cant. Vendida & Monto total\\
+  \hline
+\end{tabular}
+\end{table}
+
+Los datos vienen ordenados por c\'odigo de ciudad y finalizan con dicho c\'odigo igual a 0. Informar:
+\begin{itemize}
+    \item[a-] El monto facturado por la sucursal 3 para cada ciudad.
+    \item[b-] La cantidad de productos vendidos por la sucursal 1.
+    \item[c-] La cantidad de ventas de la sucursal 2 y el porcentaje que representa respecto del total.
+\end{itemize}
+
+\item Un club procesa la informaci\'on referida a sus miembros. Cada registro contiene la siguiente informaci\'on:
+    \begin{itemize}
+        \item[-] Nombre
+        \item[-] Edad
+        \item[-] Direcci\'on
+        \item[-] Fecha de alta
+        \item[-] Situaci\'on (Activo, Vitalicio)
+        \item[-] Fecha de \'ultima cuota paga \'o Fecha desde la cual es vitalicio
+        \item[-] Estado Civil
+    \end{itemize}
+
+Implementar las siguientes utilidades, utilizando registros variantes:
+    \begin{itemize}
+      \item[a-] Buscar los nombres de los miembros con la \'ultima cuota paga.
+      \item[b-] Mostrar la cantidad de socios vitalicios.
+      \item[c-] Buscar los miembros casados y los de su familia con detalles de los integrantes. 
+      \item[d-] Mostrar el total de miembros del club.
+    \end{itemize}
+
+
+
+\end{enumerate}
+
+\section{Registros Variantes}
+
+Los registros variantes pueden contener distinta informaci\'on dependiendo de su instanciaci\'on. Ejemplo:\\
+\begin{small}
+\begin{verbatim}
+type
+   TOrden = (docente,estudiante,egresado);
+   ...
+   TUniveritario = record
+       cedula     : TCedula;
+       credencial : TCredencial;
+       case orden:TOrden of
+       docente : (
+           grado: 1..5;
+           carga: 0..40
+       );
+       estudiante : (
+           semestre: 1..15;
+           materias: integer
+       );
+       egresado : (
+           egreso: 1900..3000;
+           titulo: TTitulo
+       );
+   end; 
+...
+...
+r.cedula := 1234;
+r.credencial := 1234;
+r.orden := estudiante;
+r.semestre := 2;
+r.materias := 34;
+...
+...
+r2.cedula := 1235;
+r2.credencial := 1235;
+r2.orden := egresado;
+r2.egreso := 2012;
+r2.titulo := LS;
+\end{verbatim}
+\end{small}
+\end{document}

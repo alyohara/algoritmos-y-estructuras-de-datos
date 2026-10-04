@@ -1,0 +1,85 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[spanish]{babel}
+\usepackage{
+			ucs
+			,amsfonts
+			,amssymb
+			,acronym
+			,verbatim
+			,rotating
+			,graphicx
+			,enumerate
+			,fancyhdr
+            ,mathrsfs
+            ,array
+			}
+
+\usepackage{tikz}
+\usetikzlibrary{svg.path}
+
+\pagestyle{fancy}
+\addtolength{\textheight}{1.0in}
+\addtolength{\textwidth}{0.5in}
+\addtolength{\voffset}{-1.0in}
+
+\fancyhf{}
+\fancyhead[L]{{\bfseries Programaci\'on I Curso 2012. Pr\'actica 7 \hfill Ordenamiento - B\'usqueda}}
+\fancyfoot[LE,RO]{\thepage}
+
+\fancypagestyle{firstpage}{
+\fancyhf{}
+
+\fancyhead[L]{\includegraphics[width=1.75cm]{ucalp.jpg}  \\
+\small{UCALP. Facultad de Ciencias Exactas e Ingenier\'ia} \\
+{\bfseries Programaci\'on I Curso 2012. Pr\'actica 7 \hfill Ordenamiento - B\'usqueda}}
+\fancyfoot[LE,RO]{\thepage}
+}
+
+\thispagestyle{firstpage}
+
+\begin{document}
+
+~\\ \\ \\ \\
+
+\begin{enumerate}
+
+\item Terminar de implementar los m\'etodos de b\'usqueda y ordenamiento vistos en clase.
+
+\item Realizar un procedimiento que reciba un vector de enteros y lo devuelva ordenado por el m\'etodo burbuja.
+
+\item Realizar un procedimiento que reciba un vector de strings y lo devuelva ordenado por el m\'etodo de burbuja.
+
+\item Realizar un procedimiento que reciba un vector de enteros y lo devuelva ordenado por el m\'etodo de selecci\'on.
+
+\item Dado un vector de n\'umeros enteros de \verb-N- elementos, realizar una funci\'on que devuelva la mediana. \emph{La mediana se define como el valor de la variable de posición central en un conjunto de datos ordenados, si la cant. de datos es par, se definir\'a como la media de los dos valores centrales}.
+
+\item Implementar el ejercicio 15 de la pr\'actica 4, pero los datos ya no se encuentran ordenados (hay que ordenarlos) y el monto facturado, la cant. de productos y la cant. d ventas, son los de una sucursal pasada por par\'ametros (hay que buscarla). 
+
+\item Se han tomado ex\'amenes parciales de una materia y se cuenta con la siguiente informaci\'on: \verb-{Nombre_Alumno, Calificaci\'on}-. Realice un programa que permita ingresar los datos y obtener dos listados, uno ordenado alfab\'eticamente y el otro seg\'un las calificaci\'ones, y que dado el nombre de un alumno se muestre la calificaci\'on correspondiente.
+
+\item Una empresa dedicada a la fabricación de repuestos para el automotor necesita realizar un sistema que permita el control de stock y ventas de repuestos.\\
+Los datos que se necesitan almacenar son:
+\begin{itemize}
+    \item[-] C\'odigo de la pieza (entero de 4 posiciones).
+    \item[-] Descripci\'on.
+    \item[-] Modelo de auto.
+    \item[-] Precio.
+    \item[-] Cantidad.
+\end{itemize}
+Se desea realizar los siguientes procedimientos y funciones para:
+\begin{itemize}
+    \item[-] Ingresar repuestos al listado.
+    \item[-] Imprimir todos los repuestos del listado.
+    \item[-] Modificar todos los datos de un determinado repuesto ingresando el c\'odigo.
+    \item[-] Ordenar los repuestos por su n\'umero de c\'odigo.
+    \item[-] Ordenar los repuestos por su descripci\'on.
+    \item[-] Listar la cantidad de un producto determinado.
+    \item[-] Simular una situaci\'on de venta y compra de un determinado producto. 
+\end{itemize}
+
+
+
+
+
+\end{enumerate}
+\end{document}

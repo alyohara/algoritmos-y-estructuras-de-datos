@@ -1,0 +1,89 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[spanish]{babel}
+\usepackage{
+			ucs
+			,amsfonts
+			,amssymb
+			,acronym
+			,verbatim
+			,rotating
+			,graphicx
+			,enumerate
+			,fancyhdr
+            ,mathrsfs
+            ,array
+			}
+
+\usepackage{tikz}
+\usetikzlibrary{svg.path}
+
+\pagestyle{fancy}
+\addtolength{\textheight}{1.0in}
+\addtolength{\textwidth}{0.5in}
+\addtolength{\voffset}{-1.0in}
+
+\fancyhf{}
+\fancyhead[L]{{\bfseries Programaci\'on I Curso 2012. Pr\'actica 10 \hfill Archivos}}
+\fancyfoot[LE,RO]{\thepage}
+
+\fancypagestyle{firstpage}{
+\fancyhf{}
+
+\fancyhead[L]{\includegraphics[width=1.75cm]{ucalp.jpg}  \\
+\small{UCALP. Facultad de Ciencias Exactas e Ingenier\'ia} \\
+{\bfseries Programaci\'on I Curso 2012. Pr\'actica 10 \hfill Archivos}}
+\fancyfoot[LE,RO]{\thepage}
+}
+
+\thispagestyle{firstpage}
+
+\begin{document}
+
+~\\ \\ \\ \\
+
+\begin{enumerate}
+%1
+\item Generar un archivo de texto con palabras cargadas por teclado y finalizar su llenado cuando se introduzca la palabra ``fin123''.
+
+%2
+\item Generar un archivo con un rango de enteros positivos que se ingresan por teclado. Recorrer el archivo y mostrarlos en pantalla en forma de listado.
+
+%3
+\item Generar 2 archivos: 1 con n\'umeros pares y el otro con n\'umeros impares. Luego generar un tercer archivo que contenga los números de ambos archivos ordenados de menor a mayor.
+
+%4
+\item Generar un archivo de agenda que contenga los datos t\'ipicos de una persona. Realizar los procedimientos de creaci\'on, modificaci\'on y b\'usqueda por nombre y apellido.
+
+%5
+\item Realizar el ejercicio 5 de la practica 5 (Ordenamiento) para que permita almacenar los datos en un archivo. 
+
+%6
+\item Realizar un programa que muestre un archivo de texto, si el archivo es muy grande para entrar en la pantalla, el programa debe paginarlo. \begin{small} \emph{Nota: Similar al programa utilitario \verb-more- (D.O.S.) o \verb-less- (Linux).} \end{small}   
+ 
+\item Realice una funci\'on/procedimiento recursivo que devuelva el factorial de un n\'umero.
+
+\item Realice una funci\'on/procedimiento recursivo que encuentre el e\'nesimo t\'ermino de la serie de \emph{Fibonacci}.
+
+\item Realice una funci\'on/procedimiento recursivo que dada una palabra la invierta.
+
+\item Realice una funci\'on/procedimiento recursivo que devuelva a suma de todos los n\'umeros enteros de un vector.
+
+\item Realice una funci\'on/procedimiento recursivo que cuente la cantidad de letras en una palabra.
+
+\item Realice una funci\'on/procedimiento recursivo que sume los n\'umeros en el intervalo $[1..N]$.
+
+\item Realice una funci\'on/procedimiento recursivo que encuentre un n\'umero dentro de un vector.
+
+\item Implemente una versi\'on recursiva de la b\'usqueda binaria.
+
+\item Realice una funci\'on/procedimiento recursivo que permita encontrar un valor dentro de una lista (enlazada).
+
+\item Realice una funci\'on/procedimiento recursivo que sume los valores que se encuentran almacenados dentro de una lista (enlazada) de enteros.
+
+\item Realice una funci\'on/procedimiento recursivo que de vuelta una lista (enlazada).
+
+\item Realice una funci\'on/procedimiento recursivo que permita ordenar una lista (enlazada).
+
+
+\end{enumerate}
+\end{document}

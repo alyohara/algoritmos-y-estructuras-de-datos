@@ -1,0 +1,103 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[spanish]{babel}
+\usepackage{
+			ucs
+			,amsfonts
+			,amssymb
+			,acronym
+			,verbatim
+			,rotating
+			,graphicx
+			,enumerate
+			,fancyhdr
+            ,mathrsfs
+            ,array
+			}
+
+\usepackage{tikz}
+\usetikzlibrary{svg.path}
+
+\pagestyle{fancy}
+\addtolength{\textheight}{1.0in}
+\addtolength{\textwidth}{0.5in}
+\addtolength{\voffset}{-1.0in}
+
+\newcommand{\cat}[1][]{%
+    \tikz \fill [scale=1ex/30,yscale=-1,#1] svg "M495.959,867.638c-3.318-4-1.121-7.686,7.098-11.904c7.322-3.76,8.223-4.871,11.365-14.049
+		c5.646-16.496,9.951-21.084,24.289-25.893c4.883-1.637,7.111-3.217,6.732-4.771c-3.148-12.889-1.992-16.166,4.48-12.701
+		c2.174,1.162,3.924,0.754,6.943-1.619c4.547-3.576,5.105-3.137,6.68,5.264c0.725,3.859,0.445,6.785-0.791,8.273
+		c-1.186,1.43-1.496,4.199-0.816,7.295c0.895,4.07,0.186,6.26-3.836,11.861c-6.01,8.367-6.746,18.059-1.752,23.053
+		c3.975,3.973,4.066,6.363,0.248,6.363c-3.869,0-8.201-4.926-8.201-9.322c0-4.723-4.635-6.33-7.391-2.564
+		c-2.844,3.889-2.738,7.115,0.23,7.115c1.312,0,2.387,1.074,2.387,2.387c0,1.92-2.465,2.385-12.635,2.385
+		c-6.947,0-13.047-0.668-13.551-1.484c-0.541-0.875-3.803-0.502-7.951,0.912c-7.744,2.639-11.631,5.996-8.896,7.686
+		c0.916,0.566,1.668,1.703,1.668,2.527C502.26,870.757,498.104,870.222,495.959,867.638z";~%
+}
+
+
+
+
+
+\fancyhf{}
+\fancyhead[L]{{\bfseries Programaci\'on I Curso 2012. Pr\'actica 1}}
+\fancyfoot[LE,RO]{\thepage}
+
+\fancypagestyle{firstpage}{
+\fancyhf{}
+
+\fancyhead[L]{\includegraphics[width=1.75cm]{ucalp.jpg}  \\
+\small{UCALP. Facultad de Ciencias Exactas e Ingenier\'ia} \\
+{\bfseries Programaci\'on I Curso 2012. Pr\'actica 1}}
+\fancyfoot[LE,RO]{\thepage}
+}
+
+\thispagestyle{firstpage}
+
+\begin{document}
+
+~\\ \\ \\ \\
+Los ejercicios marcados con \maltese son de entrega obligatoria.
+\begin{enumerate}
+
+\item Escribir un algoritmos que solucionen los siguientes problemas:
+    \begin{itemize}
+        \item[a-] \cat Subir en ascensor al piso $X$.
+ 	    \item[b-] Lavarse las manos.
+    \end{itemize}
+\begin{small} { \textit Nota: determine a su criterio las acciones primitivas, suponiendo que quien realiza las acciones es un ``procesador inexperto''.} \end{small}
+
+\item Describir el procesamiento (\'ambito, acciones primitivas, condiciones) as\'i como el algoritmo para resolver los siguientes problemas:
+    \begin{itemize}
+        \item[a-] \cat Calcular el promedio de tres n\'umeros utilizando una calculadora.
+        \item[b-] Buscar la carta $x$ en un mazo de naipes (Ejemplo de supuesto: ``el mazo está completo'').
+        \item[c-] De una ``tirada'' en el juego de la generala, indicar si se forma generala, tomando los dados de a uno por vez.
+        \item[d-] \cat Separar un mazo de naipes (espa\~nolas) en cuatro pilas, una para cada palo.
+    \end{itemize}
+
+\item Desarrollar algoritmos que resuelvan los siguientes problemas planteados.
+    \begin{itemize}
+        \item[a-] Dado un n\'umero de $2n + 1$ cifras decir si el mismo es pal\'indromo (capic\'ua).
+        \item[b-] \cat De una pila de tarjetas numeradas informar cual es la mayor.
+        \item[c-] De una pila de tarjetas numeradas informar la cantidad de apariciones del n\'umero $N$.
+    \end{itemize}
+
+\item Escribir algoritmos que resuelvan los siguientes problemas:
+    \begin{itemize}
+	    \item[a-] Pasar todas las cartas de una pila de naipes $C_1$ de $N_1$ naipes (puede no estar el mazo completo) a otra $C_2$ excepto aquellos que coincidan con alg\'un palo $X$.
+	    \item[b-] \cat Dada una pila de naipes de $N$ naipes, obtener la suma (cada naipe vale su n\'umero).
+	    \item[c-] Encontrar e informar la posici\'on del naipe con menor n\'umero en una pila de naipes.
+    \end{itemize}
+
+\item Dise\~nar el algoritmo (diagrama de flujo y/o el pseudoc\'odigo) que muestre el mayor de tres n\'umeros enteros entrados por teclado.
+
+\item \cat Dise\~nar el algoritmo (diagrama de flujo y/o el pseudoc\'odigo) que calcule la media de una serie de n\'umeros positivos entrados por teclado. El ingreso de un valor igual a cero indicar\'a el final del ingreso de datos.
+
+\item Realizar el diagrama de flujo del algoritmo que calcula e imprime la suma de los n\'umeros pares comprendidos entre 2 y 100.
+
+\item Realizar el diagrama de flujo y/o pseudoc\'odigo de un algoritmo que visualice el factorial de un n\'umero.
+
+\item \cat Dise\~nar el algoritmo que permita dado tres n\'umeros, determinar si la suma de cualquier pareja de ellos es igual al tercer n\'umero. Si se cumple esta condición deber\'a imprimir la palabra ``iguales'' sino ``distintos''.
+
+\item Realizar el diagrama de flujo y/o escribir el pseudoc\'odigo del algoritmo que pida al usuario el ingreso de una hora expresada en horas, minutos y segundos e indique la diferencia entre esa hora y la hora actual en horas, minutos y segundos (de a una por vez).
+
+\end{enumerate}
+\end{document}

@@ -1,0 +1,67 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[spanish]{babel}
+\usepackage{
+			ucs
+			,amsfonts
+			,amssymb
+			,acronym
+			,verbatim
+			,rotating
+			,graphicx
+			,enumerate
+			,fancyhdr
+            ,mathrsfs
+            ,array
+			}
+
+\usepackage{tikz}
+\usetikzlibrary{svg.path}
+
+\pagestyle{fancy}
+\addtolength{\textheight}{1.0in}
+\addtolength{\textwidth}{0.5in}
+\addtolength{\voffset}{-1.0in}
+
+\fancyhf{}
+\fancyhead[L]{{\bfseries Programaci\'on I Curso 2012. Pr\'actica 8 \hfill Listas}}
+\fancyfoot[LE,RO]{\thepage}
+
+\fancypagestyle{firstpage}{
+\fancyhf{}
+
+\fancyhead[L]{\includegraphics[width=1.75cm]{ucalp.jpg}  \\
+\small{UCALP. Facultad de Ciencias Exactas e Ingenier\'ia} \\
+{\bfseries Programaci\'on I Curso 2012. Pr\'actica 8 \hfill Listas}}
+\fancyfoot[LE,RO]{\thepage}
+}
+
+\thispagestyle{firstpage}
+
+\begin{document}
+
+~\\ \\ \\ \\
+
+\begin{enumerate}
+
+\item Modifique los algoritmos de ordenamiento y b\'usqueda vistos con anterioridad para que funcionen sobre listas enlazadas.
+
+\item Escribir un procedimiento/funci\'on que permita intercambiar los elementos ubicados en la posici\'on \verb-p- y \verb-siguiente(p)- de una lista enlazada.
+     
+\item Escribir funciones/procedimientos que permitan \emph{insertar, borrar} y \emph{localizar} un elemento en un lista enlazada, pero de manera ordenada (\emph{ascendente o descendente, es indistinto}).
+    
+\item Escriba una funci\'on/procedimiento que permita eliminar todas las ocurrencias de un elemento $x$ dentro de una lista enlazada.
+
+\item Escriba una funci\'on/procedimiento que permita ``dar vuelta'' una lista enlazada.
+
+\item Implemente el ejercicio 3 de la pr\'actica anterior (\emph{7.5}) utilizando listas enlazadas.   
+
+\item Implemente el ejercicio 4 de la pr\'actica anterior (\emph{7.5}) utilizando listas enlazadas.
+
+\item Implemente el ejercicio 5 de la pr\'actica anterior (\emph{7.5}) utilizando listas enlazadas.
+
+\item Se desea contar con un tipo \emph{String} de longitud variable (una lista de caracteres). Realice la implementaci\'on de este nuevo tipo y funciones/procedimientos para manejo: \emph{cargar, mostrar, saber longitud, comparar, etc...}
+
+\item Realizar una funci\'on/procedimiento que permita chequear si una palabra (representada como en el punto anterior) es palindrome o no. 
+     
+\end{enumerate}
+\end{document}

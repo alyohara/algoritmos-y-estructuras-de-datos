@@ -1,0 +1,266 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[spanish]{babel}
+\usepackage{
+			ucs
+			,amsfonts
+			,amssymb
+			,acronym
+			,verbatim
+			,rotating
+			,graphicx
+			,enumerate
+			,fancyhdr
+            ,mathrsfs
+            ,array
+			}
+
+\usepackage{tikz}
+\usetikzlibrary{svg.path}
+
+\pagestyle{fancy}
+\addtolength{\textheight}{1.0in}
+\addtolength{\textwidth}{0.5in}
+\addtolength{\voffset}{-1.0in}
+
+\newcommand{\cat}[1][]{%
+    \tikz \fill [scale=1ex/30,yscale=-1,#1] svg "M495.959,867.638c-3.318-4-1.121-7.686,7.098-11.904c7.322-3.76,8.223-4.871,11.365-14.049
+		c5.646-16.496,9.951-21.084,24.289-25.893c4.883-1.637,7.111-3.217,6.732-4.771c-3.148-12.889-1.992-16.166,4.48-12.701
+		c2.174,1.162,3.924,0.754,6.943-1.619c4.547-3.576,5.105-3.137,6.68,5.264c0.725,3.859,0.445,6.785-0.791,8.273
+		c-1.186,1.43-1.496,4.199-0.816,7.295c0.895,4.07,0.186,6.26-3.836,11.861c-6.01,8.367-6.746,18.059-1.752,23.053
+		c3.975,3.973,4.066,6.363,0.248,6.363c-3.869,0-8.201-4.926-8.201-9.322c0-4.723-4.635-6.33-7.391-2.564
+		c-2.844,3.889-2.738,7.115,0.23,7.115c1.312,0,2.387,1.074,2.387,2.387c0,1.92-2.465,2.385-12.635,2.385
+		c-6.947,0-13.047-0.668-13.551-1.484c-0.541-0.875-3.803-0.502-7.951,0.912c-7.744,2.639-11.631,5.996-8.896,7.686
+		c0.916,0.566,1.668,1.703,1.668,2.527C502.26,870.757,498.104,870.222,495.959,867.638z";~%
+}
+\renewcommand{\cat}{\maltese}
+
+
+
+
+\fancyhf{}
+\fancyhead[L]{{\bfseries Programaci\'on I Curso 2012. Pr\'actica 2 \hfill Pseudo-C\'odigo - Resoluci\'on}}
+\fancyfoot[LE,RO]{\thepage}
+
+\fancypagestyle{firstpage}{
+\fancyhf{}
+
+\fancyhead[L]{\includegraphics[width=1.75cm]{ucalp.jpg}  \\
+\small{UCALP. Facultad de Ciencias Exactas e Ingenier\'ia} \\
+{\bfseries Programaci\'on I Curso 2012. Pr\'actica 2 \hfill Pseudo-C\'odigo - Resoluci\'on}}
+\fancyfoot[LE,RO]{\thepage}
+}
+
+\thispagestyle{firstpage}
+
+\begin{document}
+
+~\\ \\ \\ \\
+\begin{itemize}
+
+\item[3]
+    \begin{itemize}
+        \item[d-] \begin{verbatim} Gamma := tar;\end{verbatim} INV\'ALIDA. No se puede asignar un valor a una constante.
+        \item[e-] \begin{verbatim} rango := respuesta;\end{verbatim} INV\'ALIDA. Los tipos de las variables no concuerdan.
+        \item[g-] \begin{verbatim} tar := mx9;\end{verbatim} V\'ALIDA. El valor de \verb=mx9= se convierte autom\'aticamente a real (al reves no se puede).  
+        \item[h-] \begin{verbatim} simbolo := `t`;\end{verbatim} V\'ALIDA. Los tipos son correctos y se puede realizar la asignaci\'on.
+    \end{itemize}
+
+\item[4.b-] ~~
+    \begin{table}[!h]
+      \begin{tabular}{|c||c|c|c|}
+        \hline
+        Nro. de Linea & \verb=x= & \verb=y= & \verb=z= \\
+        \hline \hline
+        1 & 27 & -- & -- \\
+        2 & 27 & 343 & -- \\
+        3 & 27 & 343 & 70 \\
+        4 & 30 & 343 & 70 \\
+        5 & 30 & 100 & 70 \\
+        6 & 200 & 100 & 70 \\
+        7 & 200 & 200 & 70 \\
+        \hline
+      \end{tabular}
+    \end{table}
+
+\item[5]
+    \begin{itemize}
+        \item[a-] \begin{verbatim} x1 := b * b / -7 / 1.45;\end{verbatim} V\'ALIDA. Se asigna a \verb=x= un valor en funci\'on del valor de \verb=b=
+        \item[b-] \begin{verbatim} x := sqrt( abs( 5 * 5 - 4 * 4));\end{verbatim} V\'ALIDA. Se asigna a \verb=x= en valor 3.
+        \item[c-] \begin{verbatim} -v := x * y - total;\end{verbatim} ERROR. \verb=-v= no es un nombre de variable v\'alido suponiendo que \verb=v= es la variable, no se pueden aplicar funciones o operadores unarios del lado izquierdo de una sentencia de asignaci\'on.
+        \item[d-] \begin{verbatim} precioTotal - descuento := precioPagar;\end{verbatim} ERROR. 
+    \end{itemize}	
+
+\item[7.c-]
+\begin{small}
+\begin{verbatim}
+program siete_c;
+
+var
+  i,j:integer;
+
+begin
+   for i:= 0 to 4 do
+   begin
+     for j:= 0 to (3 - (i mod 4)) do
+         write(' ');
+     for j:= 0 to (2 * (i mod 4)) do
+         write('*');
+     for j:= 0 to (3 - (i mod 4)) do
+         write(' ');
+     writeln();
+    end;
+   readln;
+end.
+\end{verbatim}
+\end{small}
+
+\item[9]
+\begin{small}
+\begin{verbatim}
+program nueve;
+
+var
+  total:integer;
+
+begin
+   write('Ingrese la cant. de dinero: $');
+   readln(total);
+   writeln('Billtes de $100: ', total div 100);
+   total := total mod 100;
+   writeln('Billtes de $50: ', total div 50);
+   total := total mod 50;
+   writeln('Billtes de $20: ', total div 20);
+   total := total mod 20;
+   writeln('Billtes de $10: ', total div 10);
+   total := total mod 10;
+   writeln('Billtes de $5: ', total div 5);
+   total := total mod 5;
+   writeln('Billtes de $2: ', total div 2);
+   total := total mod 2;
+   writeln('Monedas de $1: ', total);
+
+   readln;
+end.
+\end{verbatim}
+\end{small}
+
+\item[10]
+\begin{small}
+\begin{verbatim}
+program diez;
+
+var
+  cuenta,:integer;
+
+begin
+   write('Ingrese la cant. de segundos: ');
+   readln(cuenta);
+
+   writeln((cuenta div 60) div 60,' : ',cuenta div 60 mod 60,' : ',((cuenta mod 60) mod 60));
+
+   readln;
+end.
+\end{verbatim}
+\end{small}
+\item[15]
+\begin{small}
+\begin{verbatim}
+program quince;
+
+var
+  ret,ab,i:integer;
+
+begin
+   write('Ingrese un numero: ');
+   readln(ab);
+
+   for i:= 1 to trunc(ab/2) do
+      if (ab mod i = 0) then
+         ret:= ret + i;
+
+   if (ret > ab) then
+      writeln('El numero es abundante')
+   else
+      writeln('El numero NO es abundante');
+
+   readln;
+end.
+\end{verbatim}
+\end{small}
+\item[17]
+\begin{small}
+\begin{verbatim}
+program d_siete;
+
+var
+  ret,def,i:integer;
+
+begin
+   write('Ingrese un numero: ');
+   readln(def);
+
+   for i:= 1 to trunc(def/2) do
+      if (def mod i = 0) then
+         ret:= ret + i;
+
+   if (ret < def) then
+      writeln('El numero es defectivo')
+   else
+      writeln('El numero NO es defectivo');
+
+   readln;
+end.
+\end{verbatim}
+\end{small}
+\item[19]
+    \begin{itemize}
+      \item[3]
+\begin{small}
+\begin{verbatim}
+program dn_tres;
+
+var
+  b,h:real;
+
+begin
+   write('Ingrese la altura del rectangulo: ');
+   readln(h);
+   write('Ingrese la base del rectangulo: ');
+   readln(b);
+
+   writeln('El area del rectangulo es: ',b*h);
+
+   readln;
+end.
+\end{verbatim}
+\end{small}
+      \item[4]
+\begin{small}
+\begin{verbatim}
+program dn_cuatro;
+
+var
+  b,h:real;
+
+begin
+   write('Ingrese la altura del triangulo: ');
+   readln(h);
+   write('Ingrese la base del triangulo: ');
+   readln(b);
+
+   writeln('El area del triangulo es: ',(b*h)/2);
+
+   readln;
+end.
+\end{verbatim}
+\end{small}
+      \item[10]
+\begin{small}
+\begin{verbatim}
+
+\end{verbatim}
+\end{small}
+    \end{itemize}
+
+\end{itemize}
+\end{document}

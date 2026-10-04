@@ -1,0 +1,70 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[spanish]{babel}
+\usepackage{
+			ucs
+			,amsfonts
+			,amssymb
+			,acronym
+			,verbatim
+			,rotating
+			,graphicx
+			,enumerate
+			,fancyhdr
+            ,mathrsfs
+            ,array
+			}
+
+\usepackage{tikz}
+\usetikzlibrary{svg.path}
+
+\pagestyle{fancy}
+\addtolength{\textheight}{1.0in}
+\addtolength{\textwidth}{0.5in}
+\addtolength{\voffset}{-1.0in}
+
+\fancyhf{}
+\fancyhead[L]{{\bfseries Programaci\'on I Curso 2012. Pr\'actica 9 \hfill Recursi\'on}}
+\fancyfoot[LE,RO]{\thepage}
+
+\fancypagestyle{firstpage}{
+\fancyhf{}
+
+\fancyhead[L]{\includegraphics[width=1.75cm]{ucalp.jpg}  \\
+\small{UCALP. Facultad de Ciencias Exactas e Ingenier\'ia} \\
+{\bfseries Programaci\'on I Curso 2012. Pr\'actica 9 \hfill Recursi\'on}}
+\fancyfoot[LE,RO]{\thepage}
+}
+
+\thispagestyle{firstpage}
+
+\begin{document}
+
+~\\ \\ \\ \\
+
+\begin{enumerate}
+
+\item Realice una funci\'on/procedimiento recursivo que devuelva el factorial de un n\'umero.
+
+\item Realice una funci\'on/procedimiento recursivo que dada una palabra la invierta.
+
+\item Realice una funci\'on/procedimiento recursivo que devuelva a suma de todos los n\'umeros enteros de un vector.
+
+\item Realice una funci\'on/procedimiento recursivo que cuente la cantidad de letras en una palabra.
+
+\item Realice una funci\'on/procedimiento recursivo que sume los n\'umeros en el intervalo $[1..N]$.
+
+\item Realice una funci\'on/procedimiento recursivo que encuentre un n\'umero dentro de un vector.
+
+\item Implemente una versi\'on recursiva de la b\'usqueda binaria.
+
+\item Realice una funci\'on/procedimiento recursivo que permita encontrar un valor dentro de una lista (enlazada).
+
+\item Realice una funci\'on/procedimiento recursivo que sume los valores que se encuentran almacenados dentro de una lista (enlazada) de enteros.
+    
+\item Realice una funci\'on/procedimiento recursivo que de vuelta una lista (enlazada).
+
+\item Realice una funci\'on/procedimiento recursivo que permita ordenar una lista (enlazada).
+
+
+\end{enumerate}
+\end{document}

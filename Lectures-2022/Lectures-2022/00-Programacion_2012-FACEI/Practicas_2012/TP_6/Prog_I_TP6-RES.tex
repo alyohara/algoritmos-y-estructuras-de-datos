@@ -1,0 +1,210 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[spanish]{babel}
+\usepackage{
+			ucs
+			,amsfonts
+			,amssymb
+			,acronym
+			,verbatim
+			,rotating
+			,graphicx
+			,enumerate
+			,fancyhdr
+            ,mathrsfs
+            ,array
+			}
+
+\usepackage{tikz}
+\usetikzlibrary{svg.path}
+
+\pagestyle{fancy}
+\addtolength{\textheight}{1.0in}
+\addtolength{\textwidth}{0.5in}
+\addtolength{\voffset}{-1.0in}
+
+\fancyhf{}
+\fancyhead[L]{{\bfseries Programaci\'on I Curso 2012. Pr\'actica 6 \hfill Punteros}}
+\fancyfoot[LE,RO]{\thepage}
+
+\fancypagestyle{firstpage}{
+\fancyhf{}
+
+\fancyhead[L]{\includegraphics[width=1.75cm]{ucalp.jpg}  \\
+\small{UCALP. Facultad de Ciencias Exactas e Ingenier\'ia} \\
+{\bfseries Programaci\'on I Curso 2012. Pr\'actica 6 \hfill Punteros}}
+\fancyfoot[LE,RO]{\thepage}
+}
+
+\thispagestyle{firstpage}
+
+\begin{document}
+
+~\\ \\ \\ \\
+
+\begin{enumerate}
+
+\item Determinar cu\'ales de las siguientes proposiciones de c\'odigo son correctas.
+\begin{small}
+\begin{verbatim}
+VAR
+    A,B,C: ^Integer;
+    D,E,F: Integer;
+\end{verbatim}
+\begin{tabular}{ p{0.4\textwidth} p{0.4\textwidth} }
+\begin{verbatim}
+a)  New(A);
+    A^ := 0;
+    B := A;
+\end{verbatim}
+  &
+\begin{verbatim}
+b)  Read(D);
+    New(B);
+    B^ := D;
+    A^ := B;
+\end{verbatim} 
+\\
+\begin{verbatim}
+c)  Read(C);
+\end{verbatim}
+  &
+\begin{verbatim}
+d)  Read(C^);
+\end{verbatim}
+\\
+\begin{verbatim}
+e)  New(C);
+    Read(C^);
+\end{verbatim}
+  &
+\begin{verbatim}
+f)  New(C);
+    Read(C^);
+    B := C^;
+\end{verbatim}
+\\
+\begin{verbatim}
+g)  New(C);
+    Read(C^);
+    B^ := C^;
+\end{verbatim}
+  &
+\begin{verbatim}
+h)  New(C);
+    Read(C^);
+    New(B);
+    B^ := C^;
+\end{verbatim}
+\\
+\begin{verbatim}
+i)  F := 5;
+    New(A);
+    B := A;
+    A^ := F;
+    B^ := 0;
+\end{verbatim}
+    &
+\begin{verbatim}
+j)  New(A);
+    B := A;
+    A^ := 8;
+    Dispose(B);
+    F := A^;
+\end{verbatim}
+\end{tabular}
+\end{small}
+
+\item Implemente una funci\'on/procedimiento \textbf{swap} la cual recibe dos par\'ametros e intercambia dos valores. \emph{Resolver utilizando punteros.}
+
+\item Realizar un programa que permita almacenar un listado de punteros de palabras en un vector y luego imprimirlas en pantalla (emplear procedimientos para la soluci\'on).
+
+\item Implementar el ejercicio de la batalla naval (pr\'actica 4 ejercicio 12, empleando procedimientos y funciones. \emph{(ejercicio sin punteros)}
+
+\item Implementar el ejercicio 15 de la pr\'actica 4 empleando un arreglo de punteros como estructura de almacenamiento de los elementos. (utilizar procedimientos/funciones para resolver cada uno de los \'items solicitados).
+
+\item Dada la siguiente declaraci\'on, representar gr\'aficamente las distintas operaciones sobre las variables de tipo puntero, e indicar el contenido de las variables asociadas.
+\begin{small}
+\begin{verbatim}
+type
+    Ptr_int  = ^integer;
+    Ptr_char = ^char;
+    avion = record
+        anio_fab:integer;
+        marca: string[10];
+        cant_asientos:integer;
+    end;
+    Ptr_auto = ^auto;
+
+var
+    p1,p2 : Ptr_int;
+    k1,k2 : Ptr_char;
+    av1,av2 : Ptr_avion;
+    a: avion;
+\end{verbatim}
+\begin{tabular}{p{0.4\textwidth} p{0.4\textwidth}}
+\begin{itemize}
+    \item[a)] \verb-NEW(p1); NEW(p2);-			
+    \item[c)] \verb-p2:= p1;-					
+    \item[e)] \verb-DISPOSE(p1);-				
+    \item[g)] \verb-NEW(k1); NEW(k2);-			
+    \item[i)] \verb-k2^:= k1^;-				
+    \item[k)] \verb-NEW(av1); NEW(av2);-		
+    \item[m)] \verb-av1^:= a;-					
+    \item[\~n)] \verb-av2^.anio_fab:= a. anio_fab-			
+\end{itemize}
+&
+\begin{itemize}
+  \item[b)] \verb-p1^:= 18;-
+  \item[d)] \verb-p2^:= 26 + p1^;-
+  \item[f)] \verb+WRITELN(p2^ - 3);+
+  \item[h)] \verb-k1^:= 'L'; k2^:= 'P';-
+  \item[j)] \verb-k1:=k2;-
+  \item[l)] \verb-READ(a.anio_fab, a.marca, a.cant_asientos);-
+  \item[n)] \verb-av1^.marca:= "CESSNA";-
+  \item[o)] \verb-av2:= av1;-
+\end{itemize}
+\end{tabular}
+\end{small}
+
+\item Escribir una funci\'on que reciba como argumentos varios punteros a entero realice la suma de sus contenidos y devuelva un puntero al resultado.
+
+\item Analice cu\'al es el contenido de \verb-a- luego de ejecutar cada procedimiento (de forma independiente).
+\begin{small}
+\begin{verbatim}
+type
+    puntero = ^integer;
+var
+    a : puntero;
+
+procedure pro1(b:puntero);
+begin
+    b^:=12
+end;
+
+procedure pro2(b:puntero);
+begin
+    new(b);
+    b^:=12
+end;
+
+procedure pro3(var b:puntero);
+begin
+    b^:=12
+end;
+
+procedure pro4(var b:puntero);
+begin
+    new(b);
+    b^:=12
+end;
+
+begin
+    new(a);
+    a^:=1;
+{ llamada de ejecuci\'on de uno de los cada uno procedimientos anteriores }
+\end{verbatim}
+\end{small}
+
+
+\end{enumerate}
+\end{document}

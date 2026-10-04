@@ -1,0 +1,312 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[spanish]{babel}
+\usepackage{
+			ucs
+			,amsfonts
+			,amssymb
+			,acronym
+			,verbatim
+			,rotating
+			,graphicx
+			,enumerate
+			,fancyhdr
+            ,mathrsfs
+            ,array
+			}
+
+\usepackage{tikz}
+\usetikzlibrary{svg.path}
+
+\pagestyle{fancy}
+\addtolength{\textheight}{1.0in}
+\addtolength{\textwidth}{0.5in}
+\addtolength{\voffset}{-1.0in}
+
+\newcommand{\cat}[1][]{%
+    \tikz \fill [scale=1ex/30,yscale=-1,#1] svg "M495.959,867.638c-3.318-4-1.121-7.686,7.098-11.904c7.322-3.76,8.223-4.871,11.365-14.049
+		c5.646-16.496,9.951-21.084,24.289-25.893c4.883-1.637,7.111-3.217,6.732-4.771c-3.148-12.889-1.992-16.166,4.48-12.701
+		c2.174,1.162,3.924,0.754,6.943-1.619c4.547-3.576,5.105-3.137,6.68,5.264c0.725,3.859,0.445,6.785-0.791,8.273
+		c-1.186,1.43-1.496,4.199-0.816,7.295c0.895,4.07,0.186,6.26-3.836,11.861c-6.01,8.367-6.746,18.059-1.752,23.053
+		c3.975,3.973,4.066,6.363,0.248,6.363c-3.869,0-8.201-4.926-8.201-9.322c0-4.723-4.635-6.33-7.391-2.564
+		c-2.844,3.889-2.738,7.115,0.23,7.115c1.312,0,2.387,1.074,2.387,2.387c0,1.92-2.465,2.385-12.635,2.385
+		c-6.947,0-13.047-0.668-13.551-1.484c-0.541-0.875-3.803-0.502-7.951,0.912c-7.744,2.639-11.631,5.996-8.896,7.686
+		c0.916,0.566,1.668,1.703,1.668,2.527C502.26,870.757,498.104,870.222,495.959,867.638z";~%
+}
+
+
+
+
+\fancyhf{}
+\fancyhead[L]{{\bfseries Algoritmos y Estructuras de Datos. Pr\'actica 2.}}
+\fancyfoot[LE,RO]{\thepage}
+
+\fancypagestyle{firstpage}{
+\fancyhf{}
+
+\fancyhead[L]{\includegraphics[width=\textwidth]{header.png} 
+}
+\fancyfoot[LE,RO]{\thepage}
+}
+
+\thispagestyle{firstpage}
+
+\begin{document}
+
+~\\ \\ \\ \\
+
+\begin{enumerate}
+\item Escribir el pseudo-c\'odigo de algoritmo que permita cambiar una lamparita quemada  de un artefacto suspendido en el techo utilizando las siguientes definiciones.
+    \begin{itemize}
+        \item \'Ambito:
+            \begin{itemize}
+                \item[-] lamparita quemada.
+                \item[-] lamparita nueva.
+                \item[-] escalera.
+            \end{itemize}
+        \item Acciones primitivas:
+            \begin{itemize}
+                \item[-] situar escalera (en donde se supone que debe ir).
+                \item[-] subir un pelda\~no.
+                \item[-] bajar un pelda\~no.
+                \item[-] girar lamparita (lev\'ogiro).
+                \item[-] girar lamparita (dextr\'ogiro).
+                \item[-] poner lamparita.
+                \item[-] sacar lamparita.
+            \end{itemize}
+        \item Condiciones:
+            \begin{itemize}
+                \item[-] mano alcanza lamparita??
+                \item[-] llegar al piso??
+                \item[-] lamparita suelta.
+                \item[-] lamparita ajustada.
+            \end{itemize}
+    \end{itemize}
+
+\item Escribir en pseudo-c\'odigo para los ejercicios \emph{3-b, 4-b, 6} y \emph{9} de la pr\'actica 1.
+\begin{small} \textit{Nota: S\'olo debe entregar el pseudo-c\'odigo para 2 ejercicios a elecci\'on} \end{small}
+
+\item Escribir el pseudo-c\'odigo de un algoritmo que calcule el \'area de cualquier rect\'angulo ($area = b * h$).
+
+\item Escribir el pseudo-c\'odigo de un algoritmo para calcular el \'area de un tri\'angulo ($area = \frac{b * h}{2}$).
+
+\item Escribir las sentencias condicionales para calcular:
+	\begin{itemize}
+        \item[a-]
+                $
+                    x =  x - 5 ~ \textrm{si} ~a > b\\
+                $
+        \item[b-]
+                $
+                    x = \left\{
+                            \begin{array}{l l}
+                                -8 & \textrm{si} ~a > b\\
+                                1  & \textrm{si} ~a <= b\\
+                            \end{array} \right.
+                $
+        \item[c-]
+                $
+                    x = \left\{
+                            \begin{array}{l l}
+                                1 & \textrm{si} ~n > 5\\
+                                0  & \textrm{si} ~n = 5\\
+                                -1  & \textrm{si} ~n < 5\\
+                            \end{array} \right.
+                $
+        \item[d-]
+                $
+                    t = \left\{
+                            \begin{array}{l l}
+                                1 & \textrm{si} ~x > a\\
+                                3 & \textrm{si} ~a <= x <= b ~~~\textrm{para}~a<b<c\\
+                                5  & \textrm{si} ~b < x <= c\\
+                                -4  & \textrm{si} ~c < x\\
+                            \end{array} \right.
+                $
+    \end{itemize}
+
+\item Hallar los errores (si los hay) en cada una de las siguientes sentencias SI... ENTONCES.
+    \begin{itemize}
+\item[a-]
+\begin{small}
+\begin{verbatim}
+        si a - b						
+	           entonces						
+		              escribir(a);						
+\end{verbatim}
+\end{small}					
+\item[b-]
+\begin{small}
+\begin{verbatim}
+        si a + b < c
+            entonces
+                c = a + b;
+                a = b;
+                b = d;
+\end{verbatim}
+\end{small}
+\item[c-]
+\begin{small}
+\begin{verbatim}
+	si (a + b < c) and (b >= 0)
+	        entonces
+		          c < 0;
+\end{verbatim}
+\end{small}
+\end{itemize}
+
+
+\item Se necesita realizar un programa para asistir a un empleado del cine encargado de enviar a las personas a la sala correcta. Una vez comprada la entrada la audiencia se dirige al empleado, el cual, en base al n\'umero que figura en la entrada (3 d\'igitos) los env\'ia a la sala correspondiente. Habitualmente si la entrada es par, el empleado los dirige a la Sala 1. Cuando la entrada es impar los dirige a la sala 2. Por un error en la impresi\'on de las entradas han salido muchas con el n\'umero 000, en ese caso el empleado tiene que comunicarle al usuario que se tienen que dirigir a la administraci\'on para que les impriman una nueva.\\
+    
+    Escriba el pseudo-c\'odigo que resuelva en problema planteado.
+
+\item Un empleado trabaja en la mesa de entradas de una organizaci\'on. Le llegan expedientes de muchas otras dependencias. El es el encargado de decepcionarlos y depositarlos en 10 buzones. Los expedientes est\'an codificados con n\'umeros de 1 d\'igito. La forma de agrupaci\'on es la siguiente: los expedientes 0 ser\'an depositados en el buz\'on $A$, los 1, ser\'an depositados en el buz\'on $B$, y as\'i sucesivamente hasta el buz\'on $J$.\\
+Realizar el pseudo-c\'odigo de un programa que le indique al empleado en que buz\'on depositar los expedientes.
+
+%\item Eliminar los par\'entesis innecesarios de las siguientes expresiones.
+%    \begin{itemize}
+%        \item[a-] $a \leftarrow ( ( 9 - ( 65 /  7 ) + 60 ) * 26 ) + 40$
+%        \item[b-] $b \leftarrow ( - 65 ) /  ( 7 + ( 60 * 26 ) + 40 ) )$
+%    \end{itemize}
+
+
+%\item Desarrollar un algoritmo para, dado un conjunto de n\'umeros enteros, escribir aquellos que sean divisibles por $I$.
+
+\item Suponiendo que una paella se puede cocinar exclusivamente con arroz y gambas, y que para cada cuatro personas se utiliza medio kilo de arroz y un cuarto de kilo de gambas, escribir un pseudo-c\'odigo que pida por pantalla el n\'umero de comensales para la paella, el precio por kilo de los ingredientes y muestre las cantidades de los ingredientes necesarios y el coste de la misma.
+
+\item Escribir el pseudo-c\'odigo del algoritmo correspondiente a un programa que pida el total de kil\'ometros recorridos, el precio de la gasolina (por litro), el dinero de gasolina gastado en el viaje y el tiempo que se ha tardado (en horas y minutos) y que calcule:
+    \begin{itemize}
+        \item[a-] Consumo de gasolina (en litros y pesos) por cada 100 km.
+        \item[b-] Consumo de gasolina (en litros y pesos) por cada km.
+        \item[c-] Velocidad media (en km/h y m/s).
+    \end{itemize}
+
+\item Escribir el pseudo-c\'odigo de un algoritmo que dada una temperatura en grados Celsius calcule la conversi\'on respectiva a grados Kelvin, Fahrenheit y Cent\'igrados.
+
+%\item Calcular en valor de las siguientes expresiones, indicando si en TIPO del resultado obtenido se corresponde con el declarado:
+%    \begin{itemize}
+%        \item[]	VARIABLES:
+%            \begin{itemize}
+%                \item[]	REALES $a, b, c, d, e;$
+%                \item[] ENTERAS $i, k, l, m;$
+%                \item[] L\'OGICAS $p, q, r;$
+%            \end{itemize}
+%        \item[] INICIALIZACIONES:
+%            \begin{itemize}
+%                \item[] $n \leftarrow 0;$
+%                \item[] $b \leftarrow 6.75;$
+%                \item[] $c \leftarrow 12.3;$
+%                \item[] $l \leftarrow 42;$
+%            \end{itemize}
+%    \end{itemize}
+%\begin{itemize}
+%    \item[a-] $a \leftarrow b \leftarrow c;$
+%    \item[b-] $k \leftarrow 6 * 11 - l / 5;$
+%    \item[c-] $i \leftarrow l + 3 - 193;$
+%    \item[d-] $p \leftarrow ( l + 3 ) >= 10;$
+%    \item[e-] $q \leftarrow 4 / 2 <> 0;$
+%    \item[f-] $r \leftarrow c + m * 5 - 4 * l / k;$
+%\end{itemize}
+%
+%\item Considerando las siguientes definiciones de constantes y variables, examine cuales de las sentencias de asignaci\'on son inv\'alidas y cu\'al es el error, en caso contrario indique el resultado de la misma.
+%    \begin{itemize}
+%        \item[] CONSTANTES:
+%            \begin{itemize}
+%                \item[] $pagina = 255;$
+%                \item[] $z = `z`;$
+%                \item[] $gamma = 0.0045;$
+%            \end{itemize}
+%        \item VARIABLES:
+%            \begin{itemize}
+%                \item[] ENTEROS $mx7, mx9;$
+%                \item[] REALES $tar, rango;$
+%                \item[] CARACTERES $simbolo;$
+%                \item[] L\'OGICAS $respuesta;$
+%            \end{itemize}
+%    \end{itemize}
+%
+%\begin{itemize}
+%    \item[a-] $mx7 \leftarrow 924;$
+%    \item[b-] $mx9 \leftarrow pagina;$
+%    \item[c-] $rango \leftarrow gamma;$
+%    \item[d-] $gamma \leftarrow tar;$
+%    \item[e-] $rango \leftarrow respuesta;$
+%    \item[f-] $mx7 \leftarrow gamma;$
+%    \item[g-] $tar \leftarrow mx9;$
+%    \item[h-] $simbolo \leftarrow `t`;$
+%    \item[i-] $mx9 \leftarrow z;$
+%    \item[j-] $respuesta \leftarrow VERDADERO;$
+%\end{itemize}
+
+\item Se desea obtener la suma de los primeros 10 n\'umeros enteros positivos. Analice las siguientes secuencias de acciones, diga si se trata de algoritmos y en caso de serlo, determine su validez y eficiencia.\\
+\begin{small} \emph{Nota: como eficiencia entendemos, la cantidad de acciones requeridas para solucionar el problema dado. Un algoritmo dado es m\'as eficiente que otro, si puede resolver el problema en una menor cantidad de pasos.} \end{small}
+\begin{small}
+\begin{enumerate}
+    \item[a-]
+\begin{verbatim}
+	1- COMIENZO
+	2- 	Asignar a SUMA el valor 1+2+3+4+5+6+7+8+9+10.
+	3- 	SUMA contiene el resultado esperado.
+	4- FIN.
+\end{verbatim}
+    \item[b-]
+\begin{verbatim}
+	1- COMIENZO
+	2- 	Asignar a N el valor 10.
+	3- 	Asignar a SUMA el valor 0.
+	4- 	Sumar N a SUMA.
+	5- 	Decrementar el valor de N en 1.
+	6- 	Si N > 0 volver al paso 4.
+	7- 	SUMA contiene el valor esperado.
+	8- FIN.
+\end{verbatim}
+    \item[c-]
+\begin{verbatim}
+	1- COMIENZO
+	2- 	 Asignar a I en valor 1.
+	3- 	Asignar a SUMA el valor 0.
+	4- 	Repetir la siguiente instrucción 10 veces
+	5- 		Sumar I a SUMA.
+	6- 	SUMA contiene el valor esperado.
+	7- FIN.
+\end{verbatim}
+    \item[d-]
+\begin{verbatim}
+	1- COMIENZO
+	2- 	Asignar a I el valor 1.
+	3- 	Asignar a SUMA el valor 0.
+	4- 	Sumar I a SUMA.
+	5- 	Incrementar el valor de I en 1.
+	6- 	Si I < 10 volver a paso 4.
+	7- 	SUMA contiene el resultado esperado.
+	8- FIN.
+\end{verbatim}
+\end{enumerate}
+\end{small}
+
+Escribir un algoritmo v\'alido y ``eficiente'' para solucionar el problema.
+
+%\item Asumiendo que x, y, z son variables enteras, ¿ qué valor tendrán luego de la ejecución de las siguientes secuencia de instrucciones?
+%
+%	a) x ? 50;				b) x ? 27
+%	    y ? 340;				    y ? 343;
+%	    z ? x + y - 190;			    z ? x + y - 300;
+%	    x ? 17;				    x ? z / 10 + 23;
+%	    y ? x + z;				    y ? ( x + z ) / 10 * 10;
+%	    z ? x + 200;			    x ? x + 70 + y;
+%	    z ? x - z - 200;			    y ? z + x - 70;
+%
+%
+%5- Identificar los errores de las siguientes sentencias de asignación. Cuando encuentre una sentencia ilegal, indique el error. Si la sentencia es correcta, calcule el valor que se asignará.
+%	
+%	a) x1 ? b * b / -7 / 1.45;		b) x ? sqrt( abs( 5 * 5 - 4 * 4));
+%	c) -v ? x * y - total;			d) precioTotal - descuento ? precioPagar;
+%
+%6- Escribir la declaración de las variables correspondientes, al conjunto de sentencias de asignación que se dan a continuación; y, calcular el valor si es podible.
+%
+%	a) a ? truncar( 3.7 );			b) b ? round( 99.9 );
+%	c) c ? -round( 78.4 );		d) d ? 10 / 4;
+%	e) e ? sqrt( 8 );			f) f ? round( -3.1 ) > truncar( - 3.1 );
+
+\end{enumerate}
+\end{document}
+ 

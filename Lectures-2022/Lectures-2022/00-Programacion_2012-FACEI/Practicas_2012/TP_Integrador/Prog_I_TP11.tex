@@ -1,0 +1,106 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[spanish]{babel}
+\usepackage{
+			ucs
+			,amsfonts
+			,amssymb
+			,acronym
+			,verbatim
+			,rotating
+			,graphicx
+			,enumerate
+			,fancyhdr
+            ,mathrsfs
+            ,array
+			}
+
+\usepackage{tikz}
+\usetikzlibrary{svg.path}
+
+\pagestyle{fancy}
+\addtolength{\textheight}{1.0in}
+\addtolength{\textwidth}{0.5in}
+\addtolength{\voffset}{-1.0in}
+
+\fancyhf{}
+\fancyhead[L]{{\bfseries Programaci\'on I Curso 2012. Pr\'actica Integradora}}
+\fancyfoot[LE,RO]{\thepage}
+
+\fancypagestyle{firstpage}{
+\fancyhf{}
+
+\fancyhead[L]{\includegraphics[width=1.75cm]{ucalp.jpg}  \\
+\small{UCALP. Facultad de Ciencias Exactas e Ingenier\'ia} \\
+{\bfseries Programaci\'on I Curso 2012. Pr\'actica Integradora }}
+\fancyfoot[LE,RO]{\thepage}
+}
+
+\thispagestyle{firstpage}
+
+\begin{document}
+
+~\\ \\ \\ \\
+
+\begin{enumerate}
+%1
+\item Una empresa necesita un sistema de control para una sierra el\'ectrica. Se necesita cortar un tabl\'on de un tama\~no dado en cortes de un tama\~no determinado. El sistema debe realizar los cortes y devolver el sobrante del tabl\'on. Resolver el problema utilizando recursividad.
+
+%2
+\item Escriba una funci\'on recursiva que ordene de menor a mayor un arreglo de enteros bas\'andose en la siguiente idea: coloque el elemento m\'as peque\~no en la primera ubicaci\'on, y luego ordene el resto del arreglo con una llamada recursiva.
+
+%3
+\item Programe un m\'etodo recursivo que transforme un n\'umero entero positivo a notaci\'on binaria y viceversa (otro).
+
+%4
+\item Escribir procedimentos/funciones que dadas dos listas permitan calcular su uni\'on, intersecci\'on y su diferencia en una tercer lista resultado.
+
+%5
+\item Dada la siguiente declaración de tipos:\\
+\begin{small}
+\begin{verbatim}
+Type
+	Lista = ^Nodo;
+	Nodo = Record
+		Dato: Integer;
+		Siguiente: Lista;
+	end;
+\end{verbatim}
+\end{small}
+    \begin{itemize}
+        \item[i.] Escribir un procedimiento que reciba dos listas: una con datos y otra vac\'ia. El mismo debe llenar la segunda lista con los datos de la primera en forma ordenada.
+        \item[ii.] Escribir una funci\'on que reciba una lista y un n\'umero y retorne la cantidad de veces que aparece dicho n\'umero en la lista
+        \item[iii.] Escribir una funci\'on que retorne una lista (que se debe definir) con la frecuencia de repetici\'on de cada dato de una lista que se recibe como par\'ametro.
+    \end{itemize}
+
+%6
+\item Dada la siguiente definici\'on de funci\'on: \verb=FUNCTION FILTRO(L: lista): lista;= que recibe una lista y devuelve otra con los elementos que cumplen con la condici\'on: (elemento de la lista $\le$ 'condición').
+%7
+\item Generar un archivo con un rango de enteros positivos (random). Recorrer el archivo y mostrarlos en pantalla en forma de listado. Luego ordenarlos y mostrarlos nuevamente.
+
+%8
+\item   Una inmobiliaria tiene información sobre departamentos en alquiler. De cada departamento se conoce:
+    \begin{itemize}
+        \item Clave: es un entero que identifica al departamento.
+        \item Extensi\'on: superficie del departamento, en metros cuadrados.
+        \item Estado: (excelente, bueno, regular, malo).
+        \item Precio de alquiler: es un valor real.
+        \item Disponible: verdadero si est\'a disponible para el alquiler y falso si ya est\'a alquilado.
+    \end{itemize}
+    
+Diariamente acuden muchos clientes a la inmobiliaria solicitando informaci\'on. Escriba un programa que sea capaz de realizar las siguientes operaciones sobre la informaci\'on disponible (primero debe llenar el archivo con la información de los departamentos):
+    \begin{itemize}
+        \item Liste los datos de los departamentos disponibles que tengan un precio inferior o igual a un cierto valor \verb=P= (que debe ser le\'ido por teclado).
+        \item Liste los datos de los departamentos disponibles que tengan una superficie mayor o igual a un cierto valor dado \verb=E= (que debe ser le\'ido por teclado) y una ubicaci\'on excelente.
+        \item Liste el monto de la renta de todos los departamentos alquilados.
+        \item Llega un cliente solicitando alquilar un departamento. Si existe un departamento con una superficie mayor o igual a la deseada, con un precio y un estado que se ajustan a las necesidades del cliente (estos par\'ametros deben ser le\'idos), el departamento se alquila. Adem\'as, se deben actualizar los datos que correspondan (disponible de verdadero a falso).
+        \item Se vence un contrato de alquiler, si no se renueva, actualizar los datos que corresponda (disponible de falso a verdadero).
+        \item Se ha decidido aumentar los valores de alquiler en un \verb=X%=. Actualizar los precios de los alquileres de los departamentos no alquilados.
+    \end{itemize}
+    
+Nota: cada una de las opciones del programa, debe ser manejada por medio de un Men\'u. Además de la opci\'on para ingresar por primera vez los datos de los departamentos.
+
+%9
+\item Dados dos archivos, donde uno contiene un identificador \'unico, los nombres y apellidos de un grupo de personas y el otro contiene el mismo identificador \'unico y las direcciones.  Crear un nuevo archivo que contenga los datos completos de las personas, es decir nombre apellido y direcci\'on. Nota: los archivos pueden no estar ordenador bajo ning\'un criterio.  
+
+\end{enumerate}
+\end{document}
