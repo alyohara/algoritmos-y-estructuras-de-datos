@@ -8,6 +8,9 @@ const modules = [
     tip: "Antes de programar, escribi los casos de entrada y salida que debe cubrir tu algoritmo.",
     caption: "Ejemplo: decidir si un numero es par.",
     code: "numero = int(input('Numero: '))\n\nif numero % 2 == 0:\n    print('Es par')\nelse:\n    print('Es impar')",
+    theory: "Un algoritmo es una secuencia finita y ordenada de pasos para transformar una entrada en una salida. El pseudocodigo permite concentrarse en la logica antes de usar la sintaxis de Python.",
+    concepts: ["Entrada: datos que recibe el algoritmo.", "Proceso: operaciones y decisiones sobre esos datos.", "Salida: resultado observable y verificable.", "Una condicion elige entre caminos segun una expresion booleana."],
+    exercise: ["Clasificador de temperatura", "Pedi una temperatura e informá si está bajo cero, en rango templado (0 a 25) o caluroso.", "temperatura = float(input('Temperatura: '))\n\nif temperatura < 0:\n    print('Bajo cero')\nelif temperatura <= 25:\n    print('Templado')\nelse:\n    print('Caluroso')"],
     resources: [
       ["PDF", "Introduccion a Python", "Clase 1 / Teoria", `${base}Clase%201/Teor%C3%ADa/Clase1-Introduccion-parte1.pdf`],
       ["PDF", "Pseudocodigo y diagramas", "Clase 1 / Teoria", `${base}Clase%201/Teor%C3%ADa/Clase1-Pseudocodigo-Diagramas-parte2.pdf`],
@@ -22,6 +25,9 @@ const modules = [
     tip: "Elegir el contenedor correcto simplifica el algoritmo: lista para orden, conjunto para pertenencia, diccionario para clave/valor.",
     caption: "Ejemplo: cuadrados de los primeros N naturales.",
     code: "n = 10\ncuadrados = [numero ** 2 for numero in range(n)]\nprint(cuadrados)\n\n# Una tupla no se puede modificar\ndias = ('lun', 'mar', 'mie')",
+    theory: "Los tipos de datos definen que valores puede representar una variable y que operaciones son validas. Los contenedores agrupan valores; se eligen segun si importa el orden, la repeticion o una clave para acceder al dato.",
+    concepts: ["Lista: ordenada y mutable.", "Tupla: ordenada e inmutable.", "Conjunto: sin repetidos y sin posicion.", "Diccionario: asocia claves unicas con valores."],
+    exercise: ["Inventario sin repetidos", "A partir de una lista de productos repetidos, obtené el conjunto de productos distintos y mostrá cuántos hay.", "productos = ['lapiz', 'regla', 'lapiz', 'cuaderno']\ndistintos = set(productos)\n\nprint(distintos)\nprint('Cantidad:', len(distintos))"],
     resources: [
       ["PDF", "Tipos de datos", "Clase 2 / Teoria", `${base}Clase%202/Teoria/Clase4-Tipos_de_Datos.pdf`],
       ["PDF", "Practica 2", "Clase 2 / Practica", `${base}Clase%202/Practica/Practica2.pdf`],
@@ -36,6 +42,9 @@ const modules = [
     tip: "Una funcion debe tener una responsabilidad clara, entradas predecibles y un resultado verificable.",
     caption: "Ejemplo: potencia iterativa con validacion.",
     code: "def potencia(base, exponente):\n    if exponente < 0:\n        raise ValueError('El exponente debe ser natural')\n\n    resultado = 1\n    for _ in range(exponente):\n        resultado *= base\n    return resultado\n\nprint(potencia(2, 8))",
+    theory: "Una funcion encapsula una tarea para poder reutilizarla y probarla de forma aislada. Las excepciones permiten comunicar condiciones anormales sin confundirlas con el resultado normal de la funcion.",
+    concepts: ["Los parametros son entradas locales a la funcion.", "return entrega el resultado al llamador.", "El alcance local evita modificar variables externas por accidente.", "raise comunica un error que el programa puede manejar con try/except."],
+    exercise: ["Division segura", "Escribí una función dividir(a, b) que informe un error claro cuando b sea cero.", "def dividir(a, b):\n    if b == 0:\n        raise ValueError('No se puede dividir por cero')\n    return a / b\n\ntry:\n    print(dividir(10, 0))\nexcept ValueError as error:\n    print(error)"],
     resources: [
       ["PDF", "Errores y funciones", "Clase 3 / Teoria", `${base}Clase%203/Teoria/Clase_2_Errors_y_Functions.pdf`],
       ["PDF", "Excepciones y funciones", "Clase 3 / Teoria", `${base}Clase%203/Teoria/Clase_2_Excepciones_y_Functiones.pdf`],
@@ -50,6 +59,9 @@ const modules = [
     tip: "Modela primero que representa cada objeto y que operaciones debe permitir antes de escribir sus metodos.",
     caption: "Ejemplo: clase para representar un rectangulo.",
     code: "class Rectangulo:\n    def __init__(self, ancho, alto):\n        if ancho <= 0 or alto <= 0:\n            raise ValueError('Medidas positivas')\n        self.ancho = ancho\n        self.alto = alto\n\n    def area(self):\n        return self.ancho * self.alto\n\nprint(Rectangulo(4, 3).area())",
+    theory: "La modularizacion separa un programa en partes con responsabilidades claras. Una clase combina estado (atributos) y comportamiento (metodos), y permite crear muchas instancias del mismo modelo.",
+    concepts: ["__init__ establece el estado inicial del objeto.", "self referencia la instancia que recibe el metodo.", "Los metodos operan sobre los atributos del objeto.", "Validar invariantes en el constructor evita objetos inconsistentes."],
+    exercise: ["Cuenta bancaria simple", "Creá una clase Cuenta con saldo inicial y un método depositar que rechace montos no positivos.", "class Cuenta:\n    def __init__(self, saldo=0):\n        self.saldo = saldo\n\n    def depositar(self, monto):\n        if monto <= 0:\n            raise ValueError('El monto debe ser positivo')\n        self.saldo += monto\n\ncuenta = Cuenta()\ncuenta.depositar(500)\nprint(cuenta.saldo)"],
     resources: [
       ["PDF", "Funciones y modularizacion", "Clase 4 / Teoria", `${base}Clase%204/Teoria/Clase6-Funciones_Modularizacion.pdf`],
       ["IPYNB", "Funciones y objetos", "Clase 4 / Practica", `${base}Clase%204/Practica/Clase_6_Funciones_y_Objetos.ipynb`],
@@ -64,6 +76,9 @@ const modules = [
     tip: "Identifica la regla de acceso: ultimo en entrar primero en salir sugiere pila; primero en entrar primero en salir, cola.",
     caption: "Ejemplo: pila minima con una lista de Python.",
     code: "pila = []\npila.append('primer elemento')\npila.append('segundo elemento')\n\nultimo = pila.pop()\nprint(ultimo)  # segundo elemento\nprint(pila)",
+    theory: "Las estructuras lineales almacenan elementos en una secuencia. Lo importante no es solo guardar datos, sino definir por que extremo se insertan y extraen para representar correctamente el problema.",
+    concepts: ["Una lista enlazada conecta nodos mediante referencias.", "Una pila restringe el acceso al ultimo elemento agregado.", "Una cola restringe la salida al elemento mas antiguo.", "Cada operacion debe mantener la estructura valida incluso si esta vacia."],
+    exercise: ["Verificar parentesis", "Usá una pila para comprobar si una expresion tiene parentesis balanceados.", "def balanceados(expresion):\n    pila = []\n    for caracter in expresion:\n        if caracter == '(':\n            pila.append(caracter)\n        elif caracter == ')':\n            if not pila:\n                return False\n            pila.pop()\n    return not pila\n\nprint(balanceados('(a + b) * (c - d)'))"],
     resources: [
       ["IPYNB", "Repaso de estructuras lineales", "Clase 5 / Teoria", `${base}Clase%205/Teoria/Clase_5_Repaso-Est_de_Datos_Lineales-PRACTICA.ipynb`],
       ["IPYNB", "Practica de repaso", "Clase 5 / Practica", `${base}Clase%205/Practica/Clase_5_Repaso-PRACTICA.ipynb`],
@@ -78,6 +93,9 @@ const modules = [
     tip: "Para evaluar un algoritmo, considera siempre su correctitud, sus casos borde y el costo de tiempo/memoria.",
     caption: "Ejemplo: busqueda binaria sobre datos ordenados.",
     code: "def busqueda_binaria(datos, objetivo):\n    inicio, fin = 0, len(datos) - 1\n    while inicio <= fin:\n        medio = (inicio + fin) // 2\n        if datos[medio] == objetivo:\n            return medio\n        if datos[medio] < objetivo:\n            inicio = medio + 1\n        else:\n            fin = medio - 1\n    return -1",
+    theory: "Un algoritmo se compara por la cantidad de recursos que utiliza al crecer la entrada. La busqueda binaria aprovecha que los datos estan ordenados para descartar la mitad de los candidatos en cada iteracion.",
+    concepts: ["Busqueda lineal: revisa elementos uno a uno, O(n).", "Busqueda binaria: requiere orden previo y cuesta O(log n).", "Ordenar suele ser una etapa previa a buscar repetidamente.", "Los archivos permiten conservar datos mas alla de la ejecucion."],
+    exercise: ["Contador de lineas", "Implementá una función que cuente cuántas líneas tiene un archivo de texto.", "def contar_lineas(ruta):\n    with open(ruta, encoding='utf-8') as archivo:\n        return sum(1 for _ in archivo)\n\n# print(contar_lineas('datos.txt'))"],
     resources: [
       ["PDF", "Manejo de archivos", "Complementario", `${base}Manejo%20de%20archivos.pdf`],
       ["IPYNB", "Modulos y objetos", "Clase 6 / Teoria", `${base}Clase%206/Teoria/Clase_9_Modulos_y_Objetos.ipynb`],
@@ -115,6 +133,9 @@ const elements = {
   status: document.querySelector("#module-status"), count: document.querySelector("#module-count"),
   topics: document.querySelector("#topic-list"), tip: document.querySelector("#module-tip"),
   caption: document.querySelector("#example-caption"), code: document.querySelector("#code-example"),
+  theory: document.querySelector("#theory-text"), concepts: document.querySelector("#concept-list"),
+  exerciseTitle: document.querySelector("#exercise-title"), exercisePrompt: document.querySelector("#exercise-prompt"),
+  exerciseSolution: document.querySelector("#exercise-solution"),
   resources: document.querySelector("#resource-list"), empty: document.querySelector("#empty-resources"),
   search: document.querySelector("#resource-search"), progress: document.querySelector("#progress-bars"),
   progressText: document.querySelector("#progress-text"), question: document.querySelector("#quiz-question"),
@@ -139,6 +160,11 @@ function renderModule() {
   elements.tip.textContent = module.tip;
   elements.caption.textContent = module.caption;
   elements.code.textContent = module.code;
+  elements.theory.textContent = module.theory;
+  elements.concepts.innerHTML = module.concepts.map((concept) => `<li>${concept}</li>`).join("");
+  elements.exerciseTitle.textContent = module.exercise[0];
+  elements.exercisePrompt.textContent = module.exercise[1];
+  elements.exerciseSolution.textContent = module.exercise[2];
   elements.resources.innerHTML = module.resources.map(resourceMarkup).join("");
   elements.search.value = "";
   filterResources();

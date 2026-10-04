@@ -92,6 +92,16 @@ pre { max-height: 205px; margin: 0 0 10px; padding: 12px; overflow: auto; border
 .action { padding: 6px 9px; border: 1px solid var(--primary); border-radius: 2px; color: var(--bg); background: var(--primary); font-size: 11px; font-weight: 700; }
 .action:hover { filter: brightness(1.15); }
 
+.lesson-panel { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; padding: 26px 17px 16px; }
+.lesson-theory { padding-right: 24px; border-right: 1px dashed var(--border); }
+.lesson-panel h2 { color: var(--primary); }
+.theory-text, .lesson-practice > p { margin: 0; color: var(--text); }
+.concept-list { display: grid; gap: 5px; margin: 13px 0 0; padding: 0; list-style: none; color: var(--dim); }
+.concept-list li::before { margin-right: 7px; color: var(--secondary); content: "::"; }
+details { margin-top: 13px; padding: 8px; border: 1px solid var(--border); background: var(--bg); }
+summary { color: var(--primary); cursor: pointer; font-size: 11px; font-weight: 700; }
+details pre { margin: 10px 0 0; }
+
 .resources-panel { padding: 23px 14px 14px; }
 .resource-heading { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 12px; }
 .search-field { display: flex; align-items: center; width: 220px; padding: 4px 7px; border: 1px solid var(--border); background: var(--bg); color: var(--success); }
@@ -140,7 +150,8 @@ footer { display: flex; justify-content: space-between; gap: 12px; padding: 12px
 @media (max-width: 1080px) { .dashboard { grid-template-columns: 190px minmax(0, 1fr); } .right-column { grid-column: 1 / -1; grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 700px) {
   body { padding: 8px; } .topbar, .module-header, footer { display: block; } .system-status { margin-top: 8px; }
-  .dashboard, .content-grid, .right-column { display: grid; grid-template-columns: 1fr; } .navigation { order: 2; }
+  .dashboard, .content-grid, .right-column, .lesson-panel { display: grid; grid-template-columns: 1fr; } .navigation { order: 2; }
   .main-column { order: 1; } .right-column { order: 3; } .terminal-panel { order: 4; }
   #module-nav { grid-template-columns: repeat(2, 1fr); } .module-meta { margin-top: 14px; text-align: left; } .resource-heading { align-items: stretch; flex-direction: column; } .search-field { width: 100%; }
+  .lesson-theory { padding: 0; border: 0; }
 }
