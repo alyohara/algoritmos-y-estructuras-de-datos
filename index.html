@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Consola de estudio para Algoritmos y Estructuras de Datos.">
+  <meta name="description" content="Trayecto interactivo de Algoritmos y Estructuras de Datos: unidades, teoria, ejemplos ejecutables, cuestionarios y examen integrador.">
   <title>AYED // Study Console</title>
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -11,7 +11,7 @@
   <header class="panel topbar">
     <div>
       <p class="brand"><span class="prompt">student@unab</span>:<span class="path">~/ayed</span>$ <strong>study-console</strong><span class="cursor">_</span></p>
-      <p class="subtitle">Algoritmos y Estructuras de Datos // material de cursada</p>
+      <p class="subtitle">Algoritmos y Estructuras de Datos // trayecto de cursada completo</p>
     </div>
     <div class="system-status" aria-label="Estado del sitio">
       <span><i class="dot online"></i> ONLINE</span>
@@ -23,12 +23,12 @@
   <main class="dashboard">
     <aside class="panel navigation">
       <div class="box-title">[ COURSE MAP ]</div>
-      <p class="muted">Seleccioná una unidad para cargar su contenido.</p>
+      <p class="muted">Recorrido sugerido: unidad 01 a la 11. Navegacion libre.</p>
       <nav id="module-nav" aria-label="Unidades de la materia"></nav>
       <div class="key-help">
-        <p><kbd>1</kbd>-<kbd>6</kbd> unidades</p>
-        <p><kbd>/</kbd> buscar</p>
-        <p><kbd>q</kbd> quiz</p>
+        <p><kbd>1</kbd>-<kbd>9</kbd> <kbd>0</kbd> <kbd>-</kbd> unidades</p>
+        <p><kbd>/</kbd> buscar recursos</p>
+        <p><kbd>q</kbd> quiz &middot; <kbd>e</kbd> examen</p>
         <p><kbd>?</kbd> ayuda</p>
       </div>
     </aside>
@@ -37,84 +37,116 @@
       <section class="panel module-header">
         <div>
           <p id="module-kicker" class="label">UNIDAD 01</p>
-          <h1 id="module-title">Introducci&oacute;n a la programaci&oacute;n</h1>
+          <h1 id="module-title">Introduccion</h1>
           <p id="module-summary"></p>
         </div>
         <div class="module-meta">
-          <span id="module-status">[ READY ]</span>
+          <span id="module-status">[ PENDIENTE ]</span>
           <span id="module-count">00 RECURSOS</span>
+          <span class="unit-switch">
+            <button id="prev-unit" class="quiet-action" type="button" title="Unidad anterior">&lt; ANT</button>
+            <button id="next-unit" class="quiet-action" type="button" title="Unidad siguiente">SIG &gt;</button>
+          </span>
         </div>
       </section>
 
-      <div class="content-grid">
-        <section class="panel topic-panel">
-          <div class="box-title">[ TOPICS.LOG ]</div>
-          <ul id="topic-list" class="topic-list"></ul>
-          <div class="tip"><strong>TIP&gt;</strong> <span id="module-tip"></span></div>
-        </section>
+      <nav class="panel section-jump" aria-label="Secciones de la unidad">
+        <div class="box-title">[ DIVISORES ]</div>
+        <a href="#seccion-teoria">TEORIA</a>
+        <a href="#seccion-codigo">CODIGO</a>
+        <a href="#seccion-practica">PRACTICA</a>
+        <a href="#seccion-recursos">RECURSOS</a>
+        <a href="#seccion-quiz">QUIZ</a>
+      </nav>
 
-        <section class="panel code-panel">
-          <div class="box-title">[ PYTHON.EXAMPLE ]</div>
-          <p id="example-caption" class="muted"></p>
-          <pre><code id="code-example"></code></pre>
-          <button id="copy-code" type="button" class="action">COPY EXAMPLE</button>
-        </section>
-      </div>
-
-      <section class="panel lesson-panel">
-        <div class="box-title">[ THEORY + PRACTICE ]</div>
+      <section class="panel lesson-panel" id="seccion-teoria">
+        <div class="box-title">[ 01.TEORIA ]</div>
         <article class="lesson-theory">
           <p class="label">MARCO TEORICO</p>
           <p id="theory-text" class="theory-text"></p>
           <ul id="concept-list" class="concept-list"></ul>
         </article>
-        <article class="lesson-practice">
-          <p class="label">EJERCICIO GUIADO</p>
-          <h2 id="exercise-title"></h2>
-          <p id="exercise-prompt"></p>
-          <details>
-            <summary>VER UNA POSIBLE SOLUCION</summary>
-            <pre><code id="exercise-solution"></code></pre>
-          </details>
+        <article class="lesson-topics">
+          <p class="label">TOPICS.LOG</p>
+          <ul id="topic-list" class="topic-list"></ul>
+          <div class="tip"><strong>TIP&gt;</strong> <span id="module-tip"></span></div>
         </article>
       </section>
 
-      <section class="panel resources-panel">
+      <section class="panel code-panel" id="seccion-codigo">
+        <div class="box-title">[ 02.CODIGO + RUN ]</div>
+        <p id="example-caption" class="muted"></p>
+        <textarea id="code-editor" class="code-editor" spellcheck="false" rows="14" aria-label="Editor de codigo Python"></textarea>
+        <div class="editor-toolbar">
+          <button id="run-code" class="action" type="button">RUN &gt;</button>
+          <button id="reset-code" class="quiet-action" type="button">RESET</button>
+          <button id="copy-code" class="quiet-action" type="button">COPY</button>
+          <span id="pyodide-status" class="muted">Python corre en tu navegador (Pyodide, se carga al primer RUN).</span>
+        </div>
+        <pre id="code-output" class="code-output" aria-live="polite">Salida del interprete aparecera aqui.</pre>
+      </section>
+
+      <section class="panel practice-panel" id="seccion-practica">
+        <div class="box-title">[ 03.PRACTICA GUIADA ]</div>
+        <p class="label">EJERCICIO</p>
+        <h2 id="exercise-title"></h2>
+        <p id="exercise-prompt" class="exercise-prompt"></p>
+        <details>
+          <summary>VER UNA POSIBLE SOLUCION</summary>
+          <pre><code id="exercise-solution"></code></pre>
+        </details>
+      </section>
+
+      <section class="panel resources-panel" id="seccion-recursos">
         <div class="resource-heading">
-          <div class="box-title">[ MATERIAL.INDEX ]</div>
+          <div class="box-title">[ 04.MATERIAL.INDEX ]</div>
           <label class="search-field">
             <span>/</span>
             <input id="resource-search" type="search" placeholder="filtrar recursos..." autocomplete="off">
           </label>
         </div>
         <div id="resource-list" class="resource-list"></div>
-        <p id="empty-resources" class="empty" hidden>No hay recursos que coincidan con la b&uacute;squeda.</p>
+        <p id="empty-resources" class="empty" hidden>No hay recursos que coincidan con la busqueda.</p>
       </section>
     </section>
 
     <aside class="right-column">
       <section class="panel progress-panel">
         <div class="box-title">[ PROGRESS ]</div>
-        <p class="muted">Marc&aacute; las unidades revisadas. Se guarda en este navegador.</p>
+        <p class="muted">Avance por unidad. Se guarda en este navegador.</p>
         <div id="progress-bars"></div>
-        <p id="progress-text" class="progress-text">0 / 6 unidades revisadas</p>
+        <p id="progress-text" class="progress-text">0 / 11 unidades</p>
+        <div class="progress-actions">
+          <button id="mark-reviewed" class="quiet-action" type="button">MARCAR UNIDAD COMO REVISADA</button>
+          <button id="reset-progress" class="quiet-action danger-action" type="button">RESET PROGRESO</button>
+        </div>
       </section>
 
-      <section class="panel assessment-panel">
-        <div class="box-title">[ SELFTEST.EXE ]</div>
+      <section class="panel assessment-panel" id="seccion-quiz">
+        <div class="box-title">[ 05.QUIZ DE LA UNIDAD ]</div>
         <p id="quiz-progress" class="label">PREGUNTA 1 / 6</p>
         <h2 id="quiz-question"></h2>
         <div id="quiz-options" class="quiz-options"></div>
         <p id="quiz-feedback" class="feedback" aria-live="polite"></p>
         <div class="quiz-controls">
           <button id="next-question" class="action" type="button">NEXT &gt;</button>
-          <button id="reset-quiz" class="quiet-action" type="button">RESET</button>
+          <button id="reset-quiz" class="quiet-action" type="button">REINICIAR</button>
+        </div>
+        <p id="quiz-score" class="score-line"></p>
+      </section>
+
+      <section class="panel exam-panel">
+        <div class="box-title">[ EXAMEN.INTEGRADOR ]</div>
+        <p class="muted">20 preguntas de todas las unidades. Se aprueba con 14 correctas (70%).</p>
+        <div id="exam-body">
+          <button id="start-exam" class="action" type="button">INICIAR EXAMEN</button>
+          <p id="exam-history" class="score-line"></p>
         </div>
       </section>
 
       <section class="panel exams-panel">
         <div class="box-title">[ ASSESSMENTS ]</div>
-        <p class="muted">Material para practicar formato de parcial.</p>
+        <p class="muted">Parciales y material para practicar el formato de examen.</p>
         <div id="assessment-links"></div>
       </section>
     </aside>
@@ -122,7 +154,7 @@
     <section class="panel terminal-panel">
       <div class="box-title">[ AYED SHELL ]</div>
       <div id="terminal-output" class="terminal-output" aria-live="polite">
-        <p><span class="success">AYED Study Console v1.0</span> &mdash; escrib&iacute; <strong>help</strong> para ver comandos.</p>
+        <p><span class="success">AYED Study Console v2.0</span> &mdash; escribi <strong>help</strong> para ver comandos.</p>
       </div>
       <form id="terminal-form" class="terminal-input">
         <label for="command-input"><span class="prompt">student@unab</span>:<span class="path">~/ayed</span>$</label>
@@ -133,8 +165,9 @@
 
   <footer>
     <span>AYED // UNaB</span>
-    <span>Us&aacute; los recursos PDF e IPYNB para profundizar cada unidad.</span>
+    <span>Usa los PDF e IPYNB originales para profundizar cada unidad.</span>
   </footer>
+  <script src="data.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
