@@ -1,5 +1,5 @@
 /* Teoria profunda por unidad: objetivos de aprendizaje y secciones con HTML y codigo.
-   Se carga en #theory-secciones desde script.js. */
+   Se carga desde cada pagina de unidad (page-unit.js). */
 const teoria = {
   "1": {
     "objetivos": [

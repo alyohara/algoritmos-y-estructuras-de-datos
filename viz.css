@@ -119,9 +119,13 @@
 .viz-controls input[type="text"], .viz-controls input[type="number"], .viz-controls select {
   background: var(--bg-code); border: 1px solid var(--line); color: var(--fg);
   border-radius: var(--r-sm); padding: 6px 10px; font: inherit; font-size: .85rem;
+  min-width: 0; max-width: 100%;
 }
 
 .viz-controls input[type="text"] { min-width: 110px; }
+.viz-controls select { text-overflow: ellipsis; }
+.viz-controls select, .viz-controls input[type="text"], .viz-controls input[type="number"] { flex: 1 1 150px; }
+.viz-mount, .viz, .viz-stage { min-width: 0; }
 
 .viz-controls label { font-size: .82rem; color: var(--fg-muted); display: flex; align-items: center; gap: 6px; }
 
